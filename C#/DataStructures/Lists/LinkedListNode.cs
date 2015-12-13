@@ -1,5 +1,4 @@
 ﻿
-using System;
 using System.Runtime.InteropServices;
 
 namespace DataStructures.Lists
@@ -7,35 +6,34 @@ namespace DataStructures.Lists
     [ComVisible(false)]
     public sealed class LinkedListNode<T>
     {
+        private LinkedList<T> refToList;
+        private LinkedListNode<T> next, prev;
+        private LinkedListNode()
+        {
+
+        }
         public LinkedListNode(T item)
         {
-            
+            Value = item;
         }
 
         public LinkedList<T> List
         {
-            get { throw new NotImplementedException();}
+            get { return refToList; }
+            internal set { refToList = value; }
         }
-        public LinkedListNode<T> Next { get; }
-        public LinkedListNode<T> Previous { get; }
+
+        public LinkedListNode<T> Next
+        {
+            get { return next; }
+            internal set { next = value; }
+        }
+        public LinkedListNode<T> Previous
+        {
+            get { return prev; }
+            internal set { prev = value; }
+        }
         public T Value { get; set; }
 
-        public override bool Equals(object obj)
-        {
-        throw new NotImplementedException();
-        } 
-        public override int GetHashCode()
-        { 
-            throw new NotImplementedException();
-        }
-
-        public new Type GetType()
-        {
-            throw new NotImplementedException();
-        } 
-        public override string ToString()
-        {
-            throw new NotImplementedException();
-        }
     }
 }

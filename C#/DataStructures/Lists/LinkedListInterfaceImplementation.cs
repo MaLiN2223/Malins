@@ -33,12 +33,13 @@ namespace DataStructures.Lists
 
         public void Add(T item)
         {
-            throw new NotImplementedException();
+            AddLast(item);
         }
 
         public void Clear()
         {
-            throw new NotImplementedException();
+            Count = 0;
+            First = Last = null;
         }
 
         public bool Contains(T item)
@@ -83,7 +84,11 @@ namespace DataStructures.Lists
 
         public override int GetHashCode()
         {
-            throw new NotImplementedException(); 
+            throw new NotImplementedException();
+        }
+        protected LinkedList(SerializationInfo info, StreamingContext context)
+        {
+            //TODO: create constuctor
         }
     }
 }
