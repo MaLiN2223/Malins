@@ -1,0 +1,348 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<HelpKI>
+  <HelpKINode Title="AbstractGraph(Of T) class">
+    <HelpKINode Title="AbstractGraph(T) Class" Url="html/7723cc4c-dc33-ce26-5a01-3e605b70db70.htm" />
+    <HelpKINode Title="about AbstractGraph(Of T) class" Url="html/7723cc4c-dc33-ce26-5a01-3e605b70db70.htm" />
+    <HelpKINode Title="constructor" Url="html/4fbff59d-4f1d-536d-9a01-f3fb9abf1757.htm" />
+    <HelpKINode Title="methods" Url="html/48e8ad0e-aa32-e32f-483a-4f9007f73465.htm" />
+    <HelpKINode Title="properties" Url="html/7fd2a6a3-a8f9-dd53-11eb-30b728b26e43.htm" />
+  </HelpKINode>
+  <HelpKINode Title="AbstractGraph(Of T).AbstractGraph constructor" Url="html/4fbff59d-4f1d-536d-9a01-f3fb9abf1757.htm" />
+  <HelpKINode Title="AbstractGraph(Of T).adjency method" Url="html/834d50c3-6ab5-f014-c37b-69d9ab1437fd.htm" />
+  <HelpKINode Title="AbstractGraph(Of T).EdgesCount property" Url="html/8cb6039f-8b64-eb77-95ed-f9b4b1413a41.htm" />
+  <HelpKINode Title="AbstractGraph(Of T).GetBfs method" Url="html/a7cbe4b4-756b-d50e-726f-79e4db0d2eb2.htm" />
+  <HelpKINode Title="AbstractGraph(Of T).GetDfs method" Url="html/5408a57b-d032-a240-5318-495f5451623b.htm" />
+  <HelpKINode Title="AbstractGraph(Of T).GetEnumerator method" Url="html/d367e136-e427-cf59-eaf3-d89c5de026f5.htm" />
+  <HelpKINode Title="AbstractGraph(Of T).IEnumerable.GetEnumerator explicitly implemented method" Url="html/4380d18e-84ea-12a9-1ef2-7ecefca97afc.htm" />
+  <HelpKINode Title="AbstractGraph(Of T).VerticesCount property" Url="html/586f976e-5a70-d76b-3139-f351d5f04d04.htm" />
+  <HelpKINode Title="AbstractGraph&lt;T&gt; class">
+    <HelpKINode Title="AbstractGraph(T) Class" Url="html/7723cc4c-dc33-ce26-5a01-3e605b70db70.htm" />
+    <HelpKINode Title="about AbstractGraph&lt;T&gt; class" Url="html/7723cc4c-dc33-ce26-5a01-3e605b70db70.htm" />
+    <HelpKINode Title="constructor" Url="html/4fbff59d-4f1d-536d-9a01-f3fb9abf1757.htm" />
+    <HelpKINode Title="methods" Url="html/48e8ad0e-aa32-e32f-483a-4f9007f73465.htm" />
+    <HelpKINode Title="properties" Url="html/7fd2a6a3-a8f9-dd53-11eb-30b728b26e43.htm" />
+  </HelpKINode>
+  <HelpKINode Title="AbstractGraph&lt;T&gt;.AbstractGraph constructor" Url="html/4fbff59d-4f1d-536d-9a01-f3fb9abf1757.htm" />
+  <HelpKINode Title="AbstractGraph&lt;T&gt;.adjency method" Url="html/834d50c3-6ab5-f014-c37b-69d9ab1437fd.htm" />
+  <HelpKINode Title="AbstractGraph&lt;T&gt;.EdgesCount property" Url="html/8cb6039f-8b64-eb77-95ed-f9b4b1413a41.htm" />
+  <HelpKINode Title="AbstractGraph&lt;T&gt;.GetBfs method" Url="html/a7cbe4b4-756b-d50e-726f-79e4db0d2eb2.htm" />
+  <HelpKINode Title="AbstractGraph&lt;T&gt;.GetDfs method" Url="html/5408a57b-d032-a240-5318-495f5451623b.htm" />
+  <HelpKINode Title="AbstractGraph&lt;T&gt;.GetEnumerator method" Url="html/d367e136-e427-cf59-eaf3-d89c5de026f5.htm" />
+  <HelpKINode Title="AbstractGraph&lt;T&gt;.IEnumerable.GetEnumerator explicitly implemented method" Url="html/4380d18e-84ea-12a9-1ef2-7ecefca97afc.htm" />
+  <HelpKINode Title="AbstractGraph&lt;T&gt;.VerticesCount property" Url="html/586f976e-5a70-d76b-3139-f351d5f04d04.htm" />
+  <HelpKINode Title="Add method" Url="html/5311207d-6b59-4e69-73f3-80eca40dcaa6.htm" />
+  <HelpKINode Title="adjency method">
+    <HelpKINode Title="AbstractGraph(T).adjency Method " Url="html/834d50c3-6ab5-f014-c37b-69d9ab1437fd.htm" />
+    <HelpKINode Title="IGraph(T).adjency Method " Url="html/53a33887-296f-1da3-a460-ddf705113618.htm" />
+  </HelpKINode>
+  <HelpKINode Title="AdjencyListVertex(Of T) class">
+    <HelpKINode Title="AdjencyListVertex(T) Class" Url="html/d482f16a-1a1d-7b8a-b771-82fd39f7c79f.htm" />
+    <HelpKINode Title="about AdjencyListVertex(Of T) class" Url="html/d482f16a-1a1d-7b8a-b771-82fd39f7c79f.htm" />
+    <HelpKINode Title="constructor" Url="html/54db91d7-3207-dd83-7282-5852c1989245.htm" />
+    <HelpKINode Title="fields" Url="html/de64ef49-33bc-37cb-9703-d48c39a79e0f.htm" />
+    <HelpKINode Title="methods" Url="html/8079f694-adc0-3710-bc4a-9effd5faf0c0.htm" />
+    <HelpKINode Title="properties" Url="html/d6579bcf-ac23-353a-44c8-d26d7dc31f12.htm" />
+  </HelpKINode>
+  <HelpKINode Title="AdjencyListVertex(Of T).AdjencyListVertex constructor" Url="html/54db91d7-3207-dd83-7282-5852c1989245.htm" />
+  <HelpKINode Title="AdjencyListVertex(Of T).Connect method" Url="html/58c2257d-3aea-b608-3acd-7863a0284529.htm" />
+  <HelpKINode Title="AdjencyListVertex(Of T).GetEnumerator method" Url="html/a0c3e2b3-f467-1594-80dc-24b0928fbe33.htm" />
+  <HelpKINode Title="AdjencyListVertex(Of T).IEnumerable.GetEnumerator explicitly implemented method" Url="html/37731868-7dc0-4310-0a48-4ee7aa8fdd67.htm" />
+  <HelpKINode Title="AdjencyListVertex(Of T).IsAdjacent method" Url="html/49c5dd51-d0aa-0613-1cee-7fe7ca480fdb.htm" />
+  <HelpKINode Title="AdjencyListVertex(Of T).Neighbors method" Url="html/df5af01a-031f-816e-bdc6-f84ba56505d8.htm" />
+  <HelpKINode Title="AdjencyListVertex(Of T).Value property" Url="html/645dae19-66e2-e984-6117-5b3bd4322a92.htm" />
+  <HelpKINode Title="AdjencyListVertex(Of T)._vertices field" Url="html/2868989b-e485-66d6-29d4-c01fb2f98648.htm" />
+  <HelpKINode Title="AdjencyListVertex&lt;T&gt; class">
+    <HelpKINode Title="AdjencyListVertex(T) Class" Url="html/d482f16a-1a1d-7b8a-b771-82fd39f7c79f.htm" />
+    <HelpKINode Title="about AdjencyListVertex&lt;T&gt; class" Url="html/d482f16a-1a1d-7b8a-b771-82fd39f7c79f.htm" />
+    <HelpKINode Title="constructor" Url="html/54db91d7-3207-dd83-7282-5852c1989245.htm" />
+    <HelpKINode Title="fields" Url="html/de64ef49-33bc-37cb-9703-d48c39a79e0f.htm" />
+    <HelpKINode Title="methods" Url="html/8079f694-adc0-3710-bc4a-9effd5faf0c0.htm" />
+    <HelpKINode Title="properties" Url="html/d6579bcf-ac23-353a-44c8-d26d7dc31f12.htm" />
+  </HelpKINode>
+  <HelpKINode Title="AdjencyListVertex&lt;T&gt;.AdjencyListVertex constructor" Url="html/54db91d7-3207-dd83-7282-5852c1989245.htm" />
+  <HelpKINode Title="AdjencyListVertex&lt;T&gt;.Connect method" Url="html/58c2257d-3aea-b608-3acd-7863a0284529.htm" />
+  <HelpKINode Title="AdjencyListVertex&lt;T&gt;.GetEnumerator method" Url="html/a0c3e2b3-f467-1594-80dc-24b0928fbe33.htm" />
+  <HelpKINode Title="AdjencyListVertex&lt;T&gt;.IEnumerable.GetEnumerator explicitly implemented method" Url="html/37731868-7dc0-4310-0a48-4ee7aa8fdd67.htm" />
+  <HelpKINode Title="AdjencyListVertex&lt;T&gt;.IsAdjacent method" Url="html/49c5dd51-d0aa-0613-1cee-7fe7ca480fdb.htm" />
+  <HelpKINode Title="AdjencyListVertex&lt;T&gt;.Neighbors method" Url="html/df5af01a-031f-816e-bdc6-f84ba56505d8.htm" />
+  <HelpKINode Title="AdjencyListVertex&lt;T&gt;.Value property" Url="html/645dae19-66e2-e984-6117-5b3bd4322a92.htm" />
+  <HelpKINode Title="AdjencyListVertex&lt;T&gt;._vertices field" Url="html/2868989b-e485-66d6-29d4-c01fb2f98648.htm" />
+  <HelpKINode Title="Connect method">
+    <HelpKINode Title="AdjencyListVertex(T).Connect Method " Url="html/58c2257d-3aea-b608-3acd-7863a0284529.htm" />
+    <HelpKINode Title="IVertex(T).Connect Method " Url="html/f8fc17a1-c2fb-e826-931b-fd222229e7b0.htm" />
+    <HelpKINode Title="SimplestListGraph(T).Connect Method " Url="html/429f846a-a4c2-6ece-be1f-1ee24208d898.htm" />
+  </HelpKINode>
+  <HelpKINode Title="DataStructures.Exceptions namespace" Url="html/d831d12d-7135-8b21-9f11-40cb8870d9b0.htm" />
+  <HelpKINode Title="DataStructures.Exceptions.InvalidArgumentException class" Url="html/31cf42f4-c857-bebc-5caa-a37797473ebf.htm" />
+  <HelpKINode Title="DataStructures.Graphs namespace" Url="html/7fa70da1-7b49-2055-8836-a587c16156c0.htm" />
+  <HelpKINode Title="DataStructures.Graphs.AdjencyListVertex(Of T) class" Url="html/d482f16a-1a1d-7b8a-b771-82fd39f7c79f.htm" />
+  <HelpKINode Title="DataStructures.Graphs.AdjencyListVertex&lt;T&gt; class" Url="html/d482f16a-1a1d-7b8a-b771-82fd39f7c79f.htm" />
+  <HelpKINode Title="DataStructures.Graphs.Edge(Of T) class" Url="html/da408d5d-e598-a8f5-712b-37c5ea202cac.htm" />
+  <HelpKINode Title="DataStructures.Graphs.Edge&lt;T&gt; class" Url="html/da408d5d-e598-a8f5-712b-37c5ea202cac.htm" />
+  <HelpKINode Title="DataStructures.Graphs.Interfaces namespace" Url="html/c4c103a0-d42e-7cec-21a2-a5c610c73c17.htm" />
+  <HelpKINode Title="DataStructures.Graphs.Interfaces.AbstractGraph(Of T) class" Url="html/7723cc4c-dc33-ce26-5a01-3e605b70db70.htm" />
+  <HelpKINode Title="DataStructures.Graphs.Interfaces.AbstractGraph&lt;T&gt; class" Url="html/7723cc4c-dc33-ce26-5a01-3e605b70db70.htm" />
+  <HelpKINode Title="DataStructures.Graphs.Interfaces.DirectedEdge(Of T) class" Url="html/71593d9e-0876-e561-b752-99a91b7b8783.htm" />
+  <HelpKINode Title="DataStructures.Graphs.Interfaces.DirectedEdge&lt;T&gt; class" Url="html/71593d9e-0876-e561-b752-99a91b7b8783.htm" />
+  <HelpKINode Title="DataStructures.Graphs.Interfaces.EdgeDirection enumeration" Url="html/92c8442a-4545-eb1b-44bb-7c0a4bd3c6c4.htm" />
+  <HelpKINode Title="DataStructures.Graphs.Interfaces.IDirectedEdge(Of T) interface" Url="html/f91c6268-ab12-0f70-6458-55319bbdf6ce.htm" />
+  <HelpKINode Title="DataStructures.Graphs.Interfaces.IDirectedEdge&lt;T&gt; interface" Url="html/f91c6268-ab12-0f70-6458-55319bbdf6ce.htm" />
+  <HelpKINode Title="DataStructures.Graphs.Interfaces.IDirectedGraph(Of T1, T2) interface" Url="html/4c0b4196-32fb-c834-c7f2-30503be66217.htm" />
+  <HelpKINode Title="DataStructures.Graphs.Interfaces.IDirectedGraph&lt;T1, T2&gt; interface" Url="html/4c0b4196-32fb-c834-c7f2-30503be66217.htm" />
+  <HelpKINode Title="DataStructures.Graphs.Interfaces.IEdge(Of T0) interface" Url="html/6ebe8f07-ef56-6b6b-9b46-14d0a0d0b0cd.htm" />
+  <HelpKINode Title="DataStructures.Graphs.Interfaces.IEdge&lt;T0&gt; interface" Url="html/6ebe8f07-ef56-6b6b-9b46-14d0a0d0b0cd.htm" />
+  <HelpKINode Title="DataStructures.Graphs.Interfaces.IGraph(Of T) interface" Url="html/1ef9ae9c-1577-6c7e-82cd-4de89da7f925.htm" />
+  <HelpKINode Title="DataStructures.Graphs.Interfaces.IGraph&lt;T&gt; interface" Url="html/1ef9ae9c-1577-6c7e-82cd-4de89da7f925.htm" />
+  <HelpKINode Title="DataStructures.Graphs.Interfaces.IVertex(Of T) interface" Url="html/0e9b22ed-317a-d784-43c0-206e1c0340da.htm" />
+  <HelpKINode Title="DataStructures.Graphs.Interfaces.IVertex&lt;T&gt; interface" Url="html/0e9b22ed-317a-d784-43c0-206e1c0340da.htm" />
+  <HelpKINode Title="DataStructures.Graphs.Interfaces.IWeightedEdge(Of T0, T1) interface" Url="html/012b77fd-65d7-f0db-7067-9e1040c2c09d.htm" />
+  <HelpKINode Title="DataStructures.Graphs.Interfaces.IWeightedEdge&lt;T0, T1&gt; interface" Url="html/012b77fd-65d7-f0db-7067-9e1040c2c09d.htm" />
+  <HelpKINode Title="DataStructures.Graphs.Interfaces.IWeightedGraph(Of T1, T2) interface" Url="html/faf8506f-8601-c43f-33bf-95b3f6d46abf.htm" />
+  <HelpKINode Title="DataStructures.Graphs.Interfaces.IWeightedGraph&lt;T1, T2&gt; interface" Url="html/faf8506f-8601-c43f-33bf-95b3f6d46abf.htm" />
+  <HelpKINode Title="DataStructures.Graphs.SimplestListGraph(Of T) class" Url="html/9df88472-dca4-cb5d-d9c5-336a4a45570e.htm" />
+  <HelpKINode Title="DataStructures.Graphs.SimplestListGraph&lt;T&gt; class" Url="html/9df88472-dca4-cb5d-d9c5-336a4a45570e.htm" />
+  <HelpKINode Title="Degree method" Url="html/329943a5-7646-36d2-dfda-0370c9834e22.htm" />
+  <HelpKINode Title="DirectedEdge(Of T) class">
+    <HelpKINode Title="DirectedEdge(T) Class" Url="html/71593d9e-0876-e561-b752-99a91b7b8783.htm" />
+    <HelpKINode Title="about DirectedEdge(Of T) class" Url="html/71593d9e-0876-e561-b752-99a91b7b8783.htm" />
+    <HelpKINode Title="constructor" Url="html/30e5928c-dd56-7724-b581-6effd446afd2.htm" />
+    <HelpKINode Title="methods" Url="html/452ced95-a9e2-0131-410b-092f461f55d3.htm" />
+    <HelpKINode Title="properties" Url="html/6e9f5dfc-b477-47c1-067f-ba91d461e1a3.htm" />
+  </HelpKINode>
+  <HelpKINode Title="DirectedEdge(Of T).DirectedEdge constructor" Url="html/30e5928c-dd56-7724-b581-6effd446afd2.htm" />
+  <HelpKINode Title="DirectedEdge(Of T).EdgeDirection property" Url="html/bb98631f-8844-dd3f-d99c-8859977e1401.htm" />
+  <HelpKINode Title="DirectedEdge(Of T).First property" Url="html/5658c5e9-81c3-a105-6c9f-86a8cd581905.htm" />
+  <HelpKINode Title="DirectedEdge(Of T).Second property" Url="html/4a440eaa-3a7e-de11-55d5-202c76dfcd23.htm" />
+  <HelpKINode Title="DirectedEdge&lt;T&gt; class">
+    <HelpKINode Title="DirectedEdge(T) Class" Url="html/71593d9e-0876-e561-b752-99a91b7b8783.htm" />
+    <HelpKINode Title="about DirectedEdge&lt;T&gt; class" Url="html/71593d9e-0876-e561-b752-99a91b7b8783.htm" />
+    <HelpKINode Title="constructor" Url="html/30e5928c-dd56-7724-b581-6effd446afd2.htm" />
+    <HelpKINode Title="methods" Url="html/452ced95-a9e2-0131-410b-092f461f55d3.htm" />
+    <HelpKINode Title="properties" Url="html/6e9f5dfc-b477-47c1-067f-ba91d461e1a3.htm" />
+  </HelpKINode>
+  <HelpKINode Title="DirectedEdge&lt;T&gt;.DirectedEdge constructor" Url="html/30e5928c-dd56-7724-b581-6effd446afd2.htm" />
+  <HelpKINode Title="DirectedEdge&lt;T&gt;.EdgeDirection property" Url="html/bb98631f-8844-dd3f-d99c-8859977e1401.htm" />
+  <HelpKINode Title="DirectedEdge&lt;T&gt;.First property" Url="html/5658c5e9-81c3-a105-6c9f-86a8cd581905.htm" />
+  <HelpKINode Title="DirectedEdge&lt;T&gt;.Second property" Url="html/4a440eaa-3a7e-de11-55d5-202c76dfcd23.htm" />
+  <HelpKINode Title="Double enumeration member" Url="html/92c8442a-4545-eb1b-44bb-7c0a4bd3c6c4.htm" />
+  <HelpKINode Title="Edge(Of T) class">
+    <HelpKINode Title="Edge(T) Class" Url="html/da408d5d-e598-a8f5-712b-37c5ea202cac.htm" />
+    <HelpKINode Title="about Edge(Of T) class" Url="html/da408d5d-e598-a8f5-712b-37c5ea202cac.htm" />
+    <HelpKINode Title="constructor" Url="html/79071d43-050b-706c-2d15-9f279c0c51a7.htm" />
+    <HelpKINode Title="methods" Url="html/dbe73596-8dc4-8d00-929b-67e023c92b9b.htm" />
+    <HelpKINode Title="properties" Url="html/61dc8561-81a6-c589-8cc5-c3603d3cd384.htm" />
+  </HelpKINode>
+  <HelpKINode Title="Edge(Of T).Edge constructor" Url="html/79071d43-050b-706c-2d15-9f279c0c51a7.htm" />
+  <HelpKINode Title="Edge&lt;T&gt; class">
+    <HelpKINode Title="Edge(T) Class" Url="html/da408d5d-e598-a8f5-712b-37c5ea202cac.htm" />
+    <HelpKINode Title="about Edge&lt;T&gt; class" Url="html/da408d5d-e598-a8f5-712b-37c5ea202cac.htm" />
+    <HelpKINode Title="constructor" Url="html/79071d43-050b-706c-2d15-9f279c0c51a7.htm" />
+    <HelpKINode Title="methods" Url="html/dbe73596-8dc4-8d00-929b-67e023c92b9b.htm" />
+    <HelpKINode Title="properties" Url="html/61dc8561-81a6-c589-8cc5-c3603d3cd384.htm" />
+  </HelpKINode>
+  <HelpKINode Title="Edge&lt;T&gt;.Edge constructor" Url="html/79071d43-050b-706c-2d15-9f279c0c51a7.htm" />
+  <HelpKINode Title="EdgeDirection enumeration" Url="html/92c8442a-4545-eb1b-44bb-7c0a4bd3c6c4.htm" />
+  <HelpKINode Title="EdgeDirection property">
+    <HelpKINode Title="DirectedEdge(T).EdgeDirection Property " Url="html/bb98631f-8844-dd3f-d99c-8859977e1401.htm" />
+    <HelpKINode Title="IDirectedEdge(T).EdgeDirection Property " Url="html/90923b9d-4424-3716-9e2b-05f91211839f.htm" />
+  </HelpKINode>
+  <HelpKINode Title="EdgesCount property">
+    <HelpKINode Title="AbstractGraph(T).EdgesCount Property " Url="html/8cb6039f-8b64-eb77-95ed-f9b4b1413a41.htm" />
+    <HelpKINode Title="IGraph(T).EdgesCount Property " Url="html/c682055f-1bdb-f850-3978-664ff9599b1c.htm" />
+    <HelpKINode Title="SimplestListGraph(T).EdgesCount Property " Url="html/57d991b9-b526-bdb8-4766-56b0968e48a5.htm" />
+  </HelpKINode>
+  <HelpKINode Title="First property">
+    <HelpKINode Title="DirectedEdge(T).First Property " Url="html/5658c5e9-81c3-a105-6c9f-86a8cd581905.htm" />
+    <HelpKINode Title="IEdge(T0).First Property " Url="html/0fedb5ba-fb03-fbfe-634b-4d36c85a537c.htm" />
+  </HelpKINode>
+  <HelpKINode Title="GetBfs method" Url="html/a7cbe4b4-756b-d50e-726f-79e4db0d2eb2.htm" />
+  <HelpKINode Title="GetDfs method" Url="html/5408a57b-d032-a240-5318-495f5451623b.htm" />
+  <HelpKINode Title="GetEnumerator method">
+    <HelpKINode Title="AbstractGraph(T).GetEnumerator Method " Url="html/d367e136-e427-cf59-eaf3-d89c5de026f5.htm" />
+    <HelpKINode Title="AdjencyListVertex(T).GetEnumerator Method " Url="html/a0c3e2b3-f467-1594-80dc-24b0928fbe33.htm" />
+    <HelpKINode Title="SimplestListGraph(T).GetEnumerator Method " Url="html/61b5e3f5-f55d-572a-d000-0d6836aec885.htm" />
+  </HelpKINode>
+  <HelpKINode Title="IDirectedEdge(Of T) interface">
+    <HelpKINode Title="IDirectedEdge(T) Interface" Url="html/f91c6268-ab12-0f70-6458-55319bbdf6ce.htm" />
+    <HelpKINode Title="about IDirectedEdge(Of T) interface" Url="html/f91c6268-ab12-0f70-6458-55319bbdf6ce.htm" />
+    <HelpKINode Title="properties" Url="html/1637cea8-58c4-fff6-e7d2-59f218abf46c.htm" />
+  </HelpKINode>
+  <HelpKINode Title="IDirectedEdge(Of T).EdgeDirection property" Url="html/90923b9d-4424-3716-9e2b-05f91211839f.htm" />
+  <HelpKINode Title="IDirectedEdge&lt;T&gt; interface">
+    <HelpKINode Title="IDirectedEdge(T) Interface" Url="html/f91c6268-ab12-0f70-6458-55319bbdf6ce.htm" />
+    <HelpKINode Title="about IDirectedEdge&lt;T&gt; interface" Url="html/f91c6268-ab12-0f70-6458-55319bbdf6ce.htm" />
+    <HelpKINode Title="properties" Url="html/1637cea8-58c4-fff6-e7d2-59f218abf46c.htm" />
+  </HelpKINode>
+  <HelpKINode Title="IDirectedEdge&lt;T&gt;.EdgeDirection property" Url="html/90923b9d-4424-3716-9e2b-05f91211839f.htm" />
+  <HelpKINode Title="IDirectedGraph(Of T1, T2) interface">
+    <HelpKINode Title="IDirectedGraph(T1, T2) Interface" Url="html/4c0b4196-32fb-c834-c7f2-30503be66217.htm" />
+    <HelpKINode Title="about IDirectedGraph(Of T1, T2) interface" Url="html/4c0b4196-32fb-c834-c7f2-30503be66217.htm" />
+    <HelpKINode Title="methods" Url="html/3220f83f-23d1-9356-9a41-7c244150d0cf.htm" />
+    <HelpKINode Title="properties" Url="html/149b9896-f886-751c-9067-b47a8a91f06f.htm" />
+  </HelpKINode>
+  <HelpKINode Title="IDirectedGraph&lt;T1, T2&gt; interface">
+    <HelpKINode Title="IDirectedGraph(T1, T2) Interface" Url="html/4c0b4196-32fb-c834-c7f2-30503be66217.htm" />
+    <HelpKINode Title="about IDirectedGraph&lt;T1, T2&gt; interface" Url="html/4c0b4196-32fb-c834-c7f2-30503be66217.htm" />
+    <HelpKINode Title="methods" Url="html/3220f83f-23d1-9356-9a41-7c244150d0cf.htm" />
+    <HelpKINode Title="properties" Url="html/149b9896-f886-751c-9067-b47a8a91f06f.htm" />
+  </HelpKINode>
+  <HelpKINode Title="IEdge(Of T0) interface">
+    <HelpKINode Title="IEdge(T0) Interface" Url="html/6ebe8f07-ef56-6b6b-9b46-14d0a0d0b0cd.htm" />
+    <HelpKINode Title="about IEdge(Of T0) interface" Url="html/6ebe8f07-ef56-6b6b-9b46-14d0a0d0b0cd.htm" />
+    <HelpKINode Title="properties" Url="html/4c710a55-707e-5bf9-fef5-a9efe368577e.htm" />
+  </HelpKINode>
+  <HelpKINode Title="IEdge(Of T0).First property" Url="html/0fedb5ba-fb03-fbfe-634b-4d36c85a537c.htm" />
+  <HelpKINode Title="IEdge(Of T0).Second property" Url="html/9b12a953-9198-71b8-73b5-f27929f31b71.htm" />
+  <HelpKINode Title="IEdge&lt;T0&gt; interface">
+    <HelpKINode Title="IEdge(T0) Interface" Url="html/6ebe8f07-ef56-6b6b-9b46-14d0a0d0b0cd.htm" />
+    <HelpKINode Title="about IEdge&lt;T0&gt; interface" Url="html/6ebe8f07-ef56-6b6b-9b46-14d0a0d0b0cd.htm" />
+    <HelpKINode Title="properties" Url="html/4c710a55-707e-5bf9-fef5-a9efe368577e.htm" />
+  </HelpKINode>
+  <HelpKINode Title="IEdge&lt;T0&gt;.First property" Url="html/0fedb5ba-fb03-fbfe-634b-4d36c85a537c.htm" />
+  <HelpKINode Title="IEdge&lt;T0&gt;.Second property" Url="html/9b12a953-9198-71b8-73b5-f27929f31b71.htm" />
+  <HelpKINode Title="IEnumerable.GetEnumerator explicitly implemented method">
+    <HelpKINode Title="AbstractGraph(T).IEnumerable.GetEnumerator Method " Url="html/4380d18e-84ea-12a9-1ef2-7ecefca97afc.htm" />
+    <HelpKINode Title="AdjencyListVertex(T).IEnumerable.GetEnumerator Method " Url="html/37731868-7dc0-4310-0a48-4ee7aa8fdd67.htm" />
+  </HelpKINode>
+  <HelpKINode Title="IGraph(Of T) interface">
+    <HelpKINode Title="IGraph(T) Interface" Url="html/1ef9ae9c-1577-6c7e-82cd-4de89da7f925.htm" />
+    <HelpKINode Title="about IGraph(Of T) interface" Url="html/1ef9ae9c-1577-6c7e-82cd-4de89da7f925.htm" />
+    <HelpKINode Title="methods" Url="html/85cc11c9-20cb-17d9-9f72-ff52ea4493c8.htm" />
+    <HelpKINode Title="properties" Url="html/b7487bcf-f6fe-9b83-bf69-97b301b5c272.htm" />
+  </HelpKINode>
+  <HelpKINode Title="IGraph(Of T).adjency method" Url="html/53a33887-296f-1da3-a460-ddf705113618.htm" />
+  <HelpKINode Title="IGraph(Of T).EdgesCount property" Url="html/c682055f-1bdb-f850-3978-664ff9599b1c.htm" />
+  <HelpKINode Title="IGraph(Of T).VerticesCount property" Url="html/2c874514-f19a-7857-5187-cb92475e924a.htm" />
+  <HelpKINode Title="IGraph&lt;T&gt; interface">
+    <HelpKINode Title="IGraph(T) Interface" Url="html/1ef9ae9c-1577-6c7e-82cd-4de89da7f925.htm" />
+    <HelpKINode Title="about IGraph&lt;T&gt; interface" Url="html/1ef9ae9c-1577-6c7e-82cd-4de89da7f925.htm" />
+    <HelpKINode Title="methods" Url="html/85cc11c9-20cb-17d9-9f72-ff52ea4493c8.htm" />
+    <HelpKINode Title="properties" Url="html/b7487bcf-f6fe-9b83-bf69-97b301b5c272.htm" />
+  </HelpKINode>
+  <HelpKINode Title="IGraph&lt;T&gt;.adjency method" Url="html/53a33887-296f-1da3-a460-ddf705113618.htm" />
+  <HelpKINode Title="IGraph&lt;T&gt;.EdgesCount property" Url="html/c682055f-1bdb-f850-3978-664ff9599b1c.htm" />
+  <HelpKINode Title="IGraph&lt;T&gt;.VerticesCount property" Url="html/2c874514-f19a-7857-5187-cb92475e924a.htm" />
+  <HelpKINode Title="InvalidArgumentException class">
+    <HelpKINode Title="InvalidArgumentException Class" Url="html/31cf42f4-c857-bebc-5caa-a37797473ebf.htm" />
+    <HelpKINode Title="about InvalidArgumentException class" Url="html/31cf42f4-c857-bebc-5caa-a37797473ebf.htm" />
+    <HelpKINode Title="constructor" Url="html/d1c4f912-0868-893e-ce95-a7e00ffa52b3.htm" />
+    <HelpKINode Title="events" Url="html/c83097c0-f6c0-99c4-bc42-338936333920.htm" />
+    <HelpKINode Title="fields" Url="html/211b78f4-2572-8033-a058-2db818501a4d.htm" />
+    <HelpKINode Title="methods" Url="html/8c93b683-0a70-831b-cd2a-5b6da04ad7fe.htm" />
+    <HelpKINode Title="properties" Url="html/f44d3e20-46ab-253e-e315-d7b236653077.htm" />
+  </HelpKINode>
+  <HelpKINode Title="InvalidArgumentException.InvalidArgumentException constructor" Url="html/d1c4f912-0868-893e-ce95-a7e00ffa52b3.htm" />
+  <HelpKINode Title="IsAdjacent method">
+    <HelpKINode Title="AdjencyListVertex(T).IsAdjacent Method " Url="html/49c5dd51-d0aa-0613-1cee-7fe7ca480fdb.htm" />
+    <HelpKINode Title="IVertex(T).IsAdjacent Method " Url="html/8484586e-1de1-56a0-c01d-4d3c03ab0a2f.htm" />
+  </HelpKINode>
+  <HelpKINode Title="IVertex(Of T) interface">
+    <HelpKINode Title="IVertex(T) Interface" Url="html/0e9b22ed-317a-d784-43c0-206e1c0340da.htm" />
+    <HelpKINode Title="about IVertex(Of T) interface" Url="html/0e9b22ed-317a-d784-43c0-206e1c0340da.htm" />
+    <HelpKINode Title="methods" Url="html/b0d93427-289b-8665-bc7d-f316f1867eb8.htm" />
+    <HelpKINode Title="properties" Url="html/00147207-58c4-8e7a-1bae-d0a562a8669e.htm" />
+  </HelpKINode>
+  <HelpKINode Title="IVertex(Of T).Connect method" Url="html/f8fc17a1-c2fb-e826-931b-fd222229e7b0.htm" />
+  <HelpKINode Title="IVertex(Of T).IsAdjacent method" Url="html/8484586e-1de1-56a0-c01d-4d3c03ab0a2f.htm" />
+  <HelpKINode Title="IVertex(Of T).Neighbors method" Url="html/f4755340-cbfe-35e4-bcb1-b46e3f2b8a81.htm" />
+  <HelpKINode Title="IVertex(Of T).Value property" Url="html/7f4e4cd5-844b-4ea7-4d7e-23d481532fd3.htm" />
+  <HelpKINode Title="IVertex&lt;T&gt; interface">
+    <HelpKINode Title="IVertex(T) Interface" Url="html/0e9b22ed-317a-d784-43c0-206e1c0340da.htm" />
+    <HelpKINode Title="about IVertex&lt;T&gt; interface" Url="html/0e9b22ed-317a-d784-43c0-206e1c0340da.htm" />
+    <HelpKINode Title="methods" Url="html/b0d93427-289b-8665-bc7d-f316f1867eb8.htm" />
+    <HelpKINode Title="properties" Url="html/00147207-58c4-8e7a-1bae-d0a562a8669e.htm" />
+  </HelpKINode>
+  <HelpKINode Title="IVertex&lt;T&gt;.Connect method" Url="html/f8fc17a1-c2fb-e826-931b-fd222229e7b0.htm" />
+  <HelpKINode Title="IVertex&lt;T&gt;.IsAdjacent method" Url="html/8484586e-1de1-56a0-c01d-4d3c03ab0a2f.htm" />
+  <HelpKINode Title="IVertex&lt;T&gt;.Neighbors method" Url="html/f4755340-cbfe-35e4-bcb1-b46e3f2b8a81.htm" />
+  <HelpKINode Title="IVertex&lt;T&gt;.Value property" Url="html/7f4e4cd5-844b-4ea7-4d7e-23d481532fd3.htm" />
+  <HelpKINode Title="IWeightedEdge(Of T0, T1) interface">
+    <HelpKINode Title="IWeightedEdge(T0, T1) Interface" Url="html/012b77fd-65d7-f0db-7067-9e1040c2c09d.htm" />
+    <HelpKINode Title="about IWeightedEdge(Of T0, T1) interface" Url="html/012b77fd-65d7-f0db-7067-9e1040c2c09d.htm" />
+    <HelpKINode Title="properties" Url="html/b5425fec-009a-3623-fe37-35bbf0c8c4b2.htm" />
+  </HelpKINode>
+  <HelpKINode Title="IWeightedEdge(Of T0, T1).Weight property" Url="html/32858a2b-c284-e890-7f0f-14d7c554cc42.htm" />
+  <HelpKINode Title="IWeightedEdge&lt;T0, T1&gt; interface">
+    <HelpKINode Title="IWeightedEdge(T0, T1) Interface" Url="html/012b77fd-65d7-f0db-7067-9e1040c2c09d.htm" />
+    <HelpKINode Title="about IWeightedEdge&lt;T0, T1&gt; interface" Url="html/012b77fd-65d7-f0db-7067-9e1040c2c09d.htm" />
+    <HelpKINode Title="properties" Url="html/b5425fec-009a-3623-fe37-35bbf0c8c4b2.htm" />
+  </HelpKINode>
+  <HelpKINode Title="IWeightedEdge&lt;T0, T1&gt;.Weight property" Url="html/32858a2b-c284-e890-7f0f-14d7c554cc42.htm" />
+  <HelpKINode Title="IWeightedGraph(Of T1, T2) interface">
+    <HelpKINode Title="IWeightedGraph(T1, T2) Interface" Url="html/faf8506f-8601-c43f-33bf-95b3f6d46abf.htm" />
+    <HelpKINode Title="about IWeightedGraph(Of T1, T2) interface" Url="html/faf8506f-8601-c43f-33bf-95b3f6d46abf.htm" />
+    <HelpKINode Title="methods" Url="html/0d2b240d-5b76-df4b-10f4-958c56d6f949.htm" />
+    <HelpKINode Title="properties" Url="html/fa627b5e-8305-5840-fb67-5c0c8ba6ef45.htm" />
+  </HelpKINode>
+  <HelpKINode Title="IWeightedGraph&lt;T1, T2&gt; interface">
+    <HelpKINode Title="IWeightedGraph(T1, T2) Interface" Url="html/faf8506f-8601-c43f-33bf-95b3f6d46abf.htm" />
+    <HelpKINode Title="about IWeightedGraph&lt;T1, T2&gt; interface" Url="html/faf8506f-8601-c43f-33bf-95b3f6d46abf.htm" />
+    <HelpKINode Title="methods" Url="html/0d2b240d-5b76-df4b-10f4-958c56d6f949.htm" />
+    <HelpKINode Title="properties" Url="html/fa627b5e-8305-5840-fb67-5c0c8ba6ef45.htm" />
+  </HelpKINode>
+  <HelpKINode Title="Left enumeration member" Url="html/92c8442a-4545-eb1b-44bb-7c0a4bd3c6c4.htm" />
+  <HelpKINode Title="Neighbors method">
+    <HelpKINode Title="AdjencyListVertex(T).Neighbors Method " Url="html/df5af01a-031f-816e-bdc6-f84ba56505d8.htm" />
+    <HelpKINode Title="IVertex(T).Neighbors Method " Url="html/f4755340-cbfe-35e4-bcb1-b46e3f2b8a81.htm" />
+  </HelpKINode>
+  <HelpKINode Title="Remove method" Url="html/11b13253-016d-b2c9-c45a-ec6e06bb8406.htm" />
+  <HelpKINode Title="Right enumeration member" Url="html/92c8442a-4545-eb1b-44bb-7c0a4bd3c6c4.htm" />
+  <HelpKINode Title="Second property">
+    <HelpKINode Title="DirectedEdge(T).Second Property " Url="html/4a440eaa-3a7e-de11-55d5-202c76dfcd23.htm" />
+    <HelpKINode Title="IEdge(T0).Second Property " Url="html/9b12a953-9198-71b8-73b5-f27929f31b71.htm" />
+  </HelpKINode>
+  <HelpKINode Title="SimplestListGraph(Of T) class">
+    <HelpKINode Title="SimplestListGraph(T) Class" Url="html/9df88472-dca4-cb5d-d9c5-336a4a45570e.htm" />
+    <HelpKINode Title="about SimplestListGraph(Of T) class" Url="html/9df88472-dca4-cb5d-d9c5-336a4a45570e.htm" />
+    <HelpKINode Title="constructor" Url="html/8948872c-d42c-b5eb-b642-8ea1b004da0f.htm" />
+    <HelpKINode Title="fields" Url="html/b42e7a62-5c86-011e-589a-136f7d66956c.htm" />
+    <HelpKINode Title="methods" Url="html/4654614f-bc9d-3675-e4d1-a6d7f89d492c.htm" />
+    <HelpKINode Title="properties" Url="html/2f0bb91f-8b69-4560-e2a2-c028aa3bb888.htm" />
+  </HelpKINode>
+  <HelpKINode Title="SimplestListGraph(Of T).Add method" Url="html/5311207d-6b59-4e69-73f3-80eca40dcaa6.htm" />
+  <HelpKINode Title="SimplestListGraph(Of T).Connect method" Url="html/429f846a-a4c2-6ece-be1f-1ee24208d898.htm" />
+  <HelpKINode Title="SimplestListGraph(Of T).Degree method" Url="html/329943a5-7646-36d2-dfda-0370c9834e22.htm" />
+  <HelpKINode Title="SimplestListGraph(Of T).EdgesCount property" Url="html/57d991b9-b526-bdb8-4766-56b0968e48a5.htm" />
+  <HelpKINode Title="SimplestListGraph(Of T).GetEnumerator method" Url="html/61b5e3f5-f55d-572a-d000-0d6836aec885.htm" />
+  <HelpKINode Title="SimplestListGraph(Of T).Remove method" Url="html/11b13253-016d-b2c9-c45a-ec6e06bb8406.htm" />
+  <HelpKINode Title="SimplestListGraph(Of T).SimplestListGraph constructor" Url="html/8948872c-d42c-b5eb-b642-8ea1b004da0f.htm" />
+  <HelpKINode Title="SimplestListGraph(Of T).SortedEdges method" Url="html/e9ddc1a6-41b7-f2d0-aee7-aec02448fdcd.htm" />
+  <HelpKINode Title="SimplestListGraph(Of T).SortedVertices method" Url="html/75f6f4e9-f715-036f-2750-ea71cf9f2bb4.htm" />
+  <HelpKINode Title="SimplestListGraph(Of T).VerticesCount property" Url="html/30562e08-9379-5195-3f56-916e012f48a3.htm" />
+  <HelpKINode Title="SimplestListGraph(Of T)._vertices field" Url="html/75112c7d-c9f5-9ff2-29c7-c9c7e76fd4bf.htm" />
+  <HelpKINode Title="SimplestListGraph&lt;T&gt; class">
+    <HelpKINode Title="SimplestListGraph(T) Class" Url="html/9df88472-dca4-cb5d-d9c5-336a4a45570e.htm" />
+    <HelpKINode Title="about SimplestListGraph&lt;T&gt; class" Url="html/9df88472-dca4-cb5d-d9c5-336a4a45570e.htm" />
+    <HelpKINode Title="constructor" Url="html/8948872c-d42c-b5eb-b642-8ea1b004da0f.htm" />
+    <HelpKINode Title="fields" Url="html/b42e7a62-5c86-011e-589a-136f7d66956c.htm" />
+    <HelpKINode Title="methods" Url="html/4654614f-bc9d-3675-e4d1-a6d7f89d492c.htm" />
+    <HelpKINode Title="properties" Url="html/2f0bb91f-8b69-4560-e2a2-c028aa3bb888.htm" />
+  </HelpKINode>
+  <HelpKINode Title="SimplestListGraph&lt;T&gt;.Add method" Url="html/5311207d-6b59-4e69-73f3-80eca40dcaa6.htm" />
+  <HelpKINode Title="SimplestListGraph&lt;T&gt;.Connect method" Url="html/429f846a-a4c2-6ece-be1f-1ee24208d898.htm" />
+  <HelpKINode Title="SimplestListGraph&lt;T&gt;.Degree method" Url="html/329943a5-7646-36d2-dfda-0370c9834e22.htm" />
+  <HelpKINode Title="SimplestListGraph&lt;T&gt;.EdgesCount property" Url="html/57d991b9-b526-bdb8-4766-56b0968e48a5.htm" />
+  <HelpKINode Title="SimplestListGraph&lt;T&gt;.GetEnumerator method" Url="html/61b5e3f5-f55d-572a-d000-0d6836aec885.htm" />
+  <HelpKINode Title="SimplestListGraph&lt;T&gt;.Remove method" Url="html/11b13253-016d-b2c9-c45a-ec6e06bb8406.htm" />
+  <HelpKINode Title="SimplestListGraph&lt;T&gt;.SimplestListGraph constructor" Url="html/8948872c-d42c-b5eb-b642-8ea1b004da0f.htm" />
+  <HelpKINode Title="SimplestListGraph&lt;T&gt;.SortedEdges method" Url="html/e9ddc1a6-41b7-f2d0-aee7-aec02448fdcd.htm" />
+  <HelpKINode Title="SimplestListGraph&lt;T&gt;.SortedVertices method" Url="html/75f6f4e9-f715-036f-2750-ea71cf9f2bb4.htm" />
+  <HelpKINode Title="SimplestListGraph&lt;T&gt;.VerticesCount property" Url="html/30562e08-9379-5195-3f56-916e012f48a3.htm" />
+  <HelpKINode Title="SimplestListGraph&lt;T&gt;._vertices field" Url="html/75112c7d-c9f5-9ff2-29c7-c9c7e76fd4bf.htm" />
+  <HelpKINode Title="SortedEdges method" Url="html/e9ddc1a6-41b7-f2d0-aee7-aec02448fdcd.htm" />
+  <HelpKINode Title="SortedVertices method" Url="html/75f6f4e9-f715-036f-2750-ea71cf9f2bb4.htm" />
+  <HelpKINode Title="Value property">
+    <HelpKINode Title="AdjencyListVertex(T).Value Property " Url="html/645dae19-66e2-e984-6117-5b3bd4322a92.htm" />
+    <HelpKINode Title="IVertex(T).Value Property " Url="html/7f4e4cd5-844b-4ea7-4d7e-23d481532fd3.htm" />
+  </HelpKINode>
+  <HelpKINode Title="VerticesCount property">
+    <HelpKINode Title="AbstractGraph(T).VerticesCount Property " Url="html/586f976e-5a70-d76b-3139-f351d5f04d04.htm" />
+    <HelpKINode Title="IGraph(T).VerticesCount Property " Url="html/2c874514-f19a-7857-5187-cb92475e924a.htm" />
+    <HelpKINode Title="SimplestListGraph(T).VerticesCount Property " Url="html/30562e08-9379-5195-3f56-916e012f48a3.htm" />
+  </HelpKINode>
+  <HelpKINode Title="Weight property" Url="html/32858a2b-c284-e890-7f0f-14d7c554cc42.htm" />
+  <HelpKINode Title="_vertices field">
+    <HelpKINode Title="AdjencyListVertex(T)._vertices Field" Url="html/2868989b-e485-66d6-29d4-c01fb2f98648.htm" />
+    <HelpKINode Title="SimplestListGraph(T)._vertices Field" Url="html/75112c7d-c9f5-9ff2-29c7-c9c7e76fd4bf.htm" />
+  </HelpKINode>
+</HelpKI>
