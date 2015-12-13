@@ -85,34 +85,16 @@ namespace DataStructuresTests.Graphs
                 new AdjencyListVertex<string>("I"),
                 new AdjencyListVertex<string>("J"),
            };
-            vertex[0].Connect(vertex[1]);
-
-            vertex[1].Connect(vertex[0]);
+            vertex[0].Connect(vertex[1]); 
             vertex[1].Connect(vertex[2]);
-            vertex[1].Connect(vertex[4]);
-
-            vertex[2].Connect(vertex[1]);
-            vertex[2].Connect(vertex[3]);
-
-            vertex[3].Connect(vertex[2]);
+            vertex[1].Connect(vertex[4]); 
+            vertex[2].Connect(vertex[3]); 
             vertex[3].Connect(vertex[4]);
-            vertex[3].Connect(vertex[5]);
-
-            vertex[4].Connect(vertex[3]);
-            vertex[4].Connect(vertex[1]);
-
-            vertex[5].Connect(vertex[3]);
+            vertex[3].Connect(vertex[5]); 
             vertex[5].Connect(vertex[6]);
             vertex[5].Connect(vertex[7]);
             vertex[5].Connect(vertex[8]);
-
-            vertex[6].Connect(vertex[5]);
-
-            vertex[7].Connect(vertex[5]);
-            vertex[7].Connect(vertex[8]);
-
-            vertex[8].Connect(vertex[5]);
-            vertex[8].Connect(vertex[7]);
+            vertex[7].Connect(vertex[8]); 
 
             Assert.AreEqual(1,vertex[0].Neighbors().Count());
             Assert.AreEqual(3,vertex[1].Neighbors().Count());
