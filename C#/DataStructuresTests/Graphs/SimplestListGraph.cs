@@ -1,12 +1,12 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace DataStructuresTests
+namespace DataStructuresTests.Graphs
 {
     [TestClass]
-    public class LinkedListNodeTests
+    public class SimplestListGraph
     {
         [TestMethod]
-        public void TestMethod1()
+        public void Adding()
         {
         }
     }

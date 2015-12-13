@@ -1,4 +1,5 @@
-﻿using System; 
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using DataStructures.Graphs;
@@ -17,8 +18,11 @@ namespace DataStructuresTests.Graphs
             Assert.AreEqual(0,vertex.Neighbors().Count());
             Assert.IsNull(vertex.GetEnumerator().Current);
             Assert.IsFalse(vertex.IsAdjacent(vertex2));
-            foreach (var v in vertex) 
-                Assert.Fail(); 
+            var iterator = vertex.GetEnumerator();
+            while (iterator.MoveNext())
+            { 
+                Assert.Fail();
+            } 
         }
         [TestMethod]
         public void CreatingAndConnecting()
@@ -47,7 +51,7 @@ namespace DataStructuresTests.Graphs
 
         }
         [TestMethod]
-        [ExpectedException(typeof (ArgumentException), "Can't add null")]
+        [ExpectedException(typeof (NullReferenceException), "Can't add null")]
         public void ConnectNull()
         {
             var vertex = new AdjencyListVertex<int>(0);
@@ -72,7 +76,7 @@ namespace DataStructuresTests.Graphs
         [TestMethod]
         public void ConnectingValidation()
         {
-            var vertex = new AdjencyListVertex<string>[]
+            var vertex = new[]
            {
                 new AdjencyListVertex<string>("A"),
                 new AdjencyListVertex<string>("B"),
