@@ -1,8 +1,8 @@
 ﻿using System;
-using System.Diagnostics;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
 using DataStructures.Lists;
-namespace DataStructuresTests
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+
+namespace DataStructuresTests.Lists
 {
     [TestClass]
     public class LinkedListTest

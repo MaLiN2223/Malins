@@ -40,6 +40,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Graphs\Generic\AbstractGraph.cs" />
+    <Compile Include="Graphs\Generic\IDirectedGraph.cs" />
+    <Compile Include="Graphs\Generic\IEdge.cs" />
+    <Compile Include="Graphs\Generic\IGraph.cs" />
+    <Compile Include="Graphs\Generic\INotDirectedGraph.cs" />
+    <Compile Include="Graphs\Generic\IVertex.cs" />
+    <Compile Include="Graphs\Generic\IWeightedEdge.cs" />
+    <Compile Include="Graphs\Generic\IWeightedGraph.cs" />
+    <Compile Include="Graphs\Generic\INotWeightedGraph.cs" />
     <Compile Include="Lists\ILinkedList.cs" />
     <Compile Include="Lists\LinkedList.cs" />
     <Compile Include="Lists\LinkedListInterfaceImplementation.cs" />
