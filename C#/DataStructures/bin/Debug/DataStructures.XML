@@ -1,0 +1,247 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>DataStructures</name>
+    </assembly>
+    <members>
+        <member name="T:DataStructures.Graphs.Edge`1">
+            <summary>
+            Not directed, not weight edge
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="M:DataStructures.Graphs.Edge`1.#ctor(DataStructures.Graphs.Interfaces.IVertex{`0},DataStructures.Graphs.Interfaces.IVertex{`0})">
+            <summary>
+            Edge's constructor (order of vertices is not important)
+            </summary>
+            <param name="v1">first vertex</param>
+            <param name="v2">first vertex</param>
+        </member>
+        <member name="T:DataStructures.Graphs.DirectedEdge`1">
+            <summary>
+            Edge with direction
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="M:DataStructures.Graphs.DirectedEdge`1.#ctor(DataStructures.Graphs.Interfaces.IVertex{`0},DataStructures.Graphs.Interfaces.IVertex{`0},DataStructures.Graphs.Interfaces.EdgeDirection)">
+            <summary>
+            Directed edge construction
+            </summary>
+            <param name="v1">First vertex</param>
+            <param name="v2">Second vertex</param>
+            <param name="dir">Direction</param>
+        </member>
+        <member name="P:DataStructures.Graphs.DirectedEdge`1.First">
+            <summary>
+            Returns first vertex
+            </summary>
+        </member>
+        <member name="P:DataStructures.Graphs.DirectedEdge`1.Second">
+            <summary>
+            Returns second vertex
+            </summary>
+        </member>
+        <member name="P:DataStructures.Graphs.DirectedEdge`1.EdgeDirection">
+            <summary>
+            Returns edge's direction
+            </summary>
+        </member>
+        <member name="T:DataStructures.Graphs.Interfaces.AbstractGraph`1">
+            <summary>
+            Abstract graph
+            </summary>
+            <typeparam name="T">Type of vertices value</typeparam>
+        </member>
+        <member name="M:DataStructures.Graphs.Interfaces.AbstractGraph`1.GetEnumerator">
+            <summary> 
+                Returns an enumerator that iterates through adjency list.
+            </summary>
+            <returns>An IEnumerator object that can be used to iterate through the IVertex{T} adjency list. </returns>
+        </member>
+        <member name="P:DataStructures.Graphs.Interfaces.AbstractGraph`1.VerticesCount">
+            <summary>
+            Returns number of vertices in graph
+            </summary>
+        </member>
+        <member name="P:DataStructures.Graphs.Interfaces.AbstractGraph`1.EdgesCount">
+            <summary>
+            Returns number of edges in graph
+            </summary>
+        </member>
+        <member name="M:DataStructures.Graphs.Interfaces.AbstractGraph`1.adjency(DataStructures.Graphs.Interfaces.IVertex{`0})">
+            <summary>
+                Returns an enumerator that iterates through adjency list of vertex.
+            </summary>
+            <returns>An IEnumerator object that can be used to iterate through the vertex adjency list. </returns>
+        </member>
+        <member name="M:DataStructures.Graphs.Interfaces.AbstractGraph`1.GetDfs(DataStructures.Graphs.Interfaces.IVertex{`0})">
+            <summary>
+            Returns depth first search list of graph starting from vertex
+            </summary>
+            <param name="vertex">Start vertex</param>
+            <returns>Linked list of vertices in depth first search order</returns>
+        </member>
+        <member name="M:DataStructures.Graphs.Interfaces.AbstractGraph`1.GetBfs(DataStructures.Graphs.Interfaces.IVertex{`0})">
+            <summary>
+            Returns breath first search list of graph starting from vertex
+            </summary>
+            <param name="vertex">Start vertex</param>
+            <returns>Linked list of vertices in breath first search order</returns>
+        </member>
+        <member name="T:DataStructures.Graphs.Interfaces.EdgeDirection">
+            <summary>
+            Enum for edge's direction
+            </summary>
+        </member>
+        <member name="F:DataStructures.Graphs.Interfaces.EdgeDirection.Left">
+            <summary>
+            edge is directed from first to second vertex
+            </summary>
+        </member>
+        <member name="F:DataStructures.Graphs.Interfaces.EdgeDirection.Right">
+            <summary>
+            edge is directed from second to first vertex
+            </summary>
+        </member>
+        <member name="F:DataStructures.Graphs.Interfaces.EdgeDirection.Double">
+            <summary>
+            edge is directed both ways
+            </summary>
+        </member>
+        <member name="T:DataStructures.Graphs.Interfaces.IEdge`1">
+            <summary>
+            Edge interface
+            </summary>
+            <typeparam name="T0">Type of data contained by vertices</typeparam>
+        </member>
+        <member name="P:DataStructures.Graphs.Interfaces.IEdge`1.First">
+            <summary>
+            Returns first vertex
+            </summary>
+        </member>
+        <member name="P:DataStructures.Graphs.Interfaces.IEdge`1.Second">
+            <summary>
+            Returns second vertex
+            </summary>
+        </member>
+        <member name="T:DataStructures.Graphs.Interfaces.IVertex`1">
+            <summary>
+            Interface for vertex
+            </summary>
+            <typeparam name="T">Type of value contained by vertex</typeparam>
+        </member>
+        <member name="P:DataStructures.Graphs.Interfaces.IVertex`1.Value">
+            <summary>
+            Value contained by vertex
+            </summary>
+        </member>
+        <member name="M:DataStructures.Graphs.Interfaces.IVertex`1.IsAdjacent(DataStructures.Graphs.Interfaces.IVertex{`0})">
+            <summary>
+            Checks if other is connected to current vertex
+            </summary>
+            <param name="other">other vertex</param>
+            <returns>true - if {param is adjacent to current vertex </returns>
+        </member>
+        <member name="M:DataStructures.Graphs.Interfaces.IVertex`1.Neighbors">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:DataStructures.Graphs.Interfaces.IVertex`1.Connect(DataStructures.Graphs.Interfaces.IVertex{`0})">
+            <summary>
+            Connects current vertex to other
+            </summary>
+            <param name="other">other vertex to connect</param>
+        </member>
+        <member name="M:DataStructures.Graphs.Interfaces.IVertex`1.Disconnect(DataStructures.Graphs.Interfaces.IVertex{`0})">
+            <summary>
+            Disconnects other from current vertex
+            </summary> 
+            <param name="other">vertex to disconnect</param>
+        </member>
+        <member name="T:DataStructures.Graphs.AdjencyListVertex`1">
+            <summary>
+            Class provides Vertex with adjency list
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="M:DataStructures.Graphs.AdjencyListVertex`1.#ctor(`0)">
+            <summary>
+                Creates vertex with value
+            </summary>
+            <param name="value">Vertex's value</param>
+        </member>
+        <member name="M:DataStructures.Graphs.AdjencyListVertex`1.IsAdjacent(DataStructures.Graphs.Interfaces.IVertex{`0})">
+            <summary>
+                Check if current vertex contains other in it's adjency list
+            </summary>
+            <param name="other">vertex to check</param>
+            <returns>true - current vertex contains other</returns>
+        </member>
+        <member name="M:DataStructures.Graphs.AdjencyListVertex`1.Neighbors">
+            <summary>
+                Returns a IEnumerable collection of adjency list.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:DataStructures.Graphs.AdjencyListVertex`1.Value">
+            <summary>
+                Returns current vertex value
+            </summary>
+        </member>
+        <member name="M:DataStructures.Graphs.AdjencyListVertex`1.Connect(DataStructures.Graphs.Interfaces.IVertex{`0})">
+            <summary>
+                Connects current vertex to other
+            </summary>
+            <param name="other">vertex to connect.</param>
+            <exception cref="T:System.ArgumentException">Thrown when : vertices are connected or trying to connect it self.</exception>
+            <exception cref="T:System.NullReferenceException">Thrown when : trying to connect null. </exception>
+            <exception cref="T:DataStructures.Exceptions.InvalidArgumentException">Thrown when : other is wrong type. </exception>
+        </member>
+        <member name="M:DataStructures.Graphs.AdjencyListVertex`1.Disconnect(DataStructures.Graphs.Interfaces.IVertex{`0})">
+            <summary>
+            Removes other from adj list
+            </summary>
+            <param name="other">Vertex to remove</param>
+        </member>
+        <member name="M:DataStructures.Graphs.AdjencyListVertex`1.GetEnumerator">
+            <summary>
+                Returns an enumerator that iterates through adjency list.
+            </summary>
+            <returns>An IEnumerator object that can be used to iterate through the IVertex{T} adjency list. </returns>
+        </member>
+        <member name="M:DataStructures.Graphs.AdjencyListVertex`1.Connect(DataStructures.Graphs.AdjencyListVertex{`0},DataStructures.Graphs.AdjencyListVertex{`0})">
+            <summary>
+                Connects two vertices one to another.
+            </summary>
+            <param name="v1">first to connect</param>
+            <param name="v2">second to connect</param>
+        </member>
+        <member name="F:DataStructures.Graphs.AdjencyListVertex`1._vertices">
+            <summary>
+                Adjency list for current vertex
+            </summary>
+        </member>
+        <member name="T:DataStructures.Graphs.SimplestListGraph`1">
+            <summary>
+                Implements Not directed and not weighted graph with adjency list
+            </summary>
+            <typeparam name="T">values in vertices</typeparam>
+        </member>
+        <member name="M:DataStructures.Graphs.SimplestListGraph`1.Add(DataStructures.Graphs.Interfaces.IVertex{`0})">
+            <summary>
+            Adds vertex to graph
+            </summary>
+            <param name="vertex">vertex to add</param>
+            <exception cref="T:System.ArgumentException"></exception>
+        </member>
+        <member name="M:DataStructures.Graphs.SimplestListGraph`1.Remove(DataStructures.Graphs.Interfaces.IVertex{`0})">
+            <summary>
+            Removes vertex from graph
+            </summary>
+            <param name="vertex">vertex to remove</param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>

@@ -1,0 +1,6 @@
+C:\Users\Malin\ownCloud\Własne\C#\DataStructures\bin\Debug\DataStructures.XML
+C:\Users\Malin\ownCloud\Własne\C#\DataStructures\bin\Debug\DataStructures.dll
+C:\Users\Malin\ownCloud\Własne\C#\DataStructures\bin\Debug\DataStructures.pdb
+C:\Users\Malin\ownCloud\Własne\C#\DataStructures\obj\Debug\DataStructures.dll
+C:\Users\Malin\ownCloud\Własne\C#\DataStructures\obj\Debug\DataStructures.pdb
+C:\Users\Malin\ownCloud\Własne\C#\DataStructures\obj\Debug\DataStructures.csprojResolveAssemblyReference.cache
