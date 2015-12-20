@@ -11,16 +11,27 @@ namespace DataStructures.Graphs
     /// <typeparam name="T">values in vertices</typeparam>
     public class SimplestListGraph<T> : AbstractGraph<T>
     {
+        /// <summary>
+        /// Constuctor
+        /// </summary>
         public SimplestListGraph()
         {
         }
-
+        /// <summary>
+        /// Construct graph from another
+        /// </summary>
+        /// <param name="graph"></param>
         public SimplestListGraph(SimplestListGraph<T> graph)
         {
             throw new NotImplementedException();
         }
-
+        /// <summary>
+        /// How many vertices is in graph
+        /// </summary>
         public new int VerticesCount { get; private set; }
+        /// <summary>
+        /// How many edges is in graph
+        /// </summary>
         public new int EdgesCount { get; private set; }
 
         /// <summary>
@@ -36,7 +47,10 @@ namespace DataStructures.Graphs
             _vertices.Add(v);
             VerticesCount++;
         }
-
+        /// <summary>
+        /// Adds edge to graph
+        /// </summary>
+        /// <param name="edge">edge to add</param>
         public void Add(IEdge<T> edge)
         {
             var v1 = edge.First as AdjencyListVertex<T>;
@@ -82,19 +96,32 @@ namespace DataStructures.Graphs
             _vertices.RemoveAt(i);
             return true;
         }
+        /// <summary>
+        /// Removes edge from graph
+        /// </summary>
+        /// <param name="edge">edge to remove</param>
+        /// <returns></returns>
         public bool Remove(IEdge<T> edge)
         {
             throw new NotImplementedException();
         }
-
+        /// <summary>
+        /// Degree of vertex
+        /// </summary>
+        /// <param name="vertex"></param>
+        /// <returns></returns>
         public int Degree(IVertex<T> vertex)
         {
             return vertex.Neighbors().Count();
         }
-
+        /// <summary>
+        /// Connects two vertices with one edge
+        /// </summary>
+        /// <param name="vertex1"></param>
+        /// <param name="vertex2"></param>
         public void Connect(IVertex<T> vertex1, IVertex<T> vertex2)
         {
-            if(vertex2.Equals(vertex2))
+            if (vertex2.Equals(vertex1))
                 throw new ArgumentException("Cant connect vertice to itself");
             if (_vertices.Contains(vertex1) && _vertices.Contains(vertex2))
             {
@@ -108,18 +135,18 @@ namespace DataStructures.Graphs
                 throw new ArgumentException("Vertices must be in graph");
             }
         }
-
+        /// <summary>
+        /// Returns collection of topologycally sorted vertices
+        /// </summary>
+        /// <returns></returns>
         public IEnumerable<IVertex<T>> SortedVertices()
         {
             throw new NotImplementedException();
         }
-
-
-        public IEnumerable<IVertex<T>> SortedEdges()
-        {
-            throw new NotImplementedException();
-        }
-
+        /// <summary>
+        /// Returns enumerator
+        /// </summary>
+        /// <returns></returns>
         public override IEnumerator<IVertex<T>> GetEnumerator()
         {
             throw new NotImplementedException();
