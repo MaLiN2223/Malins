@@ -121,20 +121,34 @@ namespace DataStructures.Matrices
         {
             return m._data;
         }
-
+        /// <summary>
+        /// Adds column source to target multiplied by scalar
+        /// </summary>
+        /// <param name="target"></param>
+        /// <param name="source"></param>
+        /// <param name="scalar"></param>
         public void ColumnSum(int target, int source, double scalar)
         {
             GoodRange(target, source);
             for (int i = 0; i < Rows; ++i)
                 this[i, target] += this[i, source] * scalar;
-        }
+        }/// <summary>
+         /// Adds row source to target multiplied by scalar
+         /// </summary>
+         /// <param name="target"></param>
+         /// <param name="source"></param>
+         /// <param name="scalar"></param>
         public void RowSum(int target, int source, double scalar)
         {
             GoodRange(target, source);
             for (int i = 0; i < Cols; ++i)
                 this[target, i] += this[source, i] * scalar;
         }
-
+        /// <summary>
+        /// Multiplies row by scalar
+        /// </summary>
+        /// <param name="target"></param>
+        /// <param name="scalar"></param>
         public void RowMultiply(int target, double scalar)
         {
             GoodRange(target);
@@ -142,13 +156,22 @@ namespace DataStructures.Matrices
                 this[target, i] *= scalar;
         }
 
+        /// <summary>
+        /// Multiplies column by scalar
+        /// </summary>
+        /// <param name="target"></param>
+        /// <param name="scalar"></param>
         public void ColumntMultiply(int target, double scalar)
         {
             GoodRange(target);
             for (int i = 0; i < Cols; ++i)
                 this[i, target] *= scalar;
         }
-
+        /// <summary>
+        /// Swaps rows
+        /// </summary>
+        /// <param name="first"></param>
+        /// <param name="second"></param>
         public void RowSwap(int first, int second)
         {
             GoodRange(first);
@@ -161,7 +184,11 @@ namespace DataStructures.Matrices
                 this[second, i] = tmp[i];
             }
         }
-
+        /// <summary>
+        /// Swaps columns
+        /// </summary>
+        /// <param name="first"></param>
+        /// <param name="second"></param>
         public void ColumnSwap(int first, int second)
         {
             GoodRange(0, first);
@@ -176,10 +203,11 @@ namespace DataStructures.Matrices
         }
         private void GoodRange(int target, int source = 0)
         {
-            if (target < 0 || source < 0)
-                throw new ArgumentException("Range must be non-negative");
-            if (target >= Rows || source >= Rows)
-                throw new AccessViolationException("Range is too big");
+            if (target < 0 || target >= Rows)
+                throw new ArgumentOutOfRangeException(nameof(target));
+            if (source >= Rows || source < 0)
+                throw new ArgumentOutOfRangeException(nameof(source));
+
         }
         /// <summary>
         /// Searches (absolute) smallest and non zero element in row
