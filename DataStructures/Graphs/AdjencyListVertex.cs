@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using DataStructures.Exceptions;
 using DataStructures.Graphs.Interfaces;
- 
+
 namespace DataStructures.Graphs
 {
     /// <summary>
@@ -62,7 +62,20 @@ namespace DataStructures.Graphs
                 throw new InvalidArgumentException("Wrong type");
             if (_vertices.Contains(other))
                 throw new ArgumentException("Vertices are already connected");
-            Connect((AdjencyListVertex<T>) other, this);
+            Connect((AdjencyListVertex<T>)other, this);
+        }
+        /// <summary>
+        /// Removes other from adj list
+        /// </summary>
+        /// <param name="other">Vertex to remove</param>
+        public void Disconnect(IVertex<T> other)
+        {
+            if (_vertices.Contains(other))
+                _vertices.Remove(other);
+            else
+            {
+                throw new ArgumentException("Vertex is not connetced");
+            }
         }
 
         /// <summary>

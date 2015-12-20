@@ -23,6 +23,11 @@ namespace DataStructures.Graphs
         public new int VerticesCount { get; private set; }
         public new int EdgesCount { get; private set; }
 
+        /// <summary>
+        /// Adds vertex to graph
+        /// </summary>
+        /// <param name="vertex">vertex to add</param>
+        /// <exception cref="ArgumentException"></exception>
         public void Add(IVertex<T> vertex)
         {
             var v = vertex as AdjencyListVertex<T>;
@@ -54,12 +59,29 @@ namespace DataStructures.Graphs
             }
             EdgesCount++;
         }
-
+        /// <summary>
+        /// Removes vertex from graph
+        /// </summary>
+        /// <param name="vertex">vertex to remove</param>
+        /// <returns></returns>
         public bool Remove(IVertex<T> vertex)
         {
-            throw new NotImplementedException();
+            int i;
+            for (i = 0; i < VerticesCount; ++i)
+            {
+                if (_vertices[i].Equals(vertex))
+                    break;
+            }
+            if (i == VerticesCount)
+                return false;
+            foreach (var v in _vertices[i])
+            {
+                v.Disconnect(_vertices[i]);
+                EdgesCount--;
+            }
+            _vertices.RemoveAt(i);
+            return true;
         }
-
         public bool Remove(IEdge<T> edge)
         {
             throw new NotImplementedException();
@@ -70,9 +92,21 @@ namespace DataStructures.Graphs
             return vertex.Neighbors().Count();
         }
 
-        public IEdge<T> Connect(IVertex<T> vertex1, IVertex<T> vertex2)
+        public void Connect(IVertex<T> vertex1, IVertex<T> vertex2)
         {
-            throw new NotImplementedException();
+            if(vertex2.Equals(vertex2))
+                throw new ArgumentException("Cant connect vertice to itself");
+            if (_vertices.Contains(vertex1) && _vertices.Contains(vertex2))
+            {
+                if (vertex1.Contains(vertex2) || vertex2.Contains(vertex2))
+                    throw new ArgumentException("Vertices are already connected");
+                vertex1.Connect(vertex2);
+                EdgesCount++;
+            }
+            else
+            {
+                throw new ArgumentException("Vertices must be in graph");
+            }
         }
 
         public IEnumerable<IVertex<T>> SortedVertices()

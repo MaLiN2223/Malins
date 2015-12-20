@@ -55,6 +55,7 @@
     <Compile Include="Graphs\AdjencyListEdgeTest.cs" />
     <Compile Include="Graphs\AdjencyListVertexTest.cs" />
     <Compile Include="Graphs\SimplestListGraph.cs" />
+    <Compile Include="Matrices\MatrixOperationsTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

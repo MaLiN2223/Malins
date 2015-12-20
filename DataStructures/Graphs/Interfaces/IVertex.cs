@@ -27,6 +27,11 @@ namespace DataStructures.Graphs.Interfaces
         /// Connects current vertex to other
         /// </summary>
         /// <param name="other">other vertex to connect</param>
-        void Connect(IVertex<T> other);
+        void Connect(IVertex<T> other); 
+        /// <summary>
+        /// Disconnects other from current vertex
+        /// </summary> 
+        /// <param name="other">vertex to disconnect</param>
+        void Disconnect(IVertex<T> other);
     }
 }

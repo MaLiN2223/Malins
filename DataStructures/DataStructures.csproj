@@ -57,7 +57,11 @@
     <Compile Include="Graphs\Interfaces\IWeightedGraph.cs" />
     <Compile Include="Graphs\AdjencyListVertex.cs" />
     <Compile Include="Graphs\SimplestListGraph.cs" />
+    <Compile Include="Matrices\Matrix.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Queues\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
