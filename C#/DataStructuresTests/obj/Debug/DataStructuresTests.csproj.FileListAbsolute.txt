@@ -1,0 +1,8 @@
+C:\Users\Malin\ownCloud\Własne\C#\DataStructuresTests\bin\Debug\DataStructuresTests.dll
+C:\Users\Malin\ownCloud\Własne\C#\DataStructuresTests\bin\Debug\DataStructuresTests.pdb
+C:\Users\Malin\ownCloud\Własne\C#\DataStructuresTests\bin\Debug\DataStructures.dll
+C:\Users\Malin\ownCloud\Własne\C#\DataStructuresTests\bin\Debug\DataStructures.pdb
+C:\Users\Malin\ownCloud\Własne\C#\DataStructuresTests\bin\Debug\DataStructures.xml
+C:\Users\Malin\ownCloud\Własne\C#\DataStructuresTests\obj\Debug\DataStructuresTests.csprojResolveAssemblyReference.cache
+C:\Users\Malin\ownCloud\Własne\C#\DataStructuresTests\obj\Debug\DataStructuresTests.dll
+C:\Users\Malin\ownCloud\Własne\C#\DataStructuresTests\obj\Debug\DataStructuresTests.pdb
