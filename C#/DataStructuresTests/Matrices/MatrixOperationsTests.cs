@@ -12,11 +12,30 @@ namespace DataStructuresTests.Matrices
         {
             var data = new double[2, 4]
             {
-                {1, 1, 1, 1},
-                {1, 1, 1, 1}
+                {1, -9.1, 2, 1},
+                {1, 3, 1, 9.001}
             };
             Matrix m = new Matrix(data);
             AreEqual(data, m);
+        }
+        [TestMethod]
+        public void AnotherMatrixConstruction()
+        {
+            int height = 3;
+            int width = 3;
+            var data = new double[3, 3]
+            {
+                {1, -9.1, 2},
+                {1, 3, 1},
+                {9.991,-99.1,11 }
+            };
+            var matrix = new Matrix(3, 3);
+            for (int i = 0; i < height; ++i)
+            {
+                for (int k = 0; k < width; ++k)
+                    matrix[i, k] = data[i, k];
+            }
+            AreEqual(data, matrix);
         }
 
         public void AreEqual(double[,] data, Matrix m)
@@ -128,5 +147,37 @@ namespace DataStructuresTests.Matrices
             Assert.AreEqual(2, m3.Rows);
             AreEqual(data3, m3);
         }
+
+        [TestMethod]
+        public void Determinant()
+        {
+            var data = new double[2, 2]
+            {
+                {2, 3},
+                {-9, 2}
+            };
+            Matrix m = new Matrix(data);
+            Assert.AreEqual(2 * 2 - (-9 * 3), m.Det);
+            var data2 = new double[4, 4]
+            {
+                {1,2,3,4},
+                {5,6,7,8},
+                {9,10,11,12},
+                {13,14,15,16}
+            };
+            Matrix m2 = new Matrix(data2);
+            Assert.AreEqual(0, m2.Det);
+            Assert.IsFalse(m2.IsReversible);
+            var data3 = new double[4, 4]
+           {
+                {8,-9,44,4},
+                {3,7,2,94 }, 
+                {-98,-7,1,4 },
+                {-7,0,7,7 }
+           };
+            Matrix m3 = new Matrix(data3);
+            Assert.AreEqual(-624897, m3.Det);
+        }
+
     }
 }

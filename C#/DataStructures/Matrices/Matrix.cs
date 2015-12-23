@@ -1,4 +1,7 @@
 ﻿using System;
+using System.CodeDom.Compiler;
+using System.Collections.Generic;
+
 namespace DataStructures.Matrices
 {
     /// <summary>
@@ -161,7 +164,7 @@ namespace DataStructures.Matrices
         /// </summary>
         /// <param name="target"></param>
         /// <param name="scalar"></param>
-        public void ColumntMultiply(int target, double scalar)
+        public void ColumnMultiply(int target, double scalar)
         {
             GoodRange(target);
             for (int i = 0; i < Cols; ++i)
@@ -230,5 +233,67 @@ namespace DataStructures.Matrices
             }
             return new Tuple<double, int>(min, minI);
         }
+
+        public bool IsSquare => Cols == Rows;
+        public bool IsReversible
+        {
+            get
+            {
+                try
+                {
+                    return (Det > 0 || Det < 0);
+                }
+                catch
+                {
+                    return false;
+                }
+            }
+        }
+
+        public double Det
+        {
+            get
+            {
+                if (IsSquare)
+                {
+                    return NaiveDeterminant(_data, Cols);
+                }
+                throw new NotSupportedException("Matrix must be quadric");
+            }
+        }
+
+        private double NaiveDeterminant(double[,] data, int n)
+        {
+            double det = 0;
+            double[,] tmp = new double[Rows, Cols];
+            if (n == 1)
+                return data[0, 0];
+            else if (n == 2)
+            {
+                return (data[0, 0] * data[1, 1] - (data[1, 0] * data[0, 1]));
+            }
+            else
+            {
+                for (int p = 0; p < n; ++p)
+                {
+                    int h = 0, k = 0;
+                    for (int i = 1; i < n; ++i)
+                    {
+                        for (int j = 0; j < n; ++j)
+                        {
+                            if (j == p) continue;
+                            tmp[h, k] = data[i, j];
+                            ++k;
+                            if (k != n - 1) continue;
+                            k = 0;
+                            ++h;
+                        }
+                    }
+                    det += data[0, p] * Math.Pow(-1, p) * NaiveDeterminant(tmp, n - 1);
+                }
+                return det;
+            }
+            
+        } 
     }
 }
