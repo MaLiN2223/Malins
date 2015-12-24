@@ -165,19 +165,62 @@ namespace DataStructuresTests.Matrices
                 {9,10,11,12},
                 {13,14,15,16}
             };
-            Matrix m2 = new Matrix(data2);
-            Assert.AreEqual(0, m2.Det);
+            Matrix m2 = new Matrix(data2, Math.Pow(10, -25));
+            Assert.AreEqual(0, m2.Det, Math.Pow(10, -25));
             Assert.IsFalse(m2.IsReversible);
             var data3 = new double[4, 4]
            {
                 {8,-9,44,4},
-                {3,7,2,94 }, 
+                {3,7,2,94 },
                 {-98,-7,1,4 },
                 {-7,0,7,7 }
            };
             Matrix m3 = new Matrix(data3);
             Assert.AreEqual(-624897, m3.Det);
+            var data4 = new double[,]
+            {
+                {2, 0, 2, 0.6},
+                {3, 3, 4, -2},
+                {5, 5, 4, 2},
+                {-1, -2, 3.4, -1}
+            };
+            Matrix m4 = new Matrix(data4);
+            Assert.AreEqual(-120, m4.Determinant());
         }
+
+        [TestMethod]
+        public void Decompose()
+        {
+            var data = new double[,]
+              {
+                {2, 0, 2, 0.6},
+                {3, 3, 4, -2},
+                {5, 5, 4, 2},
+                {-1, -2, 3.4, -1}
+              };
+            var dataL = new double[,]
+            {
+                {1,0,0,0 },
+                {0.4,1,0,0 },
+                {-0.2,0.5,1,0 },
+                {0.6,0,0.4,1 }
+            };
+            var dataU = new double[,]
+            {
+             {   5,5,4,2 },
+             {0,-2,0.4,-0.2 },
+             {0,0,4,-0.5 },
+             {0,0,0,-3 }
+            };
+            Matrix m = new Matrix(data);
+            Matrix L = new Matrix(dataL);
+            Matrix U = new Matrix(dataU,Math.Pow(10,-10));
+            var dec = m.DecomposeWithSign();
+            Assert.AreEqual(dec.Item4, -1);
+            Assert.IsTrue(dec.Item1.Equals(L));
+            Assert.IsTrue(dec.Item2.Equals(U));
+        }
+
 
     }
 }
