@@ -52,6 +52,7 @@
     <Compile Include="Graphs\Interfaces\IWeightedGraph.cs" />
     <Compile Include="Graphs\AdjencyListVertex.cs" />
     <Compile Include="Graphs\SimplestListGraph.cs" />
+    <Compile Include="Matrices\Matrix.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
