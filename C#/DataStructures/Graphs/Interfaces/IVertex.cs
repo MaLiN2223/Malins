@@ -8,7 +8,7 @@ namespace DataStructures.Graphs.Interfaces
     /// <typeparam name="T">Type of value contained by vertex</typeparam>
     public interface IVertex<T> : IEnumerable<IVertex<T>>
     {
-        /// <summary>
+        /// <summary> 
         /// Value contained by vertex
         /// </summary>
         T Value { get; set; }
