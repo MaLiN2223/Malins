@@ -45,19 +45,17 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Exceptions\InvalidArgumentException.cs" />
-    <Compile Include="Graphs\Edge.cs" />
-    <Compile Include="Graphs\DirectedEdge.cs" />
     <Compile Include="Graphs\Interfaces\AbstractGraph.cs" />
-    <Compile Include="Graphs\Interfaces\IDirectedEdge.cs" />
     <Compile Include="Graphs\Interfaces\IDirectedGraph.cs" />
-    <Compile Include="Graphs\Interfaces\IEdge.cs" />
     <Compile Include="Graphs\Interfaces\IGraph.cs" />
     <Compile Include="Graphs\Interfaces\IVertex.cs" />
-    <Compile Include="Graphs\Interfaces\IWeightedEdge.cs" />
     <Compile Include="Graphs\Interfaces\IWeightedGraph.cs" />
     <Compile Include="Graphs\AdjencyListVertex.cs" />
     <Compile Include="Graphs\SimplestListGraph.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Queues\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

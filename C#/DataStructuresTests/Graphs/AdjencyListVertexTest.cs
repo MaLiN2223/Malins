@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using DataStructures.Graphs;
@@ -15,19 +14,19 @@ namespace DataStructuresTests.Graphs
             var vertex2 = new AdjencyListVertex<double>(1);
             Assert.AreEqual(1.3, vertex.Value);
             Assert.AreEqual(0, vertex.Count());
-            Assert.AreEqual(0,vertex.Neighbors().Count());
+            Assert.AreEqual(0, vertex.Neighbors().Count());
             Assert.IsNull(vertex.GetEnumerator().Current);
             Assert.IsFalse(vertex.IsAdjacent(vertex2));
             var iterator = vertex.GetEnumerator();
             while (iterator.MoveNext())
-            { 
+            {
                 Assert.Fail();
-            } 
+            }
         }
         [TestMethod]
         public void CreatingAndConnecting()
         {
-            var vertex = new AdjencyListVertex<string>[]
+            var vertex = new []
             {
                 new AdjencyListVertex<string>("A"),
                 new AdjencyListVertex<string>("B"),
@@ -51,7 +50,7 @@ namespace DataStructuresTests.Graphs
 
         }
         [TestMethod]
-        [ExpectedException(typeof (NullReferenceException), "Can't add null")]
+        [ExpectedException(typeof(NullReferenceException), "Can't add null")]
         public void ConnectNull()
         {
             var vertex = new AdjencyListVertex<int>(0);
@@ -89,28 +88,76 @@ namespace DataStructuresTests.Graphs
                 new AdjencyListVertex<string>("I"),
                 new AdjencyListVertex<string>("J"),
            };
-            vertex[0].Connect(vertex[1]); 
+            vertex[0].Connect(vertex[1]);
+
             vertex[1].Connect(vertex[2]);
-            vertex[1].Connect(vertex[4]); 
-            vertex[2].Connect(vertex[3]); 
+            vertex[1].Connect(vertex[4]);
+
+            vertex[2].Connect(vertex[3]);
+
             vertex[3].Connect(vertex[4]);
-            vertex[3].Connect(vertex[5]); 
+
+            vertex[3].Connect(vertex[5]);
+
             vertex[5].Connect(vertex[6]);
             vertex[5].Connect(vertex[7]);
             vertex[5].Connect(vertex[8]);
-            vertex[7].Connect(vertex[8]); 
+            vertex[7].Connect(vertex[8]);
 
-            Assert.AreEqual(1,vertex[0].Neighbors().Count());
-            Assert.AreEqual(3,vertex[1].Neighbors().Count());
-            Assert.AreEqual(2,vertex[2].Neighbors().Count());
-            Assert.AreEqual(3,vertex[3].Neighbors().Count());
-            Assert.AreEqual(2,vertex[4].Neighbors().Count());
-            Assert.AreEqual(4,vertex[5].Neighbors().Count());
-            Assert.AreEqual(1,vertex[6].Neighbors().Count());
-            Assert.AreEqual(2,vertex[7].Neighbors().Count());
-            Assert.AreEqual(2,vertex[8].Neighbors().Count());
-            Assert.AreEqual(0,vertex[9].Neighbors().Count()); 
+
+
+
+            Assert.AreEqual(1, vertex[0].Neighbors().Count());
+            Assert.AreEqual(3, vertex[1].Neighbors().Count());
+            Assert.AreEqual(2, vertex[2].Neighbors().Count());
+            Assert.AreEqual(3, vertex[3].Neighbors().Count());
+            Assert.AreEqual(2, vertex[4].Neighbors().Count());
+            Assert.AreEqual(4, vertex[5].Neighbors().Count());
+            Assert.AreEqual(1, vertex[6].Neighbors().Count());
+            Assert.AreEqual(2, vertex[7].Neighbors().Count());
+            Assert.AreEqual(2, vertex[8].Neighbors().Count());
+            Assert.AreEqual(0, vertex[9].Neighbors().Count());
         }
- 
+        [TestMethod]
+        public void Remove()
+        {
+            var vertex = new[]
+           {
+                new AdjencyListVertex<string>("A"),
+                new AdjencyListVertex<string>("B"),
+                new AdjencyListVertex<string>("C"),
+                new AdjencyListVertex<string>("D"),
+                new AdjencyListVertex<string>("E"),
+                new AdjencyListVertex<string>("F"),
+                new AdjencyListVertex<string>("G"),
+                new AdjencyListVertex<string>("H"),
+                new AdjencyListVertex<string>("I"),
+                new AdjencyListVertex<string>("J"),
+           };
+
+            vertex[0].Connect(vertex[1]);
+            vertex[1].Connect(vertex[2]);
+            vertex[1].Connect(vertex[4]);
+           
+            vertex[2].Connect(vertex[3]);
+
+            vertex[3].Connect(vertex[4]);
+            vertex[3].Connect(vertex[5]);
+            vertex[5].Connect(vertex[6]);
+            vertex[5].Connect(vertex[7]);
+            vertex[5].Connect(vertex[8]);
+            vertex[7].Connect(vertex[8]);
+
+            vertex[2].Disconnect(vertex[1]);
+            vertex[1].Disconnect(vertex[2]);
+            vertex[3].Disconnect(vertex[5]);
+            vertex[5].Disconnect(vertex[3]);
+            Assert.AreEqual(2, vertex[1].Neighbors().Count());
+            Assert.AreEqual(1, vertex[2].Neighbors().Count());
+            Assert.AreEqual(2, vertex[3].Neighbors().Count());
+            Assert.AreEqual(3, vertex[5].Neighbors().Count());
+
+        }
+
     }
 }

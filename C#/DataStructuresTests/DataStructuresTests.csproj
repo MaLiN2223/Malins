@@ -52,9 +52,8 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
-    <Compile Include="Graphs\AdjencyListEdgeTest.cs" />
     <Compile Include="Graphs\AdjencyListVertexTest.cs" />
-    <Compile Include="Graphs\SimplestListGraph.cs" />
+    <Compile Include="Graphs\SimplestListGraphTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

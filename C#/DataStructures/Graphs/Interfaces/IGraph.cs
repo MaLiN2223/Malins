@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace DataStructures.Graphs.Interfaces
 {
@@ -6,6 +7,10 @@ namespace DataStructures.Graphs.Interfaces
     {
         int VerticesCount { get; }
         int EdgesCount { get; }
-        IEnumerable<IVertex<T>> adjency(IVertex<T> vertex);
+        IVertex<T> Root { get; }
+        bool HasRoot();
+        void SetRoot(T d);
+        IEnumerable<IVertex<T>> Adjency(IVertex<T> vertex);
+        IVertex<T> GetVertex(T data);
     }
 }
