@@ -37,6 +37,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Numerics" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Data" />
@@ -52,7 +53,14 @@
     <Compile Include="Graphs\Interfaces\IWeightedGraph.cs" />
     <Compile Include="Graphs\AdjencyListVertex.cs" />
     <Compile Include="Graphs\SimplestListGraph.cs" />
+    <Compile Include="Matrices\BasicAlgorithms.cs" />
+    <Compile Include="Matrices\Double\Matrix.cs" />
     <Compile Include="Matrices\Matrix.cs" />
+    <Compile Include="Matrices\Double\MatrixContainer.cs" />
+    <Compile Include="Matrices\Double\MatrixFactory.cs" />
+    <Compile Include="Matrices\MatrixContainer.cs" />
+    <Compile Include="Matrices\MatrixFactory.cs" />
+    <Compile Include="Matrices\MatrixOperations.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
