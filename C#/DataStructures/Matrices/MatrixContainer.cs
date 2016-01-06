@@ -2,21 +2,19 @@
 
 namespace DataStructures.Matrices
 {
-    public abstract class MatrixContainer<T> where T : struct, IEquatable<T>
+    public abstract class MatrixContainer<T> : ICloneable where T : struct, IEquatable<T>
     {
         public readonly int RowCount;
         public readonly int ColumnCount;
-
         protected MatrixContainer(int rowCount, int columnCount)
         {
-            if (rowCount <= 0)
-                throw new ArgumentOutOfRangeException(nameof(rowCount));
+            if (rowCount < 0)
+                throw new ArgumentException(nameof(rowCount));
             if (columnCount <= 0)
-                throw new ArgumentOutOfRangeException(nameof(columnCount));
+                throw new ArgumentException(nameof(columnCount)); 
             RowCount = rowCount;
             ColumnCount = columnCount;
         }
-
         public abstract bool IsReadOnly { get; }
 
         public T this[int row, int column]
@@ -61,5 +59,7 @@ namespace DataStructures.Matrices
                     this[i, j] = default(T);
             }
         }
+
+        public abstract object Clone();
     }
 }

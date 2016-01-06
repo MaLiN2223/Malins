@@ -3,11 +3,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{7A9744D1-5728-4D21-963B-7BF5FC0B8A1E}</ProjectGuid>
+    <ProjectGuid>{528D63A0-48BA-41A4-955A-88AF4EF421A3}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>DataStructuresTests</RootNamespace>
-    <AssemblyName>DataStructuresTests</AssemblyName>
+    <RootNamespace>NumericTests</RootNamespace>
+    <AssemblyName>NumericTests</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -45,26 +45,18 @@
     </When>
     <Otherwise>
       <ItemGroup>
-        <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework">
-          <Private>False</Private>
-        </Reference>
+        <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework" />
       </ItemGroup>
     </Otherwise>
   </Choose>
   <ItemGroup>
-    <Compile Include="Graphs\AdjencyListVertexTest.cs" />
-    <Compile Include="Graphs\SimplestListGraphTest.cs" />
-    <Compile Include="Matrices\MatrixDoubleTests.cs" />
-    <Compile Include="Matrices\MatrixOperationsTests.cs" />
-    <Compile Include="Matrices\FactoryDoubleTests.cs" />
-    <Compile Include="Matrices\FactoryIntTests.cs" />
-    <Compile Include="Matrices\SerializationTests.cs" />
+    <Compile Include="ComplexTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\DataStructures\DataStructures.csproj">
-      <Project>{be574e55-0492-4e4e-a14a-c184b119dcad}</Project>
-      <Name>DataStructures</Name>
+    <ProjectReference Include="..\Numeric\Numeric.csproj">
+      <Project>{f9bfad7e-c7ad-4823-b737-17f74b587088}</Project>
+      <Name>Numeric</Name>
     </ProjectReference>
   </ItemGroup>
   <Choose>

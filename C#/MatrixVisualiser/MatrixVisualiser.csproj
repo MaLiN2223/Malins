@@ -4,14 +4,13 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{BE574E55-0492-4E4E-A14A-C184B119DCAD}</ProjectGuid>
+    <ProjectGuid>{3BE90A80-945B-4A60-85D0-339AF32919FB}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>DataStructures</RootNamespace>
-    <AssemblyName>DataStructures</AssemblyName>
+    <RootNamespace>MatrixVisualiser</RootNamespace>
+    <AssemblyName>MatrixVisualiser</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -21,9 +20,6 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <DocumentationFile>bin\Debug\DataStructures.XML</DocumentationFile>
-    <Prefer32Bit>false</Prefer32Bit>
-    <RunCodeAnalysis>false</RunCodeAnalysis>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -32,43 +28,40 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.VisualStudio.DebuggerVisualizers, Version=14.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Numerics" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Exceptions\InvalidArgumentException.cs" />
-    <Compile Include="Graphs\Interfaces\AbstractGraph.cs" />
-    <Compile Include="Graphs\Interfaces\IDirectedGraph.cs" />
-    <Compile Include="Graphs\Interfaces\IGraph.cs" />
-    <Compile Include="Graphs\Interfaces\IVertex.cs" />
-    <Compile Include="Graphs\Interfaces\IWeightedGraph.cs" />
-    <Compile Include="Graphs\AdjencyListVertex.cs" />
-    <Compile Include="Graphs\SimplestListGraph.cs" />
-    <Compile Include="Matrices\Double\Matrix.cs" />
-    <Compile Include="Matrices\Integers\Matrix.cs" />
-    <Compile Include="Matrices\Integers\MatrixContainer.cs" />
-    <Compile Include="Matrices\Integers\MatrixFactory.cs" />
-    <Compile Include="Matrices\Matrix.cs" />
-    <Compile Include="Matrices\Double\MatrixContainer.cs" />
-    <Compile Include="Matrices\Double\MatrixFactory.cs" />
-    <Compile Include="Matrices\MatrixContainer.cs" />
-    <Compile Include="Matrices\MatrixFactory.cs" />
-    <Compile Include="Matrices\MatrixOperations.cs" />
-    <Compile Include="Matrices\Vector.cs" />
-    <Compile Include="Matrices\VectorContainer.cs" />
+    <Compile Include="Class1.cs" />
+    <Compile Include="MVisualiserWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MVisualiserWindow.Designer.cs">
+      <DependentUpon>MVisualiserWindow.cs</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Queues\" />
+    <ProjectReference Include="..\DataStructures\DataStructures.csproj">
+      <Project>{be574e55-0492-4e4e-a14a-c184b119dcad}</Project>
+      <Name>DataStructures</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="MVisualiserWindow.resx">
+      <DependentUpon>MVisualiserWindow.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

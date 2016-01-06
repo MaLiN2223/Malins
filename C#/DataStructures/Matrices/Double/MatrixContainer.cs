@@ -9,6 +9,10 @@ namespace DataStructures.Matrices.Double
             _data = new double[rowCount, columnCount];
         }
 
+        private MatrixContainer(double[,] data) : base(data.Length / data.GetLength(1), data.GetLength(1))
+        {
+            _data = data;
+        }
         public override bool IsReadOnly => false;
 
         public override double Get(int row, int column)
@@ -21,8 +25,13 @@ namespace DataStructures.Matrices.Double
             _data[row, column] = value;
         }
 
+        public override object Clone()
+        {
+            return new MatrixContainer((double[,])_data.Clone());
+        }
+
         public static explicit operator MatrixContainer(double[,] data)
-        {  
+        {
             var k = new MatrixContainer(data.Length / data.GetLength(1), data.GetLength(1)) { _data = data };
             return k;
         }

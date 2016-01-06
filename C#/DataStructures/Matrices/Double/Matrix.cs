@@ -5,11 +5,33 @@ namespace DataStructures.Matrices.Double
     public class Matrix : Matrix<double>
     {
         private MatrixContainer _data;
+
+        #region inherited
+
+
+
+        #endregion
+
+
+
+
+
+        public override bool IsEmpty()
+        {
+            throw new NotImplementedException();
+        }
+
         public override bool Equals(Matrix<double> other)
         {
             var m = other as Matrix;
             return m != null && Equals(m);
         }
+
+        public override object Clone()
+        {
+            return new Matrix((MatrixContainer)_data.Clone());
+        }
+
         private bool Equals(Matrix other)
         {
             if (other.RowCount != RowCount || other.ColumnCount != ColumnCount)
@@ -27,7 +49,7 @@ namespace DataStructures.Matrices.Double
         /// </summary> 
         internal Matrix(MatrixContainer container) : base(container)
         {
-            _data = container;
+            _data = (MatrixContainer)container.Clone();
 
         }
         /// <summary>
@@ -77,6 +99,11 @@ namespace DataStructures.Matrices.Double
             return mOut as Matrix;
         }
 
+        public override Matrix<double> Multiply(double scalar)
+        {
+            throw new NotImplementedException();
+        }
+
         public override Matrix<double> Substract(Matrix<double> second)
         {
             Matrix<double> first = new MatrixFactory().Create(this);
@@ -122,7 +149,7 @@ namespace DataStructures.Matrices.Double
             for (int i = 0; i < ColumnCount; ++i)
                 this[i, target] *= scalar;
         }
-        public override Tuple<double, int> BiggestNonZeroInColumn(int column, int start, int end)
+        private Tuple<double, int> BiggestNonZeroInColumn(int column, int start, int end)
         {
             double min = 0;
             int minI = 0;
@@ -137,7 +164,7 @@ namespace DataStructures.Matrices.Double
             }
             return new Tuple<double, int>(min, minI);
         }
-        public override Tuple<double, int> SmallestNonZeroInRow(int row, int start, int end)
+        private Tuple<double, int> SmallestNonZeroInRow(int row, int start, int end)
         {
             double min = double.MaxValue;
             int minI = 0;
@@ -152,8 +179,6 @@ namespace DataStructures.Matrices.Double
             }
             return new Tuple<double, int>(min, minI);
         }
-
-        public override bool IsSquare => ColumnCount == RowCount;
         public override Matrix<double> Divide(double d)
         {
             var m = new MatrixFactory().Create(this);
@@ -191,10 +216,10 @@ namespace DataStructures.Matrices.Double
 
         public override Matrix<double> Negate()
         {
-            for (int i = 0; i < ColumnCount; ++i)
-                for (int j = 0; j < RowCount; ++j)
+            for (int i = 0; i < RowCount; ++i)
+                for (int k = 0; k < ColumnCount; ++k)
                 {
-                    this[i, j] = -this[i, j];
+                    _data[i, k] = -_data[i, k];
                 }
             return this;
         }
