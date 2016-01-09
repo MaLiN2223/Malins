@@ -1,7 +1,9 @@
 ﻿
+using System;
+
 namespace Numeric
 {
-    public struct Rational
+    public class Rational : SymbolicObject
     {
         private Integer _up;
         private Integer _down;
@@ -15,11 +17,120 @@ namespace Numeric
 
         }
 
-        public static Rational operator /(Rational r1, Rational r2)
+
+        protected override SymbolicObject Sum(SymbolicObject nr)
         {
-            return new Rational(r1._up * r2._down, r1._down * r2._up);
+            throw new NotImplementedException();
         }
 
+        protected override SymbolicObject Multiply(SymbolicObject nr)
+        {
+            throw new NotImplementedException();
+        }
 
+        protected override SymbolicObject Divide(SymbolicObject nr)
+        {
+            throw new NotImplementedException();
+        }
+
+        protected override SymbolicObject Power(SymbolicObject nr)
+        {
+            throw new NotImplementedException();
+        }
+
+        public override int CompareTo(object obj)
+        {
+            throw new NotImplementedException();
+        }
+
+        public override TypeCode GetTypeCode()
+        {
+            throw new NotImplementedException();
+        }
+
+        public override bool ToBoolean(IFormatProvider provider)
+        {
+            throw new NotImplementedException();
+        }
+
+        public override char ToChar(IFormatProvider provider)
+        {
+            throw new NotImplementedException();
+        }
+
+        public override sbyte ToSByte(IFormatProvider provider)
+        {
+            throw new NotImplementedException();
+        }
+
+        public override byte ToByte(IFormatProvider provider)
+        {
+            throw new NotImplementedException();
+        }
+
+        public override short ToInt16(IFormatProvider provider)
+        {
+            throw new NotImplementedException();
+        }
+
+        public override ushort ToUInt16(IFormatProvider provider)
+        {
+            throw new NotImplementedException();
+        }
+
+        public override int ToInt32(IFormatProvider provider)
+        {
+            throw new NotImplementedException();
+        }
+
+        public override uint ToUInt32(IFormatProvider provider)
+        {
+            throw new NotImplementedException();
+        }
+
+        public override long ToInt64(IFormatProvider provider)
+        {
+            throw new NotImplementedException();
+        }
+
+        public override ulong ToUInt64(IFormatProvider provider)
+        {
+            throw new NotImplementedException();
+        }
+
+        public override float ToSingle(IFormatProvider provider)
+        {
+            throw new NotImplementedException();
+        }
+
+        public override double ToDouble(IFormatProvider provider)
+        {
+            throw new NotImplementedException();
+        }
+
+        public override decimal ToDecimal(IFormatProvider provider)
+        {
+            throw new NotImplementedException();
+        }
+
+        public override DateTime ToDateTime(IFormatProvider provider)
+        {
+            throw new NotImplementedException();
+        }
+
+        public override string ToString(IFormatProvider provider)
+        {
+            throw new NotImplementedException();
+        }
+
+        public override object ToType(Type conversionType, IFormatProvider provider)
+        {
+            throw new NotImplementedException();
+        }
+
+        public override string ToString(string format, IFormatProvider formatProvider)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
