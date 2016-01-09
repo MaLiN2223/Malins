@@ -112,13 +112,15 @@ namespace DataStructures.Matrices
             if (angle.Equals(Angle.Vertical))
                 throw new NotSupportedException();
             //TODO : Combine vector to matrix
+            throw new NotImplementedException();
         }
 
         public Matrix<T> Combine(Angle angle, Matrix<T> matrix, Vector<T> vector)
         {
             if (angle.Equals(Angle.Vertical))
                 throw new NotSupportedException();
-            //TODO : Combine matrix to vector
+            //TODO : Combine matrix to 
+            throw new NotImplementedException();
         }
         public enum Angle
         {
@@ -166,18 +168,30 @@ namespace DataStructures.Matrices
         #region operators
         #region helpers
 
-        public abstract Vector<T> Add(Vector<T> another);
+        public abstract Vector<T> Sum(Vector<T> another);
         public abstract Vector<T> Substract(Vector<T> another);
         public abstract Vector<T> Substract(T scalar);
         public abstract Vector<T> Multiply(T scalar);
         public abstract Vector<T> Divide(T scalar);
         public abstract T Multiply(Vector<T> scalar);
+        public abstract Vector<T> Sum(T another);
         #endregion
-        #endregion 
+        #endregion
+
+        public static Vector<T> operator /(Vector<T> first, T scalar)
+        {
+            return first.Divide(scalar);
+        }
         public static Vector<T> operator +(Vector<T> first, Vector<T> second)
         {
-            return first.Add(second);
+            return first.Sum(second);
         }
+
+        public static Vector<T> operator +(Vector<T> first, T second)
+        {
+            return first.Sum(second);
+        }
+
         public static T operator *(Vector<T> first, Vector<T> second)
         {
             return first.Multiply(second);
