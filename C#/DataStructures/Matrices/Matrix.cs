@@ -31,6 +31,12 @@ namespace DataStructures.Matrices
         public abstract T Determinant();
         public abstract bool IsEmpty();
         public abstract Tuple<Matrix<T>, Matrix<T>, Matrix<T>, int> DecomposeWithSign();
+
+        public static Matrix<T> Multiply(params Matrix<T>[] matrices)
+        {
+            throw new NotImplementedException();
+            //TODO:mnozenie macierzy
+        }
         #endregion
         #region utilities
         public abstract Matrix<T> ForceZeros(T epsylon);

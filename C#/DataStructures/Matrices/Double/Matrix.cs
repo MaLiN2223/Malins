@@ -10,11 +10,7 @@ namespace DataStructures.Matrices.Double
 
 
 
-        #endregion
-
-
-
-
+        #endregion 
 
         public override bool IsEmpty()
         {

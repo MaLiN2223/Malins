@@ -59,6 +59,8 @@
     <Compile Include="Matrices\FactoryDoubleTests.cs" />
     <Compile Include="Matrices\FactoryIntTests.cs" />
     <Compile Include="Matrices\SerializationTests.cs" />
+    <Compile Include="Matrices\MatrixGenericTests.cs" />
+    <Compile Include="Matrices\MatrixGenericITests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

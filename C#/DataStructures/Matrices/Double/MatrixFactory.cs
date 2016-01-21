@@ -1,7 +1,4 @@
-﻿using System;
-using System.Diagnostics;
-using DataStructures.Exceptions;
-
+﻿using System; 
 namespace DataStructures.Matrices.Double
 {
     public class MatrixFactory : MatrixFactory<double>

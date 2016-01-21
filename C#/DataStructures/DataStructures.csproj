@@ -54,6 +54,9 @@
     <Compile Include="Graphs\AdjencyListVertex.cs" />
     <Compile Include="Graphs\SimplestListGraph.cs" />
     <Compile Include="Matrices\Double\Matrix.cs" />
+    <Compile Include="Matrices\Generics\Factory.cs" />
+    <Compile Include="Matrices\Generics\Matrix.cs" />
+    <Compile Include="Matrices\Generics\MatrixContainer.cs" />
     <Compile Include="Matrices\Integers\Matrix.cs" />
     <Compile Include="Matrices\Integers\MatrixContainer.cs" />
     <Compile Include="Matrices\Integers\MatrixFactory.cs" />
@@ -62,6 +65,7 @@
     <Compile Include="Matrices\Double\MatrixFactory.cs" />
     <Compile Include="Matrices\MatrixContainer.cs" />
     <Compile Include="Matrices\MatrixFactory.cs" />
+    <Compile Include="Matrices\MatrixIntegerOperations.cs" />
     <Compile Include="Matrices\MatrixOperations.cs" />
     <Compile Include="Matrices\Vector.cs" />
     <Compile Include="Matrices\VectorContainer.cs" />
