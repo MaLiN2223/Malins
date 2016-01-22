@@ -54,17 +54,22 @@
   <ItemGroup>
     <Compile Include="Graphs\AdjencyListVertexTest.cs" />
     <Compile Include="Graphs\SimplestListGraphTest.cs" />
-    <Compile Include="Matrices\MatrixDoubleTests.cs" />
-    <Compile Include="Matrices\MatrixOperationsTests.cs" />
-    <Compile Include="Matrices\FactoryDoubleTests.cs" />
-    <Compile Include="Matrices\FactoryIntTests.cs" />
-    <Compile Include="Matrices\SerializationTests.cs" />
+    <Compile Include="Matrices\MatrixGenericTests.cs" />
+    <Compile Include="Matrices\MatrixGenericITests.cs" />
+    <Compile Include="Matrices\FactoryTest.cs" />
+    <Compile Include="Matrices\TestStruct.cs" />
+    <Compile Include="Matrices\MatrixStructTests.cs" />
+    <Compile Include="Matrices\ComplexMatrixTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DataStructures\DataStructures.csproj">
       <Project>{be574e55-0492-4e4e-a14a-c184b119dcad}</Project>
       <Name>DataStructures</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Numeric\Numeric.csproj">
+      <Project>{f9bfad7e-c7ad-4823-b737-17f74b587088}</Project>
+      <Name>Numeric</Name>
     </ProjectReference>
   </ItemGroup>
   <Choose>

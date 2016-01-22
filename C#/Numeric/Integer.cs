@@ -14,96 +14,37 @@
 
         public Integer(BigInteger i)
         {
-            this._data = i;
+            _data = i;
         }
 
         public Integer(int i)
         {
-            this._data = new BigInteger(i);
+            _data = new BigInteger(i);
         }
 
         public Integer(long i)
         {
-            this._data = new BigInteger(i);
+            _data = new BigInteger(i);
         }
 
         public Integer(decimal i)
         {
-            this._data = new BigInteger(i);
+            _data = new BigInteger(i);
         }
 
         public Integer(short i)
         {
-            this._data = new BigInteger(i);
-        }
-
-        public int CompareTo(decimal other)
-        {
-            throw new NotImplementedException();
-        }
-
-        public int CompareTo(int other)
-        {
-            return CompareTo((Integer) other);
-        }
-
-        public int CompareTo(Integer other)
-        {
-            return this._data.CompareTo(other._data);
-        }
-
-        public int CompareTo(long other)
-        {
-            throw new NotImplementedException();
-        }
-
-        public int CompareTo(short other)
-        {
-            throw new NotImplementedException();
-        }
-
-        public bool Equals(decimal other)
-        {
-            throw new NotImplementedException();
-        }
-
-        public bool Equals(int other)
-        {
-            return Equals((Integer) other);
-        }
-
-        public bool Equals(Integer other)
-        {
-            return other._data.Equals(this._data);
-        }
-
-        public bool Equals(long other)
-        {
-            throw new NotImplementedException();
-        }
-
-        public bool Equals(short other)
-        {
-            throw new NotImplementedException();
-        }
-
-        public static Integer operator %(Integer first, Integer second)
-        {
-            return new Integer(first._data%second._data);
-        }
-
-        public static Integer operator ++(Integer first)
-        {
-            return first._data++;
+            _data = new BigInteger(i);
         }
 
         protected override SymbolicObject Sum(SymbolicObject obj)
         {
+            //TODO : Sumowanie
             var k = obj as Integer;
             if (k != null)
-                return new Integer(this._data + k._data);
+                return new Integer(_data + k._data);
             var k2 = obj as Real;
-            return null;
+            throw new NotImplementedException();
         }
 
         protected override SymbolicObject Multiply(SymbolicObject nr)
@@ -121,102 +62,169 @@
             throw new NotImplementedException();
         }
 
-        public override int CompareTo(object obj)
-        {
-            if (!(obj is Integer))
-                throw new ArgumentException("Wrong argument type", nameof(obj));
-            return CompareTo((Integer) obj);
-        }
 
         public override TypeCode GetTypeCode()
         {
+            //TODO : GetTypeCode()
             throw new NotImplementedException();
         }
-
+        #region Conversions
         public override string ToString(string format, IFormatProvider formatProvider)
         {
-            return this._data.ToString(formatProvider);
+            return _data.ToString(formatProvider);
         }
 
         public override bool ToBoolean(IFormatProvider provider)
         {
-            return bool.Parse(this._data.ToString(provider));
+            return bool.Parse(_data.ToString(provider));
         }
 
         public override char ToChar(IFormatProvider provider)
         {
-            return char.Parse(this._data.ToString(provider));
+            return char.Parse(_data.ToString(provider));
         }
 
         public override sbyte ToSByte(IFormatProvider provider)
         {
-            return sbyte.Parse(this._data.ToString(provider));
+            return sbyte.Parse(_data.ToString(provider));
         }
 
         public override byte ToByte(IFormatProvider provider)
         {
-            return byte.Parse(this._data.ToString(provider));
+            return byte.Parse(_data.ToString(provider));
         }
 
         public override short ToInt16(IFormatProvider provider)
         {
-            return short.Parse(this._data.ToString(provider));
+            return short.Parse(_data.ToString(provider));
         }
 
         public override ushort ToUInt16(IFormatProvider provider)
         {
-            return ushort.Parse(this._data.ToString(provider));
+            return ushort.Parse(_data.ToString(provider));
         }
 
         public override int ToInt32(IFormatProvider provider)
         {
-            throw new NotImplementedException();
+            return int.Parse(_data.ToString(provider));
         }
 
         public override uint ToUInt32(IFormatProvider provider)
         {
-            return uint.Parse(this._data.ToString(provider));
+            return uint.Parse(_data.ToString(provider));
         }
 
         public override long ToInt64(IFormatProvider provider)
         {
-            return long.Parse(this._data.ToString(provider));
+            return long.Parse(_data.ToString(provider));
         }
 
         public override ulong ToUInt64(IFormatProvider provider)
         {
-            return ulong.Parse(this._data.ToString(provider));
+            return ulong.Parse(_data.ToString(provider));
         }
 
         public override float ToSingle(IFormatProvider provider)
         {
-            return float.Parse(this._data.ToString(provider));
+            return float.Parse(_data.ToString(provider));
         }
 
         public override double ToDouble(IFormatProvider provider)
         {
-            return double.Parse(this._data.ToString(provider));
+            return double.Parse(_data.ToString(provider));
         }
 
         public override decimal ToDecimal(IFormatProvider provider)
         {
-            return decimal.Parse(this._data.ToString(provider));
+            return decimal.Parse(_data.ToString(provider));
         }
 
         public override DateTime ToDateTime(IFormatProvider provider)
         {
-            return DateTime.Parse(this._data.ToString(provider));
+            return DateTime.Parse(_data.ToString(provider));
         }
 
         public override string ToString(IFormatProvider provider)
         {
-            return this._data.ToString(provider);
+            return _data.ToString(provider);
         }
 
         public override object ToType(Type conversionType, IFormatProvider provider)
         {
+            //TODO : ToType
             throw new NotImplementedException();
         }
+        #endregion
+
+        #region comparators
+
+        public int CompareTo(decimal other) => _data.CompareTo(other);
+
+        public int CompareTo(int other) => _data.CompareTo(other);
+
+        public int CompareTo(Integer other) => _data.CompareTo(other);
+
+        public int CompareTo(long other) => _data.CompareTo(other);
+
+        public int CompareTo(short other) => _data.CompareTo(other);
+
+        public override int CompareTo(object obj)
+        {
+            if (!(obj is Integer))
+                throw new ArgumentException("Wrong argument type", nameof(obj));
+            return CompareTo((Integer)obj);
+        }
+
+        #endregion
+
+        #region equality
+
+        public bool Equals(decimal other)
+        {
+            throw new NotSupportedException();
+        }
+
+        public bool Equals(int other)
+        {
+            return Equals((Integer)other);
+        }
+
+        public bool Equals(Integer other) => other._data.Equals(_data);
+
+        public bool Equals(long other) => _data.Equals(other);
+
+        public bool Equals(short other) => _data.Equals(other);
+
+        #endregion
+
+        #region operators
+
+        public static Integer operator %(Integer first, Integer second)
+        {
+            return new Integer(first._data % second._data);
+        }
+
+        public static Integer operator ++(Integer first)
+        {
+            return first._data++;
+        } 
+
+        public static bool operator <(Integer first, int second)
+        {
+            return first._data < second;
+        }
+
+        public static bool operator >(Integer first, int second)
+        {
+            return first._data > second;
+        }
+
+        public static Integer operator -(Integer data)
+        {
+            return new Integer(data._data);
+        }
+
+        #endregion
 
         #region Casting
 

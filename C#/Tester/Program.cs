@@ -1,7 +1,0 @@
-﻿namespace Tester
-{
-    class Program
-    { 
-
-    }
-}
