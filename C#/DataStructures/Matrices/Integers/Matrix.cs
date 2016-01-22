@@ -1,21 +1,38 @@
-﻿using System;
-using System.Runtime.Serialization;
-
-namespace DataStructures.Matrices.Integers
+﻿namespace DataStructures.Matrices.Integers
 {
+    using System;
+    using System.Runtime.Serialization;
+
     [Serializable]
     public class Matrix : Matrix<int>, ISerializable
     {
-        [NonSerialized]
-        private static MatrixFactory _factory;
+        [NonSerialized] private static readonly MatrixFactory Factory = new MatrixFactory();
+
         internal Matrix(MatrixContainer container) : base(container)
         {
-            Container = (MatrixContainer)container.Clone();
+            Container = (MatrixContainer) container.Clone();
         }
 
         private Matrix(int[,] data) : base(new MatrixContainer(data))
         {
             Container = new MatrixContainer(data);
+        }
+
+        protected Matrix(SerializationInfo info, StreamingContext context)
+            : base((MatrixContainer) info.GetValue("_container", typeof (MatrixContainer)))
+        {
+            if (info == null)
+                throw new ArgumentNullException(nameof(info));
+            Container = (MatrixContainer) info.GetValue("_container", typeof (MatrixContainer));
+            if (Container == null)
+                throw new ArgumentNullException(nameof(Container));
+        }
+
+        public void GetObjectData(SerializationInfo info, StreamingContext context)
+        {
+            if (info == null)
+                throw new ArgumentNullException("info");
+            info.AddValue("_container", Container);
         }
 
         public override int Determinant()
@@ -26,8 +43,8 @@ namespace DataStructures.Matrices.Integers
 
         public override Matrix<int> ForceZeros(int epsylon)
         {
-            for (int i = 0; i < RowCount; ++i)
-                for (int k = 0; k < ColumnCount; ++k)
+            for (var i = 0; i < this.RowCount; ++i)
+                for (var k = 0; k < this.ColumnCount; ++k)
                 {
                     if (Container[i, k] < epsylon)
                         Container[i, k] = 0;
@@ -37,7 +54,7 @@ namespace DataStructures.Matrices.Integers
 
         public override Matrix<int> Negate()
         {
-            return this * -1;
+            return this*-1;
         }
 
         public override Matrix<int> ForceRound(int precision)
@@ -54,10 +71,10 @@ namespace DataStructures.Matrices.Integers
 
         public override Matrix<int> Add(Matrix<int> another)
         {
-            var data = _factory.Create(this);
-            for (int i = 0; i < data.RowCount; ++i)
+            var data = Factory.Create(this);
+            for (var i = 0; i < data.RowCount; ++i)
             {
-                for (int k = 0; k < data.ColumnCount; ++k)
+                for (var k = 0; k < data.ColumnCount; ++k)
                 {
                     data[i, k] += another[i, k];
                 }
@@ -87,8 +104,7 @@ namespace DataStructures.Matrices.Integers
 
         public override void MultiplyRow(int target, int scalar)
         {
-
-            for (int i = 0; i < ColumnCount; ++i)
+            for (var i = 0; i < this.ColumnCount; ++i)
             {
                 this[target, i] *= scalar;
             }
@@ -96,7 +112,7 @@ namespace DataStructures.Matrices.Integers
 
         public override void MultiplyColumn(int target, int scalar)
         {
-            for (int i = 0; i < RowCount; ++i)
+            for (var i = 0; i < this.RowCount; ++i)
             {
                 this[i, target] *= scalar;
             }
@@ -104,30 +120,33 @@ namespace DataStructures.Matrices.Integers
 
         public override void SumColumn(int target, int source, int scalar)
         {
-            for (int i = 0; i < RowCount; ++i)
-                this[i, target] += this[i, source] * scalar;
+            for (var i = 0; i < this.RowCount; ++i)
+                this[i, target] += this[i, source]*scalar;
         }
+
         /// <summary>
-        /// Adds row source to target multiplied by scalar
+        ///     Adds row source to target multiplied by scalar
         /// </summary>
         /// <param name="target"></param>
         /// <param name="source"></param>
         /// <param name="scalar"></param>
         public override void SumRow(int target, int source, int scalar)
         {
-            for (int i = 0; i < ColumnCount; ++i)
-                this[target, i] += this[source, i] * scalar;
-        } 
+            for (var i = 0; i < this.ColumnCount; ++i)
+                this[target, i] += this[source, i]*scalar;
+        }
+
         public override Matrix<int> SubMatrix(int rowStart, int rowEnd, int colStart, int colEnd)
         {
-            if (rowEnd < rowStart || rowEnd < 0 || rowStart < 0 || colStart < 0 || colEnd < 0 || colEnd < colStart || rowEnd > RowCount || colEnd > ColumnCount)
+            if (rowEnd < rowStart || rowEnd < 0 || rowStart < 0 || colStart < 0 || colEnd < 0 || colEnd < colStart ||
+                rowEnd > this.RowCount || colEnd > this.ColumnCount)
                 throw new IndexOutOfRangeException($"Invalid range{rowStart},{rowEnd},{colStart},{colEnd}");
             var data = new int[rowEnd - rowStart + 1, colEnd - colStart + 1];
-            int row = 0;
-            for (int i = rowStart; i <= rowEnd; ++i)
+            var row = 0;
+            for (var i = rowStart; i <= rowEnd; ++i)
             {
                 var col = 0;
-                for (int k = colStart; k <= colEnd; ++k)
+                for (var k = colStart; k <= colEnd; ++k)
                 {
                     data[row, col] = this[i, k];
                     col++;
@@ -140,12 +159,11 @@ namespace DataStructures.Matrices.Integers
 
         public override bool IsEmpty()
         {
-            for (int i = 0; i < RowCount; ++i)
+            for (var i = 0; i < this.RowCount; ++i)
             {
-                for (int j = 0; j < ColumnCount; ++j)
+                for (var j = 0; j < this.ColumnCount; ++j)
                     if (this[i, j] != 0)
                         return false;
-
             }
             return true;
         }
@@ -154,11 +172,11 @@ namespace DataStructures.Matrices.Integers
         {
             if (other == null)
                 return false;
-            if (other.ColumnCount != ColumnCount || other.RowCount != RowCount)
+            if (other.ColumnCount != this.ColumnCount || other.RowCount != this.RowCount)
                 return false;
-            for (int i = 0; i < RowCount; ++i)
+            for (var i = 0; i < this.RowCount; ++i)
             {
-                for (int j = 0; j < ColumnCount; ++j)
+                for (var j = 0; j < this.ColumnCount; ++j)
                 {
                     if (this[i, j] != other[i, j])
                         return false;
@@ -169,22 +187,7 @@ namespace DataStructures.Matrices.Integers
 
         public override object Clone()
         {
-            return new Matrix((MatrixContainer)Container.Clone());
-        }
-
-        protected Matrix(SerializationInfo info, StreamingContext context) : base((MatrixContainer)info.GetValue("_container", typeof(MatrixContainer)))
-        {
-            if (info == null)
-                throw new ArgumentNullException("info");
-            Container = (MatrixContainer)info.GetValue("_container", typeof(MatrixContainer));
-            if (Container == null)
-                throw new ArgumentNullException("Container");
-        }
-        public void GetObjectData(SerializationInfo info, StreamingContext context)
-        {
-            if (info == null)
-                throw new ArgumentNullException("info");
-            info.AddValue("_container", Container);
+            return new Matrix((MatrixContainer) Container.Clone());
         }
     }
 }

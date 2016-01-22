@@ -1,7 +1,7 @@
-﻿using System;
-
-namespace DataStructures.Matrices
+﻿namespace DataStructures.Matrices
 {
+    using System;
+
     public abstract class VectorContainer<T> where T : struct, IEquatable<T>
     {
         public abstract int Count { get; }
@@ -19,6 +19,7 @@ namespace DataStructures.Matrices
                 At(i, value);
             }
         }
+
         public abstract T At(int i);
         public abstract T At(int i, T value);
         public abstract void Clear();

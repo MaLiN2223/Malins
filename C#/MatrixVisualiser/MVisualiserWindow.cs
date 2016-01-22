@@ -1,9 +1,8 @@
-﻿using System.Diagnostics;
-using System.Windows.Forms;
-using DataStructures.Matrices;
-
-namespace MatrixVisualiser
+﻿namespace MatrixVisualiser
 {
+    using System.Windows.Forms;
+    using DataStructures.Matrices;
+
     public partial class MVisualiserWindow : Form
     {
         public MVisualiserWindow(Matrix<int> matrix)
@@ -13,21 +12,21 @@ namespace MatrixVisualiser
                 MessageBox.Show("Problme!");
             else
             {
-                Grid.ReadOnly = true;
-                int columns = matrix.ColumnCount;
-                Grid.ColumnCount = columns;
-                for (int i = 0; i < columns; ++i)
+                this.Grid.ReadOnly = true;
+                var columns = matrix.ColumnCount;
+                this.Grid.ColumnCount = columns;
+                for (var i = 0; i < columns; ++i)
                 {
-                    Grid.Columns[i].Name = i.ToString();
+                    this.Grid.Columns[i].Name = i.ToString();
                 }
-                for (int i = 0; i < matrix.RowCount; ++i)
+                for (var i = 0; i < matrix.RowCount; ++i)
                 {
-                    object[] row = new object[columns];
-                    for (int j = 0; j < columns; ++j)
+                    var row = new object[columns];
+                    for (var j = 0; j < columns; ++j)
                     {
                         row[j] = matrix[i, j].ToString();
                     }
-                    Grid.Rows.Add(row);
+                    this.Grid.Rows.Add(row);
                 }
             }
         }

@@ -1,10 +1,14 @@
-﻿using System;
-
-namespace DataStructures.Matrices.Integers
+﻿namespace DataStructures.Matrices.Integers
 {
+    using System;
+
     public class MatrixFactory : MatrixFactory<int>
     {
-        public override int One { get { return 1; } }
+        public override int One
+        {
+            get { return 1; }
+        }
+
         public override int RandomData()
         {
             return random.Next();
@@ -24,6 +28,5 @@ namespace DataStructures.Matrices.Integers
             var tmp = data.Clone() as int[,];
             return new Matrix(new MatrixContainer(tmp));
         }
-
     }
 }

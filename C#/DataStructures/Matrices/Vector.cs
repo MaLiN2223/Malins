@@ -1,29 +1,29 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-
-namespace DataStructures.Matrices
+﻿namespace DataStructures.Matrices
 {
+    using System;
+    using System.Collections;
+    using System.Collections.Generic;
+
     public abstract class Vector<T> : IEquatable<Vector<T>>, IList, IList<T>, ICloneable where T : struct, IEquatable<T>
     {
-        public VectorContainer<T> Container { get; set; }
+        public enum Angle
+        {
+            Vertical,
+            Horizontal,
+            Diagonal
+        }
+
+        private VectorContainer<T> Container { get; set; }
+        public abstract object Clone();
 
         public bool Equals(Vector<T> other)
         {
-            for (int i = 0; i < Count; ++i)
+            for (var i = 0; i < Count; ++i)
             {
                 if (!Container[i].Equals(other.Container[i]))
                     return false;
             }
             return true;
-        }
-
-        public IEnumerator<T> GetEnumerator()
-        {
-            for (int i = 0; i < Count; ++i)
-            {
-                yield return Container[i];
-            }
         }
 
         IEnumerator IEnumerable.GetEnumerator()
@@ -34,7 +34,7 @@ namespace DataStructures.Matrices
 
         public void CopyTo(Array array, int index)
         {
-            for (int i = 0; i < Count; ++i)
+            for (var i = 0; i < Count; ++i)
             {
                 array.SetValue(this[i], index);
                 index++;
@@ -46,14 +46,6 @@ namespace DataStructures.Matrices
             get { return Container.Count; }
         }
 
-        bool ICollection<T>.IsReadOnly
-        {
-            get
-            {
-                throw new NotImplementedException();
-            }
-        }
-
         public abstract object SyncRoot { get; }
         public abstract bool IsSynchronized { get; }
 
@@ -61,13 +53,47 @@ namespace DataStructures.Matrices
         {
             if (!(value is T))
                 return false;
-            return Contains((T)value);
+            return Contains((T) value);
+        }
 
+        public void Clear()
+        {
+            Container.Clear();
+        }
+
+        public int IndexOf(object value)
+        {
+            if (!(value is T))
+                return -1;
+            return IndexOf((T) value);
+        }
+
+        object IList.this[int index]
+        {
+            get { return Container[index]; }
+            set { Container[index] = (T) value; }
+        }
+
+        public bool IsReadOnly => true;
+
+        public bool IsFixedSize => true;
+
+        public IEnumerator<T> GetEnumerator()
+        {
+            for (var i = 0; i < Count; ++i)
+            {
+                yield return Container[i];
+            }
+        }
+
+        bool ICollection<T>.IsReadOnly
+        {
+            get { throw new NotImplementedException(); }
         }
 
         public bool Contains(T item)
         {
-            for (int i = 0; i < Count; ++i)
+            for (var i = 0; i < Count; ++i)
             {
                 if (Container[i].Equals(item))
                     return true;
@@ -76,9 +102,22 @@ namespace DataStructures.Matrices
         }
 
         public abstract void CopyTo(T[] array, int arrayIndex);
-        public void Clear()
+
+        public int IndexOf(T item)
         {
-            Container.Clear();
+            for (var i = 0; i < Count; ++i)
+            {
+                if (Container[i].Equals(item))
+                    return i;
+            }
+            return -1;
+        }
+
+
+        public T this[int index]
+        {
+            get { return Container[index]; }
+            set { Container[index] = value; }
         }
 
         public void Clear(int start, int count)
@@ -94,8 +133,8 @@ namespace DataStructures.Matrices
 
         public T[] ToArray()
         {
-            T[] arr = new T[Count];
-            for (int i = 0; i < Count; ++i)
+            var arr = new T[Count];
+            for (var i = 0; i < Count; ++i)
                 arr[i] = this[i];
             return arr;
         }
@@ -122,66 +161,18 @@ namespace DataStructures.Matrices
             //TODO : Combine matrix to 
             throw new NotImplementedException();
         }
-        public enum Angle
-        {
-            Vertical,
-            Horizontal,
-            Diagonal
-        };
+
         public Matrix<T> ToMatrix(Angle angle)
         {
             //TODO : Converstion to matrix
             throw new NotImplementedException();
         }
-        public int IndexOf(object value)
-        {
-            if (!(value is T))
-                return -1;
-            return IndexOf((T)value);
-        }
-
-        public int IndexOf(T item)
-        {
-            for (int i = 0; i < Count; ++i)
-            {
-                if (Container[i].Equals(item))
-                    return i;
-            }
-            return -1;
-        }
-
-
-        public T this[int index]
-        {
-            get { return Container[index]; }
-            set { Container[index] = value; }
-        }
-
-        object IList.this[int index]
-        {
-            get { return Container[index]; }
-            set { Container[index] = (T)value; }
-        }
-        public bool IsReadOnly { get; }
-        public bool IsFixedSize { get { return true; } }
-        public abstract object Clone();
-        #region operators
-        #region helpers
-
-        public abstract Vector<T> Sum(Vector<T> another);
-        public abstract Vector<T> Substract(Vector<T> another);
-        public abstract Vector<T> Substract(T scalar);
-        public abstract Vector<T> Multiply(T scalar);
-        public abstract Vector<T> Divide(T scalar);
-        public abstract T Multiply(Vector<T> scalar);
-        public abstract Vector<T> Sum(T another);
-        #endregion
-        #endregion
 
         public static Vector<T> operator /(Vector<T> first, T scalar)
         {
             return first.Divide(scalar);
         }
+
         public static Vector<T> operator +(Vector<T> first, Vector<T> second)
         {
             return first.Sum(second);
@@ -196,10 +187,12 @@ namespace DataStructures.Matrices
         {
             return first.Multiply(second);
         }
+
         public static Vector<T> operator *(Vector<T> first, T second)
         {
             return first.Multiply(second);
         }
+
         public static Vector<T> operator *(T second, Vector<T> first)
         {
             return first.Multiply(second);
@@ -209,11 +202,30 @@ namespace DataStructures.Matrices
         {
             return first.Substract(second);
         }
+
         public static Vector<T> operator -(Vector<T> first, T second)
         {
             return first.Substract(second);
         }
+
+        #region operators
+
+        #region helpers
+
+        public abstract Vector<T> Sum(Vector<T> another);
+        public abstract Vector<T> Substract(Vector<T> another);
+        public abstract Vector<T> Substract(T scalar);
+        public abstract Vector<T> Multiply(T scalar);
+        public abstract Vector<T> Divide(T scalar);
+        public abstract T Multiply(Vector<T> scalar);
+        public abstract Vector<T> Sum(T another);
+
+        #endregion
+
+        #endregion
+
         #region NotSupported
+
         public void RemoveAt(int index)
         {
             throw new NotSupportedException();
@@ -223,6 +235,7 @@ namespace DataStructures.Matrices
         {
             throw new NotSupportedException();
         }
+
         public void Insert(int index, T item)
         {
             throw new NotSupportedException();
@@ -232,6 +245,7 @@ namespace DataStructures.Matrices
         {
             throw new NotSupportedException();
         }
+
         public void Add(T item)
         {
             throw new NotSupportedException();
@@ -241,10 +255,12 @@ namespace DataStructures.Matrices
         {
             throw new NotSupportedException();
         }
+
         public bool Remove(T item)
         {
             throw new NotSupportedException();
         }
+
         #endregion
     }
 }

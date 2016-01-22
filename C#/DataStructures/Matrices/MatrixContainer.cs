@@ -1,20 +1,22 @@
-﻿using System;
-
-namespace DataStructures.Matrices
+﻿namespace DataStructures.Matrices
 {
+    using System;
+
     public abstract class MatrixContainer<T> : ICloneable where T : struct, IEquatable<T>
     {
-        public readonly int RowCount;
         public readonly int ColumnCount;
+        public readonly int RowCount;
+
         protected MatrixContainer(int rowCount, int columnCount)
         {
             if (rowCount < 0)
                 throw new ArgumentException(nameof(rowCount));
             if (columnCount <= 0)
-                throw new ArgumentException(nameof(columnCount)); 
-            RowCount = rowCount;
-            ColumnCount = columnCount;
+                throw new ArgumentException(nameof(columnCount));
+            this.RowCount = rowCount;
+            this.ColumnCount = columnCount;
         }
+
         public abstract bool IsReadOnly { get; }
 
         public T this[int row, int column]
@@ -32,6 +34,8 @@ namespace DataStructures.Matrices
             }
         }
 
+        public abstract object Clone();
+
         public abstract T Get(int row, int column);
         public abstract void Set(int row, int column, T value);
 
@@ -40,26 +44,26 @@ namespace DataStructures.Matrices
             if (IsReadOnly)
                 throw new AccessViolationException("Matrix is read only");
         }
+
         private void GoodRange(int row, int column)
         {
             if (row < 0)
                 throw new ArgumentOutOfRangeException(nameof(row), row, "Row must be non negative");
             if (column < 0)
                 throw new ArgumentOutOfRangeException(nameof(column), column, "Column must be non negative");
-            if (row >= RowCount)
+            if (row >= this.RowCount)
                 throw new ArgumentOutOfRangeException(nameof(row));
-            if (column >= ColumnCount)
+            if (column >= this.ColumnCount)
                 throw new ArgumentOutOfRangeException(nameof(column));
         }
+
         public void Clear()
         {
-            for (int i = 0; i < ColumnCount; ++i)
+            for (var i = 0; i < this.ColumnCount; ++i)
             {
-                for (int j = 0; j < RowCount; ++j)
+                for (var j = 0; j < this.RowCount; ++j)
                     this[i, j] = default(T);
             }
         }
-
-        public abstract object Clone();
     }
 }

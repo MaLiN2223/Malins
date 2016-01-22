@@ -1,16 +1,16 @@
-﻿using System;
-using System.Diagnostics;
-using DataStructures.Exceptions;
-
-namespace DataStructures.Matrices.Double
+﻿namespace DataStructures.Matrices.Double
 {
+    using System;
+
     public class MatrixFactory : MatrixFactory<double>
     {
         public override double One => 1.0;
+
         public override double RandomData()
         {
             return random.NextDouble();
-        } 
+        }
+
         public override Matrix<double> Create(MatrixContainer<double> containter)
         {
             if (containter == null)
@@ -22,7 +22,7 @@ namespace DataStructures.Matrices.Double
         {
             if (data == null)
                 throw new ArgumentNullException();
-            return new Matrix((double[,])data.Clone());
+            return new Matrix((double[,]) data.Clone());
         }
     }
 }

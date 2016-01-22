@@ -1,9 +1,10 @@
-﻿using System;
-using System.Linq;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using DataStructures.Graphs;
-namespace DataStructuresTests.Graphs
+﻿namespace DataStructuresTests.Graphs
 {
+    using System;
+    using System.Linq;
+    using DataStructures.Graphs;
+    using Microsoft.VisualStudio.TestTools.UnitTesting;
+
     [TestClass]
     public class AdjencyListVertexTest
     {
@@ -23,10 +24,11 @@ namespace DataStructuresTests.Graphs
                 Assert.Fail();
             }
         }
+
         [TestMethod]
         public void CreatingAndConnecting()
         {
-            var vertex = new []
+            var vertex = new[]
             {
                 new AdjencyListVertex<string>("A"),
                 new AdjencyListVertex<string>("B"),
@@ -36,7 +38,7 @@ namespace DataStructuresTests.Graphs
                 new AdjencyListVertex<string>("F"),
                 new AdjencyListVertex<string>("G"),
                 new AdjencyListVertex<string>("H"),
-                new AdjencyListVertex<string>("I"),
+                new AdjencyListVertex<string>("I")
             };
             Assert.AreEqual(vertex[0].Value, "A");
             Assert.AreEqual(vertex[1].Value, "B");
@@ -47,24 +49,26 @@ namespace DataStructuresTests.Graphs
             Assert.AreEqual(vertex[6].Value, "G");
             Assert.AreEqual(vertex[7].Value, "H");
             Assert.AreEqual(vertex[8].Value, "I");
-
         }
+
         [TestMethod]
-        [ExpectedException(typeof(NullReferenceException), "Can't add null")]
+        [ExpectedException(typeof (NullReferenceException), "Can't add null")]
         public void ConnectNull()
         {
             var vertex = new AdjencyListVertex<int>(0);
             vertex.Connect(null);
         }
+
         [TestMethod]
-        [ExpectedException(typeof(ArgumentException), "Cannot add himself")]
+        [ExpectedException(typeof (ArgumentException), "Cannot add himself")]
         public void ConnectHimself()
         {
             var vertex = new AdjencyListVertex<int>(0);
             vertex.Connect(vertex);
         }
+
         [TestMethod]
-        [ExpectedException(typeof(ArgumentException), "Vertices are already connected")]
+        [ExpectedException(typeof (ArgumentException), "Vertices are already connected")]
         public void ConnectAgain()
         {
             var vertex = new AdjencyListVertex<int>(0);
@@ -72,11 +76,12 @@ namespace DataStructuresTests.Graphs
             vertex.Connect(vertex2);
             vertex.Connect(vertex2);
         }
+
         [TestMethod]
         public void ConnectingValidation()
         {
             var vertex = new[]
-           {
+            {
                 new AdjencyListVertex<string>("A"),
                 new AdjencyListVertex<string>("B"),
                 new AdjencyListVertex<string>("C"),
@@ -86,8 +91,8 @@ namespace DataStructuresTests.Graphs
                 new AdjencyListVertex<string>("G"),
                 new AdjencyListVertex<string>("H"),
                 new AdjencyListVertex<string>("I"),
-                new AdjencyListVertex<string>("J"),
-           };
+                new AdjencyListVertex<string>("J")
+            };
             vertex[0].Connect(vertex[1]);
 
             vertex[1].Connect(vertex[2]);
@@ -105,8 +110,6 @@ namespace DataStructuresTests.Graphs
             vertex[7].Connect(vertex[8]);
 
 
-
-
             Assert.AreEqual(1, vertex[0].Neighbors().Count());
             Assert.AreEqual(3, vertex[1].Neighbors().Count());
             Assert.AreEqual(2, vertex[2].Neighbors().Count());
@@ -118,11 +121,12 @@ namespace DataStructuresTests.Graphs
             Assert.AreEqual(2, vertex[8].Neighbors().Count());
             Assert.AreEqual(0, vertex[9].Neighbors().Count());
         }
+
         [TestMethod]
         public void Remove()
         {
             var vertex = new[]
-           {
+            {
                 new AdjencyListVertex<string>("A"),
                 new AdjencyListVertex<string>("B"),
                 new AdjencyListVertex<string>("C"),
@@ -132,13 +136,13 @@ namespace DataStructuresTests.Graphs
                 new AdjencyListVertex<string>("G"),
                 new AdjencyListVertex<string>("H"),
                 new AdjencyListVertex<string>("I"),
-                new AdjencyListVertex<string>("J"),
-           };
+                new AdjencyListVertex<string>("J")
+            };
 
             vertex[0].Connect(vertex[1]);
             vertex[1].Connect(vertex[2]);
             vertex[1].Connect(vertex[4]);
-           
+
             vertex[2].Connect(vertex[3]);
 
             vertex[3].Connect(vertex[4]);
@@ -156,8 +160,6 @@ namespace DataStructuresTests.Graphs
             Assert.AreEqual(1, vertex[2].Neighbors().Count());
             Assert.AreEqual(2, vertex[3].Neighbors().Count());
             Assert.AreEqual(3, vertex[5].Neighbors().Count());
-
         }
-
     }
 }

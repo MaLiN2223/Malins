@@ -1,8 +1,8 @@
-﻿using System;
-using DataStructures.Matrices.Integers;
-
-namespace DataStructures.Matrices
+﻿namespace DataStructures.Matrices
 {
+    using System;
+    using Integers;
+
     public static class MatrixOperations
     {
         private static readonly MatrixFactory _factory = new MatrixFactory();
@@ -47,8 +47,8 @@ namespace DataStructures.Matrices
             {
                 for (var j = k + 1; j < m.ColumnCount; ++j)
                 {
-                    var q = (int)Math.Floor(m[i, j] / (double)m[k, k]);
-                    if (q * m[k, k] != m[i, j])
+                    var q = (int) Math.Floor(m[i, j]/(double) m[k, k]);
+                    if (q*m[k, k] != m[i, j])
                         return new Tuple<bool, int, int, int>(false, i, j, q);
                 }
             }
@@ -116,7 +116,7 @@ namespace DataStructures.Matrices
         {
             for (var i = k + 1; i < B.RowCount; i++)
             {
-                var q = (int)Math.Floor(B[l, i] / (decimal)B[l, k]);
+                var q = (int) Math.Floor(B[l, i]/(decimal) B[l, k]);
                 ColumnAddOperation(ref B, ref R, ref R2, i, k, -q);
             }
         }
@@ -134,7 +134,7 @@ namespace DataStructures.Matrices
         {
             for (var i = k + 1; i < B.RowCount; i++)
             {
-                var q = (int)Math.Floor(B[i, l] / (decimal)B[k, l]);
+                var q = (int) Math.Floor(B[i, l]/(decimal) B[k, l]);
                 RowAddOperation(ref B, ref Q, ref Q2, i, k, -q);
             }
         }

@@ -1,7 +1,8 @@
-﻿using System;
-using System.Numerics;
-namespace Numeric
+﻿namespace Numeric
 {
+    using System;
+    using System.Numerics;
+
     public class Integer : SymbolicObject,
         IEquatable<Integer>, IComparable<Integer>,
         IEquatable<int>, IComparable<int>,
@@ -10,45 +11,87 @@ namespace Numeric
         IEquatable<decimal>, IComparable<decimal>
     {
         private BigInteger _data;
-        #region Casting
-        public static implicit operator Integer(int k) => new Integer(k);
-
-        public static implicit operator Integer(long k) => new Integer(k);
-
-        public static implicit operator Integer(short k) => new Integer(k);
-
-        public static implicit operator Integer(decimal k) => new Integer(k);
-
-        public static implicit operator Integer(BigInteger k) => new Integer(k);
-
-        public static explicit operator BigInteger(Integer k) => k._data; 
-        #endregion
 
         public Integer(BigInteger i)
         {
-            _data = i;
+            this._data = i;
         }
+
         public Integer(int i)
         {
-            _data = new BigInteger(i);
+            this._data = new BigInteger(i);
         }
+
         public Integer(long i)
         {
-            _data = new BigInteger(i);
+            this._data = new BigInteger(i);
         }
+
         public Integer(decimal i)
         {
-            _data = new BigInteger(i);
+            this._data = new BigInteger(i);
         }
+
         public Integer(short i)
         {
-            _data = new BigInteger(i);
+            this._data = new BigInteger(i);
+        }
+
+        public int CompareTo(decimal other)
+        {
+            throw new NotImplementedException();
+        }
+
+        public int CompareTo(int other)
+        {
+            return CompareTo((Integer) other);
+        }
+
+        public int CompareTo(Integer other)
+        {
+            return this._data.CompareTo(other._data);
+        }
+
+        public int CompareTo(long other)
+        {
+            throw new NotImplementedException();
+        }
+
+        public int CompareTo(short other)
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool Equals(decimal other)
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool Equals(int other)
+        {
+            return Equals((Integer) other);
+        }
+
+        public bool Equals(Integer other)
+        {
+            return other._data.Equals(this._data);
+        }
+
+        public bool Equals(long other)
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool Equals(short other)
+        {
+            throw new NotImplementedException();
         }
 
         public static Integer operator %(Integer first, Integer second)
         {
-            return new Integer(first._data % second._data);
+            return new Integer(first._data%second._data);
         }
+
         public static Integer operator ++(Integer first)
         {
             return first._data++;
@@ -58,7 +101,7 @@ namespace Numeric
         {
             var k = obj as Integer;
             if (k != null)
-                return new Integer(_data + k._data);
+                return new Integer(this._data + k._data);
             var k2 = obj as Real;
             return null;
         }
@@ -82,8 +125,7 @@ namespace Numeric
         {
             if (!(obj is Integer))
                 throw new ArgumentException("Wrong argument type", nameof(obj));
-            return CompareTo((Integer)obj);
-
+            return CompareTo((Integer) obj);
         }
 
         public override TypeCode GetTypeCode()
@@ -93,37 +135,37 @@ namespace Numeric
 
         public override string ToString(string format, IFormatProvider formatProvider)
         {
-            return _data.ToString(formatProvider);
+            return this._data.ToString(formatProvider);
         }
 
         public override bool ToBoolean(IFormatProvider provider)
         {
-            return bool.Parse(_data.ToString(provider));
+            return bool.Parse(this._data.ToString(provider));
         }
 
         public override char ToChar(IFormatProvider provider)
         {
-            return char.Parse(_data.ToString(provider));
+            return char.Parse(this._data.ToString(provider));
         }
 
         public override sbyte ToSByte(IFormatProvider provider)
         {
-            return sbyte.Parse(_data.ToString(provider));
+            return sbyte.Parse(this._data.ToString(provider));
         }
 
         public override byte ToByte(IFormatProvider provider)
         {
-            return byte.Parse(_data.ToString(provider));
+            return byte.Parse(this._data.ToString(provider));
         }
 
         public override short ToInt16(IFormatProvider provider)
         {
-            return short.Parse(_data.ToString(provider));
+            return short.Parse(this._data.ToString(provider));
         }
 
         public override ushort ToUInt16(IFormatProvider provider)
         {
-            return ushort.Parse(_data.ToString(provider));
+            return ushort.Parse(this._data.ToString(provider));
         }
 
         public override int ToInt32(IFormatProvider provider)
@@ -133,43 +175,42 @@ namespace Numeric
 
         public override uint ToUInt32(IFormatProvider provider)
         {
-            return uint.Parse(_data.ToString(provider));
+            return uint.Parse(this._data.ToString(provider));
         }
 
         public override long ToInt64(IFormatProvider provider)
         {
-            return long.Parse(_data.ToString(provider));
+            return long.Parse(this._data.ToString(provider));
         }
 
         public override ulong ToUInt64(IFormatProvider provider)
         {
-            return ulong.Parse(_data.ToString(provider));
+            return ulong.Parse(this._data.ToString(provider));
         }
 
         public override float ToSingle(IFormatProvider provider)
         {
-            return float.Parse(_data.ToString(provider));
+            return float.Parse(this._data.ToString(provider));
         }
 
         public override double ToDouble(IFormatProvider provider)
         {
-            return double.Parse(_data.ToString(provider));
+            return double.Parse(this._data.ToString(provider));
         }
 
         public override decimal ToDecimal(IFormatProvider provider)
         {
-            return decimal.Parse(_data.ToString(provider));
+            return decimal.Parse(this._data.ToString(provider));
         }
 
         public override DateTime ToDateTime(IFormatProvider provider)
         {
-            return DateTime.Parse(_data.ToString(provider));
-
+            return DateTime.Parse(this._data.ToString(provider));
         }
 
         public override string ToString(IFormatProvider provider)
         {
-            return _data.ToString(provider);
+            return this._data.ToString(provider);
         }
 
         public override object ToType(Type conversionType, IFormatProvider provider)
@@ -177,54 +218,20 @@ namespace Numeric
             throw new NotImplementedException();
         }
 
-        public int CompareTo(Integer other)
-        {
-            return _data.CompareTo(other._data);
-        }
+        #region Casting
 
-        public bool Equals(Integer other)
-        {
-            return other._data.Equals(_data);
-        }
+        public static implicit operator Integer(int k) => new Integer(k);
 
-        public bool Equals(int other)
-        {
-            return Equals((Integer)other);
-        }
+        public static implicit operator Integer(long k) => new Integer(k);
 
-        public int CompareTo(int other)
-        {
-            return CompareTo((Integer)other);
-        }
+        public static implicit operator Integer(short k) => new Integer(k);
 
-        public bool Equals(long other)
-        {
-            throw new NotImplementedException();
-        }
+        public static implicit operator Integer(decimal k) => new Integer(k);
 
-        public int CompareTo(long other)
-        {
-            throw new NotImplementedException();
-        }
+        public static implicit operator Integer(BigInteger k) => new Integer(k);
 
-        public bool Equals(short other)
-        {
-            throw new NotImplementedException();
-        }
+        public static explicit operator BigInteger(Integer k) => k._data;
 
-        public int CompareTo(short other)
-        {
-            throw new NotImplementedException();
-        }
-
-        public bool Equals(decimal other)
-        {
-            throw new NotImplementedException();
-        }
-
-        public int CompareTo(decimal other)
-        {
-            throw new NotImplementedException();
-        }
+        #endregion
     }
 }

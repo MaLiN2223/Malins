@@ -1,8 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-
-namespace DataStructures.Graphs.Interfaces
+﻿namespace DataStructures.Graphs.Interfaces
 {
+    using System.Collections.Generic;
+
     internal interface IGraph<T> : IEnumerable<IVertex<T>>
     {
         int VerticesCount { get; }

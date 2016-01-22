@@ -1,28 +1,29 @@
-﻿using System;
-
-namespace DataStructures.Matrices
+﻿namespace DataStructures.Matrices
 {
+    using System;
+
     public abstract class MatrixFactory<T> where T : struct, IEquatable<T>
     {
+        // ReSharper disable once StaticMemberInGenericType
+        protected static readonly Random random = new Random();
         public abstract T One { get; }
         public abstract T RandomData();
-        protected static Random random = new Random();
 
         public abstract Matrix<T> Create(MatrixContainer<T> containter);
         public abstract Matrix<T> Create(T[,] data);
 
         public Matrix<T> Create(Matrix<T> matrix)
         {
-            return (Matrix<T>)matrix.Clone();
+            return (Matrix<T>) matrix.Clone();
         }
 
         public Matrix<T> Filled(int rows, int columns, T data)
         {
             GoodRange(rows, columns);
             var output = Empty(rows, columns);
-            for (int i = 0; i < rows; ++i)
+            for (var i = 0; i < rows; ++i)
             {
-                for (int j = 0; j < columns; ++j)
+                for (var j = 0; j < columns; ++j)
                 {
                     output[i, j] = data;
                 }
@@ -34,9 +35,9 @@ namespace DataStructures.Matrices
         {
             GoodRange(rows, columns);
             var item = Empty(rows, columns);
-            int tmp = Math.Min(rows, columns);
+            var tmp = Math.Min(rows, columns);
 
-            for (int i = 0; i < tmp; ++i)
+            for (var i = 0; i < tmp; ++i)
             {
                 item[i, i] = data;
             }
@@ -45,22 +46,22 @@ namespace DataStructures.Matrices
 
         public Matrix<T> Diagonal(Matrix<T> matrix)
         {
-            int rows = matrix.RowCount;
-            int columns = matrix.ColumnCount;
+            var rows = matrix.RowCount;
+            var columns = matrix.ColumnCount;
             var output = Empty(rows, columns);
-            int tmp = Math.Min(rows, columns);
-            for (int i = 0; i < tmp; ++i)
+            var tmp = Math.Min(rows, columns);
+            for (var i = 0; i < tmp; ++i)
                 output[i, i] = matrix[i, i];
             return output;
         }
 
         public Matrix<T> Diagonal(MatrixContainer<T> containter)
         {
-            int rows = containter.RowCount;
-            int columns = containter.ColumnCount;
+            var rows = containter.RowCount;
+            var columns = containter.ColumnCount;
             var output = Empty(rows, columns);
-            int tmp = Math.Min(rows, columns);
-            for (int i = 0; i < tmp; ++i)
+            var tmp = Math.Min(rows, columns);
+            for (var i = 0; i < tmp; ++i)
                 output[i, i] = containter[i, i];
             return output;
         }
@@ -82,9 +83,9 @@ namespace DataStructures.Matrices
         {
             GoodRange(rows, columns);
             var matrix = Empty(rows, columns);
-            for (int i = 0; i < rows; ++i)
+            for (var i = 0; i < rows; ++i)
             {
-                for (int j = 0; j < columns; ++j)
+                for (var j = 0; j < columns; ++j)
                 {
                     matrix[i, j] = RandomData();
                 }
@@ -99,9 +100,10 @@ namespace DataStructures.Matrices
 
         private void GoodRange(int rows, int columns)
         {
-            if (rows <= 0 || columns <= 0)
-                throw new ArgumentException();
+            if (rows <= 0)
+                throw new ArgumentOutOfRangeException(nameof(rows));
+            if (columns <= 0)
+                throw new ArgumentOutOfRangeException(nameof(columns));
         }
-
     }
 }

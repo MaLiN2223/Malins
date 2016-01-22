@@ -3,9 +3,10 @@
     public class Sqrt : ISymbolicObject
     {
         private double _data;
+
         public Sqrt(double d)
         {
-            _data = d;
+            this._data = d;
         }
     }
 }

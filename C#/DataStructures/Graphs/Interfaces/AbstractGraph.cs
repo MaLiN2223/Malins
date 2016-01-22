@@ -1,18 +1,31 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-
-namespace DataStructures.Graphs.Interfaces
+﻿namespace DataStructures.Graphs.Interfaces
 {
+    using System;
+    using System.Collections;
+    using System.Collections.Generic;
+    using System.Linq;
+
     /// <summary>
-    /// Abstract graph
+    ///     Abstract graph
     /// </summary>
     /// <typeparam name="T">Type of vertices value</typeparam>
     public abstract class AbstractGraph<T> : IGraph<T>
     {
-        /// <summary> 
+
+        /// <summary>
+        ///     Returns number of vertices in graph
+        /// </summary>
+        public int VerticesCount { get; protected set; }
+
+        /// <summary>
+        ///     Returns number of edges in graph
+        /// </summary>
+        public int EdgesCount { get; protected set; }
+
+        public virtual IVertex<T> Root { get; set; }
+        public abstract bool HasRoot();
+        public abstract void SetRoot(T d);
+        /// <summary>
         ///     Returns an enumerator that iterates through adjency list.
         /// </summary>
         /// <returns>An IEnumerator object that can be used to iterate through the IVertex{T} adjency list. </returns>
@@ -22,18 +35,6 @@ namespace DataStructures.Graphs.Interfaces
         {
             return GetEnumerator();
         }
-        /// <summary>
-        /// Returns number of vertices in graph
-        /// </summary>
-        public int VerticesCount { get; protected set; }
-        /// <summary>
-        /// Returns number of edges in graph
-        /// </summary>
-        public int EdgesCount { get; protected set; }
-
-        public virtual IVertex<T> Root { get; set; }
-        public abstract bool HasRoot();
-        public abstract void SetRoot(T d);
 
         /// <summary>
         ///     Returns an enumerator that iterates through adjency list of vertex.
@@ -47,7 +48,7 @@ namespace DataStructures.Graphs.Interfaces
         public abstract IVertex<T> GetVertex(T data);
 
         /// <summary>
-        /// Returns depth first search list of graph starting from vertex
+        ///     Returns depth first search list of graph starting from vertex
         /// </summary>
         /// <param name="vertex">Start vertex</param>
         /// <returns>Linked list of vertices in depth first search order</returns>
@@ -55,7 +56,7 @@ namespace DataStructures.Graphs.Interfaces
         {
             var visited = new HashSet<T>();
             var vertices = new List<IVertex<T>>();
-            var stack = new Stack<IVertex<T>>(VerticesCount / 2);
+            var stack = new Stack<IVertex<T>>(VerticesCount/2);
             stack.Push(vertex);
             while (stack.Count > 0)
             {
@@ -83,15 +84,17 @@ namespace DataStructures.Graphs.Interfaces
 
             return GetDfs(Root);
         }
+
         public List<IVertex<T>> GetBfs()
         {
             if (!HasRoot())
                 throw new ArgumentException("No root available");
 
-            return GetBfs(Root);
+            return GetBfs(this.Root);
         }
+
         /// <summary>
-        /// Returns breath first search list of graph starting from vertex
+        ///     Returns breath first search list of graph starting from vertex
         /// </summary>
         /// <param name="vertex">Start vertex</param>
         /// <returns>Linked list of vertices in breath first search order</returns>
@@ -99,7 +102,7 @@ namespace DataStructures.Graphs.Interfaces
         {
             var visited = new HashSet<T>();
             var vertices = new List<IVertex<T>>();
-            LinkedList<IVertex<T>> queue = new LinkedList<IVertex<T>>();
+            var queue = new LinkedList<IVertex<T>>();
             queue.AddLast(vertex);
             while (queue.Count > 0)
             {
