@@ -42,6 +42,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Complex.cs" />
+    <Compile Include="ComplexFactorial.cs" />
     <Compile Include="Integer.cs" />
     <Compile Include="SymbolicObject.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

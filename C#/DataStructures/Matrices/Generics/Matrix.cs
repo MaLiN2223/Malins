@@ -1,8 +1,8 @@
 ﻿namespace DataStructures.Matrices.Generics
 {
     using System;
-    using System.CodeDom;
     using System.Collections.Generic;
+    using System.Diagnostics;
     using System.Reflection;
     using System.Runtime.CompilerServices;
     using System.Text;
@@ -51,7 +51,7 @@
     internal class DoubleTypeTratis : ITypeTratis<double>
     {
         private static double _multiplyNeutralF = 1.0;
-        private static double _sumNeutralF;
+        private static double _sumNeutralF = 0.0;
         public double Add(double a, double b) => a + b;
 
         public double Mul(double a, double b) => a * b;
@@ -110,11 +110,11 @@
     }
 
     #endregion
-
+    [DebuggerDisplay("Matrix rows={RowCount}, columns={ColumnCount}, type = {typeof(T)}")]
+    [Serializable]
     public class Matrix<T>
     {
         private readonly MatrixContainer<T> container;
-
         internal Matrix(int rows, int columns)
         {
             container = new MatrixContainer<T>(rows, columns);
@@ -150,7 +150,7 @@
 
         public static bool operator ==(Matrix<T> first, Matrix<T> second)
         {
-            if (first == null || second == null)
+            if (ReferenceEquals(first, null) || ReferenceEquals(second, null))
                 return false;
             if (first.RowCount != second.RowCount)
                 return false;
@@ -165,14 +165,16 @@
                 }
             }
             return true;
-        } 
+        }
         public static bool operator !=(Matrix<T> first, Matrix<T> second)
         {
             return !(first == second);
         }
         public T this[int row, int column]
         {
+            [MethodImpl(MethodImplOptions.AggressiveInlining)]
             get { return container[row, column]; }
+            [MethodImpl(MethodImplOptions.AggressiveInlining)]
             set { container[row, column] = value; }
         }
 
@@ -224,6 +226,8 @@
 
         public static Matrix<T> operator -(Matrix<T> first)
         {
+            if (ReferenceEquals(first, null))
+                throw new NullReferenceException();
             var output = new Matrix<T>(first.RowCount, first.ColumnCount);
             for (var i = 0; i < first.RowCount; i++)
             {
@@ -275,6 +279,8 @@
 
         public T Determinant()
         {
+            if (RowCount != ColumnCount)
+                throw new InvalidOperationException("Matrix must be square");
             return default(T);
         }
 
@@ -303,18 +309,22 @@
             var type = typeof(T);
             if (!traitByType.ContainsKey(type))
             {
+                var arr = new Type[] { type, type };
                 MethodInfo add, sub, mul, div, eq;
-                if ((add = type.GetMethod("op_Addition")) == null)
+                FieldInfo mulN, addN;
+                if ((add = type.GetMethod("op_Addition", arr)) == null)
                     throw new NotSupportedException("Addition is not implemented");
-                if ((sub = type.GetMethod("op_Subtraction")) == null)
+                if ((sub = type.GetMethod("op_Subtraction", arr)) == null)
                     throw new NotSupportedException("Substraction is not implemented");
-                if ((mul = type.GetMethod("op_Multiply")) == null)
+                if ((mul = type.GetMethod("op_Multiply", arr)) == null)
                     throw new NotSupportedException("Multiply is not implemented");
-                if ((div = type.GetMethod("op_Division")) == null)
+                if ((div = type.GetMethod("op_Division", arr)) == null)
                     throw new NotSupportedException("Division is not implemented");
-                if ((eq = type.GetMethod("op_Equality")) == null)
+                if ((eq = type.GetMethod("op_Equality", arr)) == null)
                     throw new NotSupportedException("Equality is not implemented");
                 var neg = type.GetMethod("op_Negate");
+                mulN = type.GetField("MultiplyNeutral", BindingFlags.Static | BindingFlags.Public);
+                addN = type.GetField("SumNeutral", BindingFlags.Static | BindingFlags.Public);
                 var obj = new TypeTraits<T>
                 {
                     AddF = (a, b) => (T)add.Invoke(null, new object[] { a, b }),
@@ -323,7 +333,12 @@
                     DivF = (a, b) => (T)div.Invoke(null, new object[] { a, b }),
                     EqF = (a, b) => (bool)eq.Invoke(null, new object[] { a, b }),
                     NegF = a => (T)neg.Invoke(null, new object[] { a })
+
                 };
+                if (mulN != null)
+                    obj.MultiplyNeutralF = (T)mulN.GetValue(null);
+                if (addN != null)
+                    obj.SumNeturalF = (T)addN.GetValue(null);
                 traitByType[type] = obj;
             }
         }

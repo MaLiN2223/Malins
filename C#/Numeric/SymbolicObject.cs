@@ -42,21 +42,7 @@ namespace Numeric
         public static SymbolicObject operator *(SymbolicObject o, int a) => o * new Integer(a);
         public static SymbolicObject operator /(SymbolicObject o, int a) => o / new Integer(a);
         public static SymbolicObject operator ^(SymbolicObject o, int a) => o ^ new Integer(a);
-        #endregion
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+        #endregion 
 
         protected abstract SymbolicObject Sum(SymbolicObject nr);
         protected abstract SymbolicObject Multiply(SymbolicObject nr);

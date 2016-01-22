@@ -1,22 +1,42 @@
-﻿using System; 
-using System.Globalization;
-
+﻿
 namespace Numeric
 {
+    using System.Diagnostics;
+    using System.Globalization;
+    using System;
+
+
+    [Serializable]
+    [DebuggerDisplay("Complex - {ToString()}")]
     public struct Complex : IEquatable<Complex>
     {
-        public Complex(double real, double imaginary)
+        public Complex(Rational real, Rational imaginary)
         {
             Re = real;
             Im = imaginary;
         }
 
-        public readonly double Re;
-        public readonly double Im;
+        public static implicit operator ComplexFactorial(Complex fact)
+        {
+            return new ComplexFactorial(fact, MultiplyNeutral);
+        }
+        public readonly Rational Re;
+        public readonly Rational Im;
+
+
+
+        public static readonly Complex MultiplyNeutral;
+        public static readonly Complex SumNeutral;
+
+        static Complex()
+        {
+            MultiplyNeutral = new Complex(1, 0);
+            SumNeutral = new Complex(0, 0);
+        }
 
         public bool Equals(Complex other)
         {
-            return Math.Abs(Re - other.Re) <= 0 & Math.Abs(Im - other.Im) <= 0;
+            return (Re - other.Re).Abs <= 0 & Math.Abs(Im - other.Im) <= 0;
         }
 
         public override string ToString()
@@ -40,6 +60,15 @@ namespace Numeric
             return ToString().GetHashCode();
         }
 
+        public static bool operator ==(Complex c1, Complex c2)
+        {
+            return c1.Equals(c2);
+        }
+
+        public static bool operator !=(Complex c1, Complex c2)
+        {
+            return !(c1 == c2);
+        }
 
         public static Complex operator +(Complex c, Complex c2)
         {
@@ -77,6 +106,12 @@ namespace Numeric
             if (p % 2 == 0)
                 return (complex * complex) ^ p / 2;
             return complex * ((complex * complex) ^ (p - 1) / 2);
+        }
+
+        public static Complex operator /(Complex complex, Complex complex2)
+        {
+            //TODO : dzielenie liczb zespolonych
+            throw new NotImplementedException();
         }
         public double Abs()
         {

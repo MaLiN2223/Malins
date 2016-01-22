@@ -1,7 +1,8 @@
-﻿using System;
-using System.Numerics;
-namespace Numeric
+﻿namespace Numeric
 {
+    using System;
+    using System.Numerics;
+
     public class Integer : SymbolicObject,
         IEquatable<Integer>, IComparable<Integer>,
         IEquatable<int>, IComparable<int>,
@@ -10,57 +11,40 @@ namespace Numeric
         IEquatable<decimal>, IComparable<decimal>
     {
         private BigInteger _data;
-        #region Casting
-        public static implicit operator Integer(int k) => new Integer(k);
-
-        public static implicit operator Integer(long k) => new Integer(k);
-
-        public static implicit operator Integer(short k) => new Integer(k);
-
-        public static implicit operator Integer(decimal k) => new Integer(k);
-
-        public static implicit operator Integer(BigInteger k) => new Integer(k);
-
-        public static explicit operator BigInteger(Integer k) => k._data; 
-        #endregion
 
         public Integer(BigInteger i)
         {
             _data = i;
         }
+
         public Integer(int i)
         {
             _data = new BigInteger(i);
         }
+
         public Integer(long i)
         {
             _data = new BigInteger(i);
         }
+
         public Integer(decimal i)
         {
             _data = new BigInteger(i);
         }
+
         public Integer(short i)
         {
             _data = new BigInteger(i);
         }
 
-        public static Integer operator %(Integer first, Integer second)
-        {
-            return new Integer(first._data % second._data);
-        }
-        public static Integer operator ++(Integer first)
-        {
-            return first._data++;
-        }
-
         protected override SymbolicObject Sum(SymbolicObject obj)
         {
+            //TODO : Sumowanie
             var k = obj as Integer;
             if (k != null)
                 return new Integer(_data + k._data);
             var k2 = obj as Real;
-            return null;
+            throw new NotImplementedException();
         }
 
         protected override SymbolicObject Multiply(SymbolicObject nr)
@@ -78,19 +62,13 @@ namespace Numeric
             throw new NotImplementedException();
         }
 
-        public override int CompareTo(object obj)
-        {
-            if (!(obj is Integer))
-                throw new ArgumentException("Wrong argument type", nameof(obj));
-            return CompareTo((Integer)obj);
-
-        }
 
         public override TypeCode GetTypeCode()
         {
+            //TODO : GetTypeCode()
             throw new NotImplementedException();
         }
-
+        #region Conversions
         public override string ToString(string format, IFormatProvider formatProvider)
         {
             return _data.ToString(formatProvider);
@@ -128,7 +106,7 @@ namespace Numeric
 
         public override int ToInt32(IFormatProvider provider)
         {
-            throw new NotImplementedException();
+            return int.Parse(_data.ToString(provider));
         }
 
         public override uint ToUInt32(IFormatProvider provider)
@@ -164,7 +142,6 @@ namespace Numeric
         public override DateTime ToDateTime(IFormatProvider provider)
         {
             return DateTime.Parse(_data.ToString(provider));
-
         }
 
         public override string ToString(IFormatProvider provider)
@@ -174,17 +151,37 @@ namespace Numeric
 
         public override object ToType(Type conversionType, IFormatProvider provider)
         {
+            //TODO : ToType
             throw new NotImplementedException();
         }
+        #endregion
 
-        public int CompareTo(Integer other)
+        #region comparators
+
+        public int CompareTo(decimal other) => _data.CompareTo(other);
+
+        public int CompareTo(int other) => _data.CompareTo(other);
+
+        public int CompareTo(Integer other) => _data.CompareTo(other);
+
+        public int CompareTo(long other) => _data.CompareTo(other);
+
+        public int CompareTo(short other) => _data.CompareTo(other);
+
+        public override int CompareTo(object obj)
         {
-            return _data.CompareTo(other._data);
+            if (!(obj is Integer))
+                throw new ArgumentException("Wrong argument type", nameof(obj));
+            return CompareTo((Integer)obj);
         }
 
-        public bool Equals(Integer other)
+        #endregion
+
+        #region equality
+
+        public bool Equals(decimal other)
         {
-            return other._data.Equals(_data);
+            throw new NotSupportedException();
         }
 
         public bool Equals(int other)
@@ -192,39 +189,57 @@ namespace Numeric
             return Equals((Integer)other);
         }
 
-        public int CompareTo(int other)
+        public bool Equals(Integer other) => other._data.Equals(_data);
+
+        public bool Equals(long other) => _data.Equals(other);
+
+        public bool Equals(short other) => _data.Equals(other);
+
+        #endregion
+
+        #region operators
+
+        public static Integer operator %(Integer first, Integer second)
         {
-            return CompareTo((Integer)other);
+            return new Integer(first._data % second._data);
         }
 
-        public bool Equals(long other)
+        public static Integer operator ++(Integer first)
         {
-            throw new NotImplementedException();
+            return first._data++;
+        } 
+
+        public static bool operator <(Integer first, int second)
+        {
+            return first._data < second;
         }
 
-        public int CompareTo(long other)
+        public static bool operator >(Integer first, int second)
         {
-            throw new NotImplementedException();
+            return first._data > second;
         }
 
-        public bool Equals(short other)
+        public static Integer operator -(Integer data)
         {
-            throw new NotImplementedException();
+            return new Integer(data._data);
         }
 
-        public int CompareTo(short other)
-        {
-            throw new NotImplementedException();
-        }
+        #endregion
 
-        public bool Equals(decimal other)
-        {
-            throw new NotImplementedException();
-        }
+        #region Casting
 
-        public int CompareTo(decimal other)
-        {
-            throw new NotImplementedException();
-        }
+        public static implicit operator Integer(int k) => new Integer(k);
+
+        public static implicit operator Integer(long k) => new Integer(k);
+
+        public static implicit operator Integer(short k) => new Integer(k);
+
+        public static implicit operator Integer(decimal k) => new Integer(k);
+
+        public static implicit operator Integer(BigInteger k) => new Integer(k);
+
+        public static explicit operator BigInteger(Integer k) => k._data;
+
+        #endregion
     }
 }

@@ -1,9 +1,9 @@
-﻿using System;
-using System.Diagnostics;
-using System.Runtime.CompilerServices;
-
+﻿
 namespace DataStructures.Matrices.Generics
 {
+    using System;
+
+    [Serializable]
     public class MatrixContainer<T>
     {
         private T[,] data;
@@ -12,15 +12,29 @@ namespace DataStructures.Matrices.Generics
 
         public MatrixContainer(int rowCount, int columnCount)
         {
-            if (rowCount < 0)
-                throw new ArgumentException(nameof(rowCount));
-            if (columnCount <= 0)
-                throw new ArgumentException(nameof(columnCount));
+            GoodRange(rowCount, columnCount, true);
             RowCount = rowCount;
             ColumnCount = columnCount;
             data = new T[rowCount, columnCount];
         }
 
+
+        public MatrixContainer(int rows, int cols, T[] data)
+        {
+            GoodRange(rows, cols, true);
+            RowCount = rows;
+            ColumnCount = cols;
+            this.data = new T[RowCount, ColumnCount];
+            int k = 0;
+            for (int i = 0; i < RowCount; ++i)
+            {
+                for (int j = 0; j < ColumnCount; ++j)
+                {
+                    this.data[i, j] = data[k++];
+                }
+            }
+
+        }
         public MatrixContainer(T[,] data)
         {
             RowCount = data.Length / data.GetLength(1);
@@ -59,12 +73,14 @@ namespace DataStructures.Matrices.Generics
             if (false)
                 throw new AccessViolationException("Matrix is read only");
         }
-        private void GoodRange(int row, int column)
+        private void GoodRange(int row, int column, bool construction = false)
         {
             if (row < 0)
                 throw new ArgumentOutOfRangeException(nameof(row), row, "Row must be non negative");
             if (column < 0)
                 throw new ArgumentOutOfRangeException(nameof(column), column, "Column must be non negative");
+            if (construction)
+                return;
             if (row >= RowCount)
                 throw new ArgumentOutOfRangeException(nameof(row));
             if (column >= ColumnCount)

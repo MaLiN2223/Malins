@@ -17,6 +17,7 @@ namespace Numeric
 
         }
 
+        public Rational Abs => new Rational(_up < 0 ? -_up : _up, _down < 0 ? -_down : _down);
 
         protected override SymbolicObject Sum(SymbolicObject nr)
         {
