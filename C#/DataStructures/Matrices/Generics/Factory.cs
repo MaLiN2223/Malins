@@ -41,7 +41,7 @@
                 if (ReferenceEquals(matrix, null))
                 {
                     throw new ArgumentNullException(nameof(matrix), "Matrixt must not be null");
-                } 
+                }
                 IFormatter formatter = new BinaryFormatter();
                 Stream stream = new MemoryStream();
                 using (stream)
@@ -51,7 +51,7 @@
                     return (Matrix<T>)formatter.Deserialize(stream);
                 }
             }
-
+            throw new NotSupportedException();
         }
         /// <summary>
         /// Creates empty array.

@@ -45,6 +45,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BasicAlgorithms\Sort.cs" />
     <Compile Include="Exceptions\InvalidArgumentException.cs" />
     <Compile Include="Graphs\Interfaces\AbstractGraph.cs" />
     <Compile Include="Graphs\Interfaces\IDirectedGraph.cs" />
