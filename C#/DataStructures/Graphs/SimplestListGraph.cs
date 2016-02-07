@@ -1,17 +1,20 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using DataStructures.Graphs.Interfaces;
-
-namespace DataStructures.Graphs
+﻿namespace DataStructures.Graphs
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using Interfaces;
+
     /// <summary>
     ///     Implements Not directed and not weighted graph with adjency list
     /// </summary>
     /// <typeparam name="T">values in vertices</typeparam>
     public class SimplestListGraph<T> : AbstractGraph<T>
     {
+        private readonly List<AdjencyListVertex<T>> _vertices = new List<AdjencyListVertex<T>>();
+
+        private IVertex<T> _root;
+
         public SimplestListGraph()
         {
         }
@@ -19,53 +22,53 @@ namespace DataStructures.Graphs
         public SimplestListGraph(AdjencyListVertex<T> root)
         {
             Add(root);
-            _root = root;
+            this._root = root;
         }
 
         public SimplestListGraph(T root) : this(new AdjencyListVertex<T>(root))
         {
-
         }
 
-        public new int VerticesCount { get { return _vertices.Count; } }
-        public new int EdgesCount { get; private set; }
-        public override bool HasRoot()
+        public new int VerticesCount
         {
-            return _root != null;
+            get { return this._vertices.Count; }
         }
 
-        private IVertex<T> _root;
+        public new int EdgesCount { get; private set; }
+
         public override IVertex<T> Root
         {
-            get
-            {
-                return _root;
-            }
+            get { return this._root; }
             set
             {
-                if (_vertices.Contains(value))
-                    _root = Root;
+                if (this._vertices.Contains(value))
+                    this._root = Root;
                 else
                     throw new ArgumentException("Root is not in graph!");
             }
         }
 
+        public override bool HasRoot()
+        {
+            return this._root != null;
+        }
+
         public override void SetRoot(T data)
         {
-            _root = _vertices.First(vertex => vertex.Value.Equals(data));
+            this._root = this._vertices.First(vertex => vertex.Value.Equals(data));
         }
 
         /// <summary>
-        /// Adds vertex to graph
+        ///     Adds vertex to graph
         /// </summary>
         /// <param name="vertex">vertex to add</param>
         /// <exception cref="ArgumentException"></exception>
         public void Add(IVertex<T> vertex)
         {
             var v = vertex as AdjencyListVertex<T>;
-            if (v == null || vertex == null || _vertices.Contains(v))
+            if (v == null || vertex == null || this._vertices.Contains(v))
                 throw new ArgumentException("Bad vertex");
-            _vertices.Add(v);
+            this._vertices.Add(v);
         }
 
         public void Add(T vertex)
@@ -75,45 +78,47 @@ namespace DataStructures.Graphs
 
         public override IVertex<T> GetVertex(T data)
         {
-            return _vertices.First(v => v.Value.Equals(data));
+            return this._vertices.First(v => v.Value.Equals(data));
         }
+
         /// <summary>
-        /// Removes vertex from graph
+        ///     Removes vertex from graph
         /// </summary>
         /// <param name="vertex">vertex to remove</param>
         /// <returns></returns>
         public bool Remove(IVertex<T> vertex)
         {
-            int i = 0;
+            var i = 0;
             while (i < VerticesCount)
             {
-                if (_vertices[i].Equals(vertex))
+                if (this._vertices[i].Equals(vertex))
                     break;
                 ++i;
             }
             if (i == VerticesCount)
                 return false;
-            foreach (var v in _vertices[i])
+            foreach (var v in this._vertices[i])
             {
-                v.Disconnect(_vertices[i]);
+                v.Disconnect(this._vertices[i]);
                 EdgesCount--;
             }
-            _vertices.RemoveAt(i);
+            this._vertices.RemoveAt(i);
             return true;
         }
+
         public bool RemoveEdge(T vertex1, T vertex2)
         {
             IVertex<T> first = null;
             IVertex<T> second = null;
-            int i = 0;
+            var i = 0;
             if (vertex1.Equals(vertex2))
                 return false;
             while (i < VerticesCount)
             {
-                if (_vertices[i].Value.Equals(vertex1))
-                    first = _vertices[i];
-                else if (_vertices[i].Value.Equals(vertex2))
-                    second = _vertices[i];
+                if (this._vertices[i].Value.Equals(vertex1))
+                    first = this._vertices[i];
+                else if (this._vertices[i].Value.Equals(vertex2))
+                    second = this._vertices[i];
                 else if (second != null && first != null)
                     break;
                 ++i;
@@ -125,15 +130,16 @@ namespace DataStructures.Graphs
             EdgesCount--;
             return true;
         }
+
         public bool Remove(T vertex)
         {
             IVertex<T> good = null;
-            int i = 0;
+            var i = 0;
             while (i < VerticesCount)
             {
-                if (_vertices[i].Value.Equals(vertex))
+                if (this._vertices[i].Value.Equals(vertex))
                 {
-                    good = _vertices[i];
+                    good = this._vertices[i];
                     break;
                 }
                 ++i;
@@ -145,15 +151,17 @@ namespace DataStructures.Graphs
                 v.Disconnect(good);
                 EdgesCount--;
             }
-            _vertices.RemoveAt(i);
+            this._vertices.RemoveAt(i);
             return true;
         }
+
         public int Degree(IVertex<T> vertex)
         {
             return vertex.Neighbors().Count();
         }
+
         /// <summary>
-        /// Connects vertices in graph
+        ///     Connects vertices in graph
         /// </summary>
         /// <param name="vertex1"></param>
         /// <param name="vertex2"></param>
@@ -161,7 +169,7 @@ namespace DataStructures.Graphs
         {
             if (vertex2.Equals(vertex1))
                 throw new ArgumentException("Cant connect vertice to itself");
-            if (_vertices.Contains(vertex1) && _vertices.Contains(vertex2))
+            if (this._vertices.Contains(vertex1) && this._vertices.Contains(vertex2))
             {
                 if (vertex1.Contains(vertex2))
                     throw new ArgumentException("Vertices are already connected");
@@ -179,7 +187,7 @@ namespace DataStructures.Graphs
             IVertex<T> first = null;
             IVertex<T> second = null;
 
-            foreach (var data in _vertices)
+            foreach (var data in this._vertices)
             {
                 if (data.Value.Equals(vertex1))
                 {
@@ -196,7 +204,7 @@ namespace DataStructures.Graphs
             }
             if (first == null || second == null)
                 throw new ArgumentException("Vertices must be in graph");
-            if (_vertices.Contains(first) && _vertices.Contains(second))
+            if (this._vertices.Contains(first) && this._vertices.Contains(second))
             {
                 if (first.Contains(second))
                     throw new ArgumentException("Vertices are already connected");
@@ -205,7 +213,6 @@ namespace DataStructures.Graphs
             }
             else
                 throw new ArgumentException("Vertices must be in graph");
-
         }
 
         public IEnumerable<IVertex<T>> SortedVertices()
@@ -223,7 +230,5 @@ namespace DataStructures.Graphs
         {
             throw new NotImplementedException();
         }
-
-        private readonly List<AdjencyListVertex<T>> _vertices = new List<AdjencyListVertex<T>>();
     }
 }

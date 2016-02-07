@@ -1,20 +1,18 @@
-﻿
-using System;
-
-namespace Numeric
+﻿namespace Numeric
 {
+    using System;
+
     public class Rational : SymbolicObject
     {
-        private Integer _up;
         private Integer _down;
+        private Integer _up;
 
         public Rational(Integer up, Integer down)
         {
-            _up = up;
+            this._up = up;
             if (down == 0)
-                throw new System.ArgumentException("Denominator must be non-zero.");
-            _down = down;
-
+                throw new ArgumentException("Denominator must be non-zero.");
+            this._down = down;
         }
 
         public Rational Abs => new Rational(_up < 0 ? -_up : _up, _down < 0 ? -_down : _down);

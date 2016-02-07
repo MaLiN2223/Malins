@@ -1,7 +1,7 @@
-﻿using System;
-
-namespace DataStructures.Exceptions
+﻿namespace DataStructures.Exceptions
 {
+    using System;
+
     [Serializable]
     internal class InvalidArgumentException : Exception
     {

@@ -1,35 +1,21 @@
-﻿
-using System;
-using System.Globalization;
-using System.Numerics;
-using System.Text.RegularExpressions;
-
-namespace Numeric
+﻿namespace Numeric
 {
+    using System;
+    using System.Globalization;
+    using System.Numerics;
+    using System.Text.RegularExpressions;
+
     public sealed class Real : SymbolicObject,
         IEquatable<Real>, IComparable<Real>,
         IEquatable<double>, IComparable<double>,
         IEquatable<float>, IComparable<float>
     {
-        #region Casting 
-        #region implicit
-        public static implicit operator Real(int k) => new Real(k);
-
-        public static implicit operator Real(long k) => new Real(k);
-        #endregion
-        #region explicit  
-        public static explicit operator double(Real k) => double.Parse(k.IntegerPart + "." + k.FractionalPart, CultureInfo.InvariantCulture);
-        public static explicit operator float(Real k) => float.Parse(k.IntegerPart + "." + k.FractionalPart, CultureInfo.InvariantCulture);
-        #endregion
-        #endregion
-
-        public BigInteger IntegerPart { get; private set; }
-        public BigInteger FractionalPart { get; private set; }
         private const string IntStr = @"(\d*?)\.";
         private const string FracString = @"\.(\d*)";
+        private const double Threshold = 0.000000000001;
         private static readonly Regex IntRegex = new Regex(IntStr);
         private static readonly Regex FractionRegex = new Regex(FracString);
-        private const double Threshold = 0.000000000001;
+
         public Real(double d) : this(d.ToString(CultureInfo.InvariantCulture))
         {
         }
@@ -37,10 +23,11 @@ namespace Numeric
         public Real(float d) : this(d.ToString(CultureInfo.InvariantCulture))
         {
         }
+
         private Real()
         {
-
         }
+
         public Real(string d)
         {
             var matchInt = IntRegex.Match(d);
@@ -52,6 +39,39 @@ namespace Numeric
             IntegerPart = BigInteger.Parse(matchInt.Groups[1].Captures[0].Value);
             FractionalPart = BigInteger.Parse(matchFrac.Groups[1].Captures[0].Value, CultureInfo.InvariantCulture);
             //TODO : 1.0000001 stworzy 1.1 - to nie dobrze
+        }
+
+        public BigInteger IntegerPart { get; private set; }
+        public BigInteger FractionalPart { get; private set; }
+
+        public int CompareTo(double other)
+        {
+            throw new NotImplementedException();
+        }
+
+        public int CompareTo(float other)
+        {
+            throw new NotImplementedException();
+        }
+
+        public int CompareTo(Real other)
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool Equals(double other)
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool Equals(float other)
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool Equals(Real other)
+        {
+            throw new NotImplementedException();
         }
 
         public SymbolicObject Simplify(double threshold = Threshold)
@@ -68,17 +88,15 @@ namespace Numeric
             if (integer != null)
             {
                 output.FractionalPart = FractionalPart;
-                var k = (BigInteger)integer;
+                var k = (BigInteger) integer;
                 output.IntegerPart = IntegerPart + k;
                 return output;
             }
             if (nr is Real)
             {
-
             }
             if (nr is Rational)
             {
-
             }
             throw new NotSupportedException();
         }
@@ -193,34 +211,26 @@ namespace Numeric
             throw new NotImplementedException();
         }
 
-        public int CompareTo(Real other)
-        {
-            throw new NotImplementedException();
-        }
+        #region Casting 
 
-        public bool Equals(Real other)
-        {
-            throw new NotImplementedException();
-        }
+        #region implicit
 
-        public bool Equals(double other)
-        {
-            throw new NotImplementedException();
-        }
+        public static implicit operator Real(int k) => new Real(k);
 
-        public int CompareTo(double other)
-        {
-            throw new NotImplementedException();
-        }
+        public static implicit operator Real(long k) => new Real(k);
 
-        public bool Equals(float other)
-        {
-            throw new NotImplementedException();
-        }
+        #endregion
 
-        public int CompareTo(float other)
-        {
-            throw new NotImplementedException();
-        }
+        #region explicit  
+
+        public static explicit operator double(Real k)
+            => double.Parse(k.IntegerPart + "." + k.FractionalPart, CultureInfo.InvariantCulture);
+
+        public static explicit operator float(Real k)
+            => float.Parse(k.IntegerPart + "." + k.FractionalPart, CultureInfo.InvariantCulture);
+
+        #endregion
+
+        #endregion
     }
 }

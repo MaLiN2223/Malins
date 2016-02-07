@@ -1,30 +1,31 @@
-﻿using System;
-using System.Collections.Generic;
-using DataStructures.Graphs;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-
-namespace DataStructuresTests.Graphs
+﻿namespace DataStructuresTests.Graphs
 {
+    using System;
+    using System.Collections.Generic;
+    using DataStructures.Graphs;
+    using Microsoft.VisualStudio.TestTools.UnitTesting;
+
     [TestClass]
     public class SimplestListGraphTest
     {
+        private readonly int _n = 50;
+
         private int N
         {
             get
             {
-                Assert.IsTrue(_n > 10);
-                return _n;
-            } 
+                Assert.IsTrue(this._n > 10);
+                return this._n;
+            }
         }
 
-        private int _n = 50;
         [TestMethod]
         public void Adding()
         {
-            SimplestListGraph<string> graph = new SimplestListGraph<string>();
-            AdjencyListVertex<string> v = new AdjencyListVertex<string>("A");
-            AdjencyListVertex<string> v2 = new AdjencyListVertex<string>("B");
-            AdjencyListVertex<string> v3 = new AdjencyListVertex<string>("C");
+            var graph = new SimplestListGraph<string>();
+            var v = new AdjencyListVertex<string>("A");
+            var v2 = new AdjencyListVertex<string>("B");
+            var v3 = new AdjencyListVertex<string>("C");
             graph.Add(v);
             graph.Add(v2);
             graph.Add(v3);
@@ -33,7 +34,7 @@ namespace DataStructuresTests.Graphs
         }
 
         [TestMethod]
-        [ExpectedException(typeof(ArgumentException))]
+        [ExpectedException(typeof (ArgumentException))]
         public void ConnectNotIncluded()
         {
             var graph = new SimplestListGraph<string>();
@@ -42,8 +43,9 @@ namespace DataStructuresTests.Graphs
             graph.Add(v1);
             graph.Connect(v1, v2);
         }
+
         [TestMethod]
-        [ExpectedException(typeof(ArgumentException))]
+        [ExpectedException(typeof (ArgumentException))]
         public void ConnectTwoTimes()
         {
             var graph = new SimplestListGraph<string>();
@@ -55,13 +57,14 @@ namespace DataStructuresTests.Graphs
             graph.Connect(v1, v2);
             graph.Connect(v2, v1);
         }
+
         [TestMethod]
-        [ExpectedException(typeof(ArgumentException))]
+        [ExpectedException(typeof (ArgumentException))]
         public void ConnectingItself()
         {
-            SimplestListGraph<string> graph = new SimplestListGraph<string>();
-            AdjencyListVertex<string> v1 = new AdjencyListVertex<string>("A");
-            AdjencyListVertex<string> v2 = new AdjencyListVertex<string>("B");
+            var graph = new SimplestListGraph<string>();
+            var v1 = new AdjencyListVertex<string>("A");
+            var v2 = new AdjencyListVertex<string>("B");
             graph.Add(v1);
             graph.Add(v2);
             Assert.AreEqual(2, graph.VerticesCount);
@@ -69,7 +72,7 @@ namespace DataStructuresTests.Graphs
         }
 
         [TestMethod]
-        [ExpectedException(typeof(ArgumentException))]
+        [ExpectedException(typeof (ArgumentException))]
         public void AddExisting()
         {
             var graph = new SimplestListGraph<string>();
@@ -77,29 +80,32 @@ namespace DataStructuresTests.Graphs
             graph.Add(v1);
             graph.Add(v1);
         }
+
         [TestMethod]
         public void VertexCounting()
         {
             var graph = new SimplestListGraph<int>();
-            for (int i = 0; i < N; ++i)
+            for (var i = 0; i < N; ++i)
                 graph.Add(new AdjencyListVertex<int>(i));
             Assert.AreEqual(N, graph.VerticesCount);
         }
+
         [TestMethod]
         public void EdgeCounting()
         {
             var graph = new SimplestListGraph<int>();
-            for (int i = 0; i < N; ++i)
+            for (var i = 0; i < N; ++i)
                 graph.Add(new AdjencyListVertex<int>(i));
-            for (int i = 0; i < N - 1; ++i)
+            for (var i = 0; i < N - 1; ++i)
                 graph.Connect(i, i + 1);
             Assert.AreEqual(N - 1, graph.EdgesCount);
         }
+
         [TestMethod]
         public void RemoveVertexCount()
         {
             var graph = new SimplestListGraph<int>();
-            for (int i = 0; i < N; ++i)
+            for (var i = 0; i < N; ++i)
                 graph.Add(new AdjencyListVertex<int>(i));
             Assert.IsTrue(graph.Remove(3));
             Assert.IsFalse(graph.Remove(N + 100));
@@ -108,13 +114,14 @@ namespace DataStructuresTests.Graphs
             Assert.AreEqual(N - 3, graph.VerticesCount);
             Assert.AreEqual(0, graph.EdgesCount);
         }
+
         [TestMethod]
         public void RemoveEdgeCount()
         {
             var graph = new SimplestListGraph<int>();
-            for (int i = 0; i < N; ++i)
+            for (var i = 0; i < N; ++i)
                 graph.Add(new AdjencyListVertex<int>(i));
-            for (int i = 0; i < N - 1; ++i)
+            for (var i = 0; i < N - 1; ++i)
                 graph.Connect(i, i + 1);
             Assert.AreEqual(N - 1, graph.EdgesCount);
             Assert.IsTrue(graph.RemoveEdge(0, 1));
@@ -126,7 +133,7 @@ namespace DataStructuresTests.Graphs
         public void GraphTraversalBfs()
         {
             var graph = new SimplestListGraph<int>(0);
-            for (int i = 1; i < 5; ++i)
+            for (var i = 1; i < 5; ++i)
             {
                 graph.Add(i);
             }
@@ -146,7 +153,7 @@ namespace DataStructuresTests.Graphs
             Assert.AreEqual(10, graph.EdgesCount);
             var data = graph.GetBfs();
             Assert.AreEqual(5, data.Count);
-            for (int i = 0; i < 5; ++i)
+            for (var i = 0; i < 5; ++i)
             {
                 Assert.AreEqual(i, data[i].Value);
             }
@@ -156,7 +163,7 @@ namespace DataStructuresTests.Graphs
         public void GraphTraversalBfs2()
         {
             var graph = new SimplestListGraph<int>(0);
-            for (int i = 1; i < 5; ++i)
+            for (var i = 1; i < 5; ++i)
             {
                 graph.Add(i);
             }
@@ -179,7 +186,7 @@ namespace DataStructuresTests.Graphs
                 1
             };
             var data = graph.GetBfs();
-            for (int i = 0; i < 5; ++i)
+            for (var i = 0; i < 5; ++i)
             {
                 Assert.AreEqual(good[i], data[i].Value);
             }
@@ -189,7 +196,7 @@ namespace DataStructuresTests.Graphs
         public void GraphTraversalDfs()
         {
             var graph = new SimplestListGraph<int>(0);
-            for (int i = 1; i < 5; ++i)
+            for (var i = 1; i < 5; ++i)
             {
                 graph.Add(i);
             }
@@ -205,10 +212,14 @@ namespace DataStructuresTests.Graphs
             Assert.AreEqual(6, graph.EdgesCount);
             var good = new List<int>
             {
-               0,4,3,2,1
+                0,
+                4,
+                3,
+                2,
+                1
             };
             var data = graph.GetDfs();
-            for (int i = 0; i < 5; ++i)
+            for (var i = 0; i < 5; ++i)
             {
                 Assert.AreEqual(good[i], data[i].Value);
             }
@@ -218,7 +229,7 @@ namespace DataStructuresTests.Graphs
         public void GraphTraversalDfs2()
         {
             var graph = new SimplestListGraph<int>(5);
-            int i = 0;
+            var i = 0;
             while (i < 5)
             {
                 graph.Add(i);
@@ -245,12 +256,19 @@ namespace DataStructuresTests.Graphs
             graph.Connect(5, 6);
             graph.Connect(6, 7);
             Assert.AreEqual(11, graph.EdgesCount);
-            List<int> good = new List<int>
+            var good = new List<int>
             {
-                5,6,7,4,3,1,2,0
+                5,
+                6,
+                7,
+                4,
+                3,
+                1,
+                2,
+                0
             };
             var data = graph.GetDfs();
-            for (int k = 0; k < 5; ++k)
+            for (var k = 0; k < 5; ++k)
             {
                 Assert.AreEqual(good[k], data[k].Value);
             }
@@ -260,7 +278,7 @@ namespace DataStructuresTests.Graphs
         public void TreeTraversal()
         {
             var graph = new SimplestListGraph<int>();
-            for (int i = 0; i < 11; ++i)
+            for (var i = 0; i < 11; ++i)
                 graph.Add(i);
             graph.SetRoot(7);
             graph.Connect(7, 3);
@@ -277,23 +295,42 @@ namespace DataStructuresTests.Graphs
             Assert.AreEqual(10, graph.EdgesCount);
             var goodBfs = new List<int>
             {
-               7,3,8,1,5,9,10,0,2,4,6
+                7,
+                3,
+                8,
+                1,
+                5,
+                9,
+                10,
+                0,
+                2,
+                4,
+                6
             };
             var bfs = graph.GetBfs();
-            for (int i = 0; i < 11; ++i)
+            for (var i = 0; i < 11; ++i)
             {
                 Assert.AreEqual(goodBfs[i], bfs[i].Value);
             }
             var goodDfs = new List<int>
             {
-               7,8,10,9,3,5,6,4,1,2,0
+                7,
+                8,
+                10,
+                9,
+                3,
+                5,
+                6,
+                4,
+                1,
+                2,
+                0
             };
             var dfs = graph.GetDfs();
-            for (int i = 0; i < 11; ++i)
+            for (var i = 0; i < 11; ++i)
             {
                 Assert.AreEqual(goodDfs[i], dfs[i].Value);
             }
-
         }
     }
 }

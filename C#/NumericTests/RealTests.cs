@@ -1,8 +1,8 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Numeric;
-
-namespace NumericTests
+﻿namespace NumericTests
 {
+    using Microsoft.VisualStudio.TestTools.UnitTesting;
+    using Numeric;
+
     [TestClass]
     public class RealTests
     {
@@ -22,7 +22,6 @@ namespace NumericTests
             Assert.AreEqual(3, number.FractionalPart);
             Assert.AreEqual(3333333333333, number.IntegerPart);
             Assert.AreEqual(3.3333333333333, number);
-
         }
     }
 }
