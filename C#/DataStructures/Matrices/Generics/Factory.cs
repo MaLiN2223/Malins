@@ -51,7 +51,7 @@
                     return (Matrix<T>)formatter.Deserialize(stream);
                 }
             }
-
+            throw new NotImplementedException();
         }
         /// <summary>
         /// Creates empty array.

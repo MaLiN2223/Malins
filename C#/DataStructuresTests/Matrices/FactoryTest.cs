@@ -3,10 +3,8 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace DataStructuresTests.Matrices
 {
-    using System.Reflection;
-    using System.Runtime.InteropServices;
-    using DataStructures.Matrices.Generics;
-    using Numeric;
+    using System.Numerics;
+    using DataStructures.Matrices.Generics; 
 
     [TestClass]
     public class FactoryTest
@@ -91,7 +89,7 @@ namespace DataStructuresTests.Matrices
             {
                 for (int j = 0; j < 9; ++j)
                 {
-                    Assert.AreEqual(i == j ? Complex.MultiplyNeutral : Complex.SumNeutral, m2[i, j]);
+                    Assert.AreEqual(i == j ? Complex.One : Complex.Zero, m2[i, j]);
                 }
             }
             var m3 = Factory.Identity<double>(9, 9);

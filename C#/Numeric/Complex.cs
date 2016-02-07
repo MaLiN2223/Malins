@@ -14,17 +14,9 @@ namespace Numeric
         {
             Re = real;
             Im = imaginary;
-        }
-
-        public static implicit operator ComplexFactorial(Complex fact)
-        {
-            return new ComplexFactorial(fact, MultiplyNeutral);
-        }
+        } 
         public readonly Rational Re;
-        public readonly Rational Im;
-
-
-
+        public readonly Rational Im; 
         public static readonly Complex MultiplyNeutral;
         public static readonly Complex SumNeutral;
 
