@@ -2,7 +2,7 @@
 {
     using System.Numerics;
     using Microsoft.VisualStudio.TestTools.UnitTesting;
-    using DataStructures.Matrices.Generics;
+    using DataStructures.Matrices.Generics; 
 
     [TestClass]
     public class ComplexMatrixTests

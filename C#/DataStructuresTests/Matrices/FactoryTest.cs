@@ -4,7 +4,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace DataStructuresTests.Matrices
 {
     using System.Numerics;
-    using DataStructures.Matrices.Generics; 
+    using DataStructures.Matrices.Generics;
 
     [TestClass]
     public class FactoryTest
