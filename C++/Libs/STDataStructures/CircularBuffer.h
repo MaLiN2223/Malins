@@ -15,7 +15,7 @@ namespace Containers
 		~CircularBuffer();
 
 		reference front();
-		reference back();
+		reference back(); 
 		const_reference front() const;
 		const_reference back() const;
 

@@ -127,6 +127,17 @@ TEST(CircularBufferTest, PopingFront)
 	buffer.pop_front();
 	ASSERT_TRUE(buffer.empty());
 }
+
+TEST(CircularBufferTest, Test1)
+{
+	Containers::CircularBuffer<int> buffer(10);
+	buffer.push_back(3);
+	buffer.push_back(4);
+	buffer.push_back(5);
+	buffer.push_front(6);
+	buffer.push_front(7);
+	buffer.push_front(8);
+}
 int main(int argc, char* argv[])
 {
 	testing::InitGoogleTest(&argc, argv);
