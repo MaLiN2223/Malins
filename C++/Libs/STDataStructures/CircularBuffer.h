@@ -20,14 +20,19 @@ namespace Containers
 		const_reference back() const;
 
 		void push_back(const_reference);
-		void pop_front();
 		void push_front(const_reference);
+		void push_back(reference);
+		void push_front(reference);
+		void pop_front();
+		void pop_back();
 
 		void clear();
 		bool empty() const;
 		bool full() const;
+
 		size_t size() const;
 		size_t capacity() const;
+
 		reference operator[](size_t);
 		const_reference operator[](size_t) const;
 
@@ -77,31 +82,89 @@ namespace Containers
 	}
 
 	template <class T>
-	void CircularBuffer<T>::push_back(const_reference item)
-	{
-		buffer[tail] = item;
-		if (size_ == capacity_)
-			increment(head);
-		else
-			size_++;
-		increment(tail);
-	}
-
-	template <class T>
 	void CircularBuffer<T>::pop_front()
 	{
 		increment(head);
+		--size_;
 	}
 
 	template <class T>
+	void CircularBuffer<T>::pop_back()
+	{
+		decrement(tail);
+		--size_;
+	}
+
+
+	template <class T>
+	void CircularBuffer<T>::push_back(const_reference item)
+	{
+		if (empty())
+		{
+			buffer[0] = item;
+			size_ = 1;
+		}
+		else {
+			increment(tail);
+			buffer[tail] = item;
+			if (size_ == capacity_)
+				increment(head);
+			else
+				size_++;
+		}
+	}
+	template <class T>
 	void CircularBuffer<T>::push_front(const_reference item)
 	{
-		if (size_ == capacity_)
-			decrement(tail);
-		else
-			size_++;
-		decrement(head);
-		buffer[head] = item;
+		if (empty())
+		{
+			buffer[0] = item;
+			size_ = 1;
+		}
+		else {
+			decrement(head);
+			buffer[head] = item;
+			if (size_ == capacity_)
+				decrement(tail);
+			else
+				size_++;
+		}
+	}
+
+	template <class T>
+	void CircularBuffer<T>::push_back(reference item)
+	{
+		if (empty())
+		{
+			buffer[0] = item;
+			size_ = 1;
+		}
+		else {
+			increment(tail);
+			buffer[tail] = item;
+			if (size_ == capacity_)
+				increment(head);
+			else
+				size_++;
+		}
+	}
+
+	template <class T>
+	void CircularBuffer<T>::push_front(reference item)
+	{
+		if (empty())
+		{
+			buffer[0] = item;
+			size_ = 1;
+		}
+		else {
+			decrement(head);
+			buffer[head] = item;
+			if (size_ == capacity_)
+				decrement(tail);
+			else
+				size_++;
+		}
 	}
 
 	template <class T>
@@ -113,7 +176,7 @@ namespace Containers
 	template <class T>
 	bool CircularBuffer<T>::empty() const
 	{
-		return head == tail;
+		return	size_ == 0;;
 	}
 
 	template <class T>

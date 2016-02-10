@@ -85,10 +85,51 @@ TEST(CircularBufferTest, OverMaximumAddBack)
 	ASSERT_EQ(6, buffer[3]);
 	ASSERT_EQ(4, buffer.size());
 }
+TEST(CircularBufferTest, PopingBack)
+{
+	Containers::CircularBuffer<int> buffer(4);
+	buffer.push_back(1);
+	buffer.push_back(2);
+	buffer.push_back(3);
+	buffer.push_back(4);
+	ASSERT_EQ(1, buffer.front());
+	ASSERT_EQ(4, buffer.back());
+	buffer.pop_back();
+	ASSERT_EQ(1, buffer.front());
+	ASSERT_EQ(3, buffer.back());
+	buffer.pop_back();
+	ASSERT_EQ(1, buffer.front());
+	ASSERT_EQ(2, buffer.back());
+	buffer.pop_back();
+	ASSERT_EQ(1, buffer.front());
+	ASSERT_EQ(1, buffer.back());
+	buffer.pop_back();
+	ASSERT_TRUE(buffer.empty());
+}
+TEST(CircularBufferTest, PopingFront)
+{
+	Containers::CircularBuffer<int> buffer(4);
+	buffer.push_back(1);
+	buffer.push_back(2);
+	buffer.push_back(3);
+	buffer.push_back(4);
+	ASSERT_EQ(1, buffer.front());
+	ASSERT_EQ(4, buffer.back());
+	buffer.pop_front();
+	ASSERT_EQ(2, buffer.front());
+	ASSERT_EQ(4, buffer.back());
+	buffer.pop_front();
+	ASSERT_EQ(3, buffer.front());
+	ASSERT_EQ(4, buffer.back());
+	buffer.pop_front();
+	ASSERT_EQ(4, buffer.front());
+	ASSERT_EQ(4, buffer.back());
+	buffer.pop_front();
+	ASSERT_TRUE(buffer.empty());
+}
 int main(int argc, char* argv[])
 {
 	testing::InitGoogleTest(&argc, argv);
 	int retVal = RUN_ALL_TESTS();
 	return retVal;
 }
-
