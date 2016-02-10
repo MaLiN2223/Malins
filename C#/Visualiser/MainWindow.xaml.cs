@@ -10,11 +10,15 @@ namespace Visualiser
         public MainWindow()
         {
             InitializeComponent();
-        }
+        } 
+
         private void ButtonBase_OnClick(object sender, RoutedEventArgs e)
         {
+
             var matrix = Factory.Empty<int>(10, 10);
-            Stack.Children.Add(new MatrixControl<int>("name", matrix));
+            var control = new MatrixControl("name");
+            control.setGrid(matrix);
+            Stack.Children.Add(control);
         }
     }
 }

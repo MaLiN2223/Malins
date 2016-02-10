@@ -18,7 +18,7 @@
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
     <OutputPath>bin\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DefineConstants>DEBUG</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <DocumentationFile>
@@ -59,10 +59,11 @@
     <Compile Include="Matrices\Generics\Factory.cs" />
     <Compile Include="Matrices\Generics\Matrix.cs" />
     <Compile Include="Matrices\Generics\MatrixContainer.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Queues\CircularBuffer.cs" />
+    <Compile Include="Queues\Queue.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Queues\" />
+    <Folder Include="Properties\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

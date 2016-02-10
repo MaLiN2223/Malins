@@ -1,43 +1,23 @@
 ﻿using System.Windows.Controls;
 namespace Visualiser.Moveable
-{
-    using System.Windows;
+{ 
+    using System.Windows.Forms;
+    using DataStructures.Matrices.Generics;
 
-    public class MatrixControl<T> : UserControl
+    public partial class MatrixControl
     {
-        private Grid grid;
-        private Expander expander;
-        private DataGrid dataGrid;
-        private void InitializeComponent()
-        {
-            grid = new Grid();
-            grid.RowDefinitions.Add(
-                new RowDefinition
-                {
-                    Height = new GridLength(30)
-                }
-            );
-            grid.RowDefinitions.Add(
-                new RowDefinition
-                {
-                    Height = GridLength.Auto
-                }
-             );
-
-            expander = new Expander();
-            grid.Children.Add(expander);
-
-            dataGrid = new DataGrid();
-            grid.Children.Add(dataGrid);
-
-
-
-
-        }
-        public MatrixControl(string name, object matrix)
+        private string name;
+        public MatrixControl(string name)
         {
             InitializeComponent();
-            expander.Header = name;
+            Expander.Header = name;
+            this.name = name;
+        }
+
+        public void setGrid<T>(Matrix<T> matrix)
+        {
+            DataGrid.DataContext = new ArrayDataView(matrix);
+
         }
     }
 }

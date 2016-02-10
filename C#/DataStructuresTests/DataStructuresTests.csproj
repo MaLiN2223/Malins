@@ -63,6 +63,7 @@
     <Compile Include="Matrices\MatrixStructTests.cs" />
     <Compile Include="Matrices\ComplexMatrixTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Queues\CircularBufferTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DataStructures\DataStructures.csproj">
