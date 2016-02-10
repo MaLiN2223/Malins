@@ -9,8 +9,18 @@ TEST(CircularBufferTest, CreatingEmpty)
 	ASSERT_TRUE(buffer.full());
 	ASSERT_EQ(0, buffer.size());
 }
-
-TEST(CircularBufferTest, MaximumAdd)
+TEST(CircularBufferTest, MaximumAddFront)
+{
+	Containers::CircularBuffer<int> buffer(3);
+	ASSERT_TRUE(buffer.empty());
+	ASSERT_EQ(buffer.size(), 0);
+	ASSERT_EQ(buffer.capacity(), 3);
+	buffer.push_front(1);
+	buffer.push_front(2);
+	buffer.push_front(3);
+	ASSERT_EQ(3, buffer.size());
+}
+TEST(CircularBufferTest, MaximumAddBack)
 {
 	Containers::CircularBuffer<int> buffer(3);
 	ASSERT_TRUE(buffer.empty());
@@ -20,6 +30,60 @@ TEST(CircularBufferTest, MaximumAdd)
 	buffer.push_back(2);
 	buffer.push_back(3);
 	ASSERT_EQ(3, buffer.size());
+}
+TEST(CircularBufferTest, RandomAccessNotOverflowedFront)
+{
+	Containers::CircularBuffer<int> buffer(3);
+	buffer.push_front(9);
+	buffer.push_front(8);
+	buffer.push_front(7);
+	ASSERT_EQ(7, buffer[0]);
+	ASSERT_EQ(8, buffer[1]);
+	ASSERT_EQ(9, buffer[2]);
+	ASSERT_EQ(3, buffer.size());
+}
+TEST(CircularBufferTest, RandomAccessNotOverflowedBack)
+{
+	Containers::CircularBuffer<int> buffer(3);
+	buffer.push_back(9);
+	buffer.push_back(8);
+	buffer.push_back(7);
+	ASSERT_EQ(9, buffer[0]);
+	ASSERT_EQ(8, buffer[1]);
+	ASSERT_EQ(7, buffer[2]);
+	ASSERT_EQ(3, buffer.size());
+}
+TEST(CircularBufferTest, OverMaximumAddFront)
+{
+	Containers::CircularBuffer<int> buffer(4);
+	buffer.push_front(1);
+	buffer.push_front(2);
+	buffer.push_front(3);
+	buffer.push_front(4);
+	buffer.push_front(5);
+	buffer.push_front(6);
+	ASSERT_EQ(4, buffer.size());
+	ASSERT_EQ(6, buffer[0]);
+	ASSERT_EQ(5, buffer[1]);
+	ASSERT_EQ(4, buffer[2]);
+	ASSERT_EQ(3, buffer[3]);
+	ASSERT_EQ(4, buffer.size());
+}
+TEST(CircularBufferTest, OverMaximumAddBack)
+{
+	Containers::CircularBuffer<int> buffer(4);
+	buffer.push_back(1);
+	buffer.push_back(2);
+	buffer.push_back(3);
+	buffer.push_back(4);
+	buffer.push_back(5);
+	buffer.push_back(6);
+	ASSERT_EQ(4, buffer.size());
+	ASSERT_EQ(3, buffer[0]);
+	ASSERT_EQ(4, buffer[1]);
+	ASSERT_EQ(5, buffer[2]);
+	ASSERT_EQ(6, buffer[3]);
+	ASSERT_EQ(4, buffer.size());
 }
 int main(int argc, char* argv[])
 {
