@@ -1,8 +1,8 @@
 #pragma once 
-namespace Containers
+namespace containers
 {
 	template <class T>
-	class CircularBuffer final
+	class circularBuffer final
 	{
 	public:
 		typedef T value_type;
@@ -11,11 +11,12 @@ namespace Containers
 		typedef T& reference;
 		typedef const T& const_reference;
 
-		explicit CircularBuffer(size_t);
-		~CircularBuffer();
+		explicit circularBuffer(size_t);
+		explicit circularBuffer();
+		~circularBuffer();
 
 		reference front();
-		reference back(); 
+		reference back();
 		const_reference front() const;
 		const_reference back() const;
 
@@ -46,50 +47,53 @@ namespace Containers
 		void decrement(size_t&) const;
 	};
 	template <class T>
-	CircularBuffer<T>::CircularBuffer(size_t size) : head(0), tail(0), size_(0), capacity_(size)
+	circularBuffer<T>::circularBuffer(size_t size = 0) : head(0), tail(0), size_(0), capacity_(size)
 	{
 		buffer = new T[size];
 	}
-
+	template<class T>
+	circularBuffer<T>::circularBuffer() : circularBuffer(0)
+	{
+	}
 	template <class T>
-	CircularBuffer<T>::~CircularBuffer()
+	circularBuffer<T>::~circularBuffer()
 	{
 		delete[] buffer;
 	}
 
 	template <class T>
-	typename CircularBuffer<T>::reference CircularBuffer<T>::front()
+	typename circularBuffer<T>::reference circularBuffer<T>::front()
 	{
 		return buffer[head];
 	}
 
 	template <class T>
-	typename CircularBuffer<T>::reference CircularBuffer<T>::back()
+	typename circularBuffer<T>::reference circularBuffer<T>::back()
 	{
 		return buffer[tail];
 	}
 
 	template <class T>
-	typename CircularBuffer<T>::const_reference CircularBuffer<T>::front() const
+	typename circularBuffer<T>::const_reference circularBuffer<T>::front() const
 	{
 		return buffer[head];
 	}
 
 	template <class T>
-	typename CircularBuffer<T>::const_reference CircularBuffer<T>::back() const
+	typename circularBuffer<T>::const_reference circularBuffer<T>::back() const
 	{
 		return buffer[tail];
 	}
 
 	template <class T>
-	void CircularBuffer<T>::pop_front()
+	void circularBuffer<T>::pop_front()
 	{
 		increment(head);
 		--size_;
 	}
 
 	template <class T>
-	void CircularBuffer<T>::pop_back()
+	void circularBuffer<T>::pop_back()
 	{
 		decrement(tail);
 		--size_;
@@ -97,7 +101,7 @@ namespace Containers
 
 
 	template <class T>
-	void CircularBuffer<T>::push_back(const_reference item)
+	void circularBuffer<T>::push_back(const_reference item)
 	{
 		if (empty())
 		{
@@ -114,7 +118,7 @@ namespace Containers
 		}
 	}
 	template <class T>
-	void CircularBuffer<T>::push_front(const_reference item)
+	void circularBuffer<T>::push_front(const_reference item)
 	{
 		if (empty())
 		{
@@ -132,7 +136,7 @@ namespace Containers
 	}
 
 	template <class T>
-	void CircularBuffer<T>::push_back(reference item)
+	void circularBuffer<T>::push_back(reference item)
 	{
 		if (empty())
 		{
@@ -150,7 +154,7 @@ namespace Containers
 	}
 
 	template <class T>
-	void CircularBuffer<T>::push_front(reference item)
+	void circularBuffer<T>::push_front(reference item)
 	{
 		if (empty())
 		{
@@ -168,37 +172,37 @@ namespace Containers
 	}
 
 	template <class T>
-	void CircularBuffer<T>::clear()
+	void circularBuffer<T>::clear()
 	{
 		head = tail = size_ = 0;
 	}
 
 	template <class T>
-	bool CircularBuffer<T>::empty() const
+	bool circularBuffer<T>::empty() const
 	{
 		return	size_ == 0;;
 	}
 
 	template <class T>
-	bool CircularBuffer<T>::full() const
+	bool circularBuffer<T>::full() const
 	{
 		return size_ == capacity_;
 	}
 
 	template <class T>
-	size_t CircularBuffer<T>::size() const
+	size_t circularBuffer<T>::size() const
 	{
 		return size_;
 	}
 
 	template <class T>
-	size_t CircularBuffer<T>::capacity() const
+	size_t circularBuffer<T>::capacity() const
 	{
 		return capacity_;
 	}
 
 	template <class T>
-	T& CircularBuffer<T>::operator[](size_t index)
+	T& circularBuffer<T>::operator[](size_t index)
 	{
 		size_t i = (head + index) % capacity_;
 		if (i > capacity_ - 1)
@@ -207,7 +211,7 @@ namespace Containers
 	}
 
 	template <class T>
-	typename CircularBuffer<T>::const_reference CircularBuffer<T>::operator[](size_t index) const
+	typename circularBuffer<T>::const_reference circularBuffer<T>::operator[](size_t index) const
 	{
 		size_t i = (head + index) % capacity_;
 		if (i > capacity_ - 1)
@@ -216,13 +220,13 @@ namespace Containers
 	}
 
 	template <class T>
-	void CircularBuffer<T>::increment(size_t& i) const
+	void circularBuffer<T>::increment(size_t& i) const
 	{
 		if (++i == capacity_)
 			i = 0;
 	}
 	template <class T>
-	void CircularBuffer<T>::decrement(size_t& i) const
+	void circularBuffer<T>::decrement(size_t& i) const
 	{
 		if (--i == -1)
 			i = capacity_ - 1;
