@@ -5,10 +5,18 @@
     using System.Collections.Generic;
     using System.Linq;
     using System.Runtime.Serialization;
-    using Exceptions;
 
     public sealed class CircularLinkedList<T> : ILinkedList<T>
     {
+        public CircularLinkedList(IEnumerable<T> data)
+        {
+            if (data != null)
+                foreach (var item in data)
+                {
+                    AddLast(item);
+                }
+        }
+        public CircularLinkedList() { }
         private DoubleLinkedListNode<T> Head { get; set; }
         public DoubleLinkedListNode<T> First => Head;
         public int Count { get; private set; }
@@ -21,13 +29,12 @@
         public IEnumerator<T> GetEnumerator()
         {
             var current = Head;
-            if (current != null)
+            if (current == null)
+                yield break;
+            while (current.Next != Head)
             {
                 yield return current.Value;
-                while (current.Next != Head)
-                {
-                    yield return current.Value;
-                }
+                current = current.Next as DoubleLinkedListNode<T>;
             }
         }
 
@@ -38,35 +45,18 @@
         /// <summary>
         /// Adds item on start - just after head
         /// </summary> 
-        public void Add(T item)
-        {
-            if (Head != null)
-            {
-                Head = new DoubleLinkedListNode<T>(item);
-            }
-            else
-            {
-                var node = new DoubleLinkedListNode<T>(item);
-                var tmp = Head.Next as DoubleLinkedListNode<T>;
-                var last = tmp.Previous;
-                Head.Next = node;
-                node.Next = tmp;
-                node.Previous = last;
-                last.Next = node;
-                tmp.Previous = node;
-                Count++;
-                node.list = this;
-            }
-        }
+
 
         public void Clear()
         {
-            Head.Next = null;
+            Head = null;
             Count = 0;
         }
 
         public bool Contains(T item)
         {
+            if (Count == 0)
+                return false;
             return Enumerable.Contains(this, item);
         }
 
@@ -105,30 +95,72 @@
 
         public void GetObjectData(SerializationInfo info, StreamingContext context)
         {
+            //TODO : Serialization
             throw new NotImplementedException();
         }
 
         public void OnDeserialization(object sender)
         {
+            //TODO : Serialization
             throw new NotImplementedException();
         }
 
         public void AddFirst(ILinkedListNode<T> node)
         {
             var toAdd = NodeValidation(node);
-            var last = Head.Previous;
-            Head.Previous = toAdd;
-            last.Next = node;
-            toAdd.Next = Head;
-            Head = toAdd;
+            if (Head == null)
+            {
+                toAdd.Next = toAdd;
+                toAdd.Previous = toAdd;
+                Head = toAdd;
+            }
+            else
+            {
+                var last = Head.Previous;
+                Head.Previous = toAdd;
+                last.Next = node;
+                toAdd.Next = Head;
+                toAdd.Previous = last;
+                Head = toAdd;
+                toAdd.list = this;
+            }
+            Count++;
         }
-
+        public void Add(T item)
+        {
+            AddFirst(new DoubleLinkedListNode<T>(item));
+        }
         public void AddFirst(T data)
         {
             var node = new DoubleLinkedListNode<T>(data);
             AddFirst(node);
         }
 
+        public void AddLast(T data)
+        {
+            var node = new DoubleLinkedListNode<T>(data);
+            AddLast(node);
+        }
+        public void AddLast(ILinkedListNode<T> node)
+        {
+            var toAdd = NodeValidation(node);
+            if (Head == null)
+            {
+                toAdd.Next = toAdd;
+                toAdd.Previous = toAdd;
+                Head = toAdd;
+            }
+            else
+            {
+                var last = Head.Previous;
+                toAdd.Next = Head;
+                toAdd.Previous = last;
+                last.Next = toAdd;
+                Head.Previous = toAdd;
+                toAdd.list = this;
+            }
+            Count++;
+        }
         public void RemoveFirst()
         {
             Remove(Head);
@@ -189,13 +221,26 @@
             if (ReferenceEquals(node, null))
                 throw new ArgumentNullException(nameof(node));
             var nod = node as DoubleLinkedListNode<T>;
-            if (nod == null || !nod.list.Equals(this))
+            if (nod == null || (nod.list != null && !nod.list.Equals(this)))
                 throw new InvalidOperationException(nameof(node));
             return nod;
         }
         private void DoRemove(DoubleLinkedListNode<T> node)
         {
 
+            if (node == Head)
+            {
+                node.Dispose();
+                Head = null;
+            }
+            else
+            {
+                var prev = node.Previous;
+                var next = node.Next as DoubleLinkedListNode<T>;
+                prev.Next = next;
+                next.Previous = prev;
+            }
+            Count--;
         }
     }
 }
