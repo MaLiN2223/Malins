@@ -55,6 +55,10 @@
     <Compile Include="Graphs\Interfaces\IWeightedGraph.cs" />
     <Compile Include="Graphs\AdjencyListVertex.cs" />
     <Compile Include="Graphs\SimplestListGraph.cs" />
+    <Compile Include="Lists\CircularLinkedList.cs" />
+    <Compile Include="Lists\ILinkedList.cs" />
+    <Compile Include="Lists\ILinkedListNode.cs" />
+    <Compile Include="Lists\DoubleLinkedListNode.cs" />
     <Compile Include="Matrices\Generics\DoubleMatricesExtensions.cs" />
     <Compile Include="Matrices\Generics\Factory.cs" />
     <Compile Include="Matrices\Generics\Matrix.cs" />
