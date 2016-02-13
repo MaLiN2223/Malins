@@ -4,6 +4,7 @@ namespace DataStructures.Lists
 {
     using System.Collections;
     using System.Runtime.Serialization;
+    using System.Security.Cryptography.X509Certificates;
 
     public interface ILinkedList<T> : ICollection<T>, ICollection, IReadOnlyCollection<T>, ISerializable, IDeserializationCallback
     {
@@ -14,5 +15,6 @@ namespace DataStructures.Lists
         bool RemoveLast(T data);
         ILinkedListNode<T> Find(T data);
         ILinkedListNode<T> FindLast(T data);
+        new int Count { get; }
     }
 }

@@ -11,10 +11,10 @@
     {
         private DoubleLinkedListNode<T> Head { get; set; }
         public DoubleLinkedListNode<T> First => Head;
-        private int count;
-        int ICollection.Count => count;
-        int ICollection<T>.Count => count;
-        int IReadOnlyCollection<T>.Count => count;
+        public int Count { get; private set; }
+        int ICollection.Count => Count;
+        int ICollection<T>.Count => Count;
+        int IReadOnlyCollection<T>.Count => Count;
         public object SyncRoot => Head;
         public bool IsSynchronized => false;
         public bool IsReadOnly { get; }
@@ -54,7 +54,7 @@
                 node.Previous = last;
                 last.Next = node;
                 tmp.Previous = node;
-                count++;
+                Count++;
                 node.list = this;
             }
         }
@@ -62,7 +62,7 @@
         public void Clear()
         {
             Head.Next = null;
-            count = 0;
+            Count = 0;
         }
 
         public bool Contains(T item)
@@ -74,7 +74,7 @@
         {
             if (array == null)
                 throw new ArgumentNullException(nameof(array));
-            if (arrayIndex < 0 || arrayIndex > array.Length || array.Length - arrayIndex < count)
+            if (arrayIndex < 0 || arrayIndex > array.Length || array.Length - arrayIndex < Count)
                 throw new ArgumentOutOfRangeException(nameof(arrayIndex));
 
             var node = Head;
@@ -94,7 +94,7 @@
                 throw new ArgumentNullException(nameof(array));
             if (array.Rank != 1 || array.GetLowerBound(0) != 0)
                 throw new ArgumentException(nameof(array));
-            if (index < 0 || array.Length - index < count)
+            if (index < 0 || array.Length - index < Count)
                 throw new ArgumentOutOfRangeException(nameof(index));
             var tArray = array as T[];
             if (tArray != null)
@@ -102,6 +102,7 @@
             else
                 throw new NotSupportedException(array.GetType().ToString());
         }
+
         public void GetObjectData(SerializationInfo info, StreamingContext context)
         {
             throw new NotImplementedException();
