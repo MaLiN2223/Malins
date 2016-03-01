@@ -1,15 +1,17 @@
 ﻿namespace DataStructures.Trees
 {
-    public class BinaryNode<T>
+    public class BinaryNode<T, TK>
     {
-        public BinaryNode(T value)
+        public BinaryNode(T value, TK key)
         {
             Value = value;
+            Key = key;
         }
         public T Value { get; private set; }
-        private BinaryNode<T> left;
-        private BinaryNode<T> right;
-        public BinaryNode<T> Left
+        public TK Key { get; private set; }
+        private BinaryNode<T, TK> left;
+        private BinaryNode<T, TK> right;
+        public BinaryNode<T, TK> Left
         {
             get { return left; }
             set
@@ -20,7 +22,7 @@
             }
         }
 
-        public BinaryNode<T> Right
+        public BinaryNode<T, TK> Right
         {
             get { return right; }
             set
@@ -30,6 +32,6 @@
                     right.Parent = this;
             }
         }
-        public BinaryNode<T> Parent { get; set; }
+        public BinaryNode<T, TK> Parent { get; set; }
     }
 }

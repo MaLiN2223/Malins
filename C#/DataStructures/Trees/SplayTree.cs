@@ -2,11 +2,11 @@
 namespace DataStructures.Trees
 {
 
-    public class SplayTree<T> where T : IComparable<T>
+    public class SplayTree<T, TK> where TK : IComparable<TK>
     {
-        private BinaryNode<T> root;
+        private BinaryNode<T, TK> root;
 
-        public BinaryNode<T> Root
+        public BinaryNode<T, TK> Root
         {
             get { return root; }
             private set
@@ -15,24 +15,45 @@ namespace DataStructures.Trees
                 root.Parent = null;
             }
         }
-
         public SplayTree() { }
 
-        public void Insert(T value)
+        public bool Contains(TK key)
         {
-            if (Root == null)
-                Root = new BinaryNode<T>(value);
-            else
-                DoInsert(value);
+            return Find(key) != null;
         }
 
-        private void DoInsert(T value)
+        public BinaryNode<T, TK> Find(TK key)
         {
             var head = Root;
-            var item = new BinaryNode<T>(value);
+            BinaryNode<T, TK> prev = null;
             while (head != null)
             {
-                if (head.Value.CompareTo(value) > 0)
+                if (head.Key.CompareTo(key) == 0)
+                {
+                    Splay(head);
+                    return head;
+                }
+                prev = head;
+                head = head.Key.CompareTo(key) < 0 ? head.Right : head.Left;
+            }
+            Splay(prev);
+            return null;
+        }
+        public void Insert(T value, TK key)
+        {
+            if (Root == null)
+                Root = new BinaryNode<T, TK>(value, key);
+            else
+                DoInsert(value, key);
+        }
+
+        private void DoInsert(T value, TK key)
+        {
+            var head = Root;
+            var item = new BinaryNode<T, TK>(value, key);
+            while (head != null)
+            {
+                if (head.Key.CompareTo(key) > 0)
                 {
                     if (head.Left == null)
                     {
@@ -42,7 +63,7 @@ namespace DataStructures.Trees
                     }
                     head = head.Left;
                 }
-                else if (head.Value.CompareTo(value) < 0)
+                else if (head.Key.CompareTo(key) < 0)
                 {
                     if (head.Right == null)
                     {
@@ -55,45 +76,45 @@ namespace DataStructures.Trees
             }
         }
 
-        private void Splay(BinaryNode<T> node)
+        private void Splay(BinaryNode<T, TK> node)
         {
             if (node == null)
                 return;
-            while (node?.Parent != null)
+
+            bool splayed = false;
+            while (node.Parent != null)
             {
-                bool moved = false;
                 if (node.Parent == Root)
                 {
                     Zig(node);
-                    moved = true;
+                    splayed = true;
                 }
                 else if (node.Parent.Parent != null)
                 {
-                    bool nodeIsRightZigZag = (node.Parent.Right == node && node.Parent.Parent.Left == node.Parent);
-                    bool nodeIsLeftZigZag = (node.Parent.Left == node && node.Parent.Parent.Right == node.Parent);
-                    bool nodeIsLeftZigZig = (node.Parent.Left == node && node.Parent.Parent.Left == node.Parent);
-                    bool nodeIsRightZigZig = (node.Parent.Right == node && node.Parent.Parent.Right == node.Parent);
+                    bool nodeIsRightZigZag = node.Parent.Right == node && node.Parent.Parent.Left == node.Parent;
+                    bool nodeIsLeftZigZag = node.Parent.Left == node && node.Parent.Parent.Right == node.Parent;
+                    bool nodeIsLeftZigZig = node.Parent.Left == node && node.Parent.Parent.Left == node.Parent;
+                    bool nodeIsRightZigZig = node.Parent.Right == node && node.Parent.Parent.Right == node.Parent;
                     if (node.Parent?.Parent != null && (nodeIsLeftZigZag || nodeIsRightZigZag))
                     {
                         ZigZag(node, nodeIsLeftZigZag);
-                        moved = true;
+                        splayed = true;
                     }
                     else if (node.Parent?.Parent != null && (nodeIsLeftZigZig || nodeIsRightZigZig))
                     {
                         ZigZig(node, nodeIsLeftZigZig);
-                        moved = true;
+                        splayed = true;
                     }
-                    if (!moved)
-                        break;
-
                 }
+                if (!splayed)
+                    break;
             }
         }
         /// <summary>
         /// Node has parent who is Root
         /// </summary> 
         /// <returns></returns>
-        private void Zig(BinaryNode<T> node)
+        private void Zig(BinaryNode<T, TK> node)
         {
             if (Root.Left == node)
             {
@@ -114,7 +135,7 @@ namespace DataStructures.Trees
 
         }
 
-        private void ZigZig(BinaryNode<T> node, bool isLeft)
+        private void ZigZig(BinaryNode<T, TK> node, bool isLeft)
         {
             var left = node.Left;
             var right = node.Right;
@@ -153,7 +174,7 @@ namespace DataStructures.Trees
             }
         }
 
-        private void ZigZag(BinaryNode<T> node, bool isLeft)
+        private void ZigZag(BinaryNode<T, TK> node, bool isLeft)
         {
             var left = node.Left;
             var right = node.Right;
