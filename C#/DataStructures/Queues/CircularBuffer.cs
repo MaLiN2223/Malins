@@ -1,8 +1,7 @@
 ﻿namespace DataStructures.Queues
 {
-    using System;
-    using System.Runtime.CompilerServices;
-
+    using System; 
+    //TODO : Tests
     public class CircularBuffer<T>
     {
         T[] data;
@@ -16,7 +15,7 @@
 
         public T this[int i]
         {
-            
+            get { return data[i]; }
         }
         public CircularBuffer(int capacity = 0)
         {

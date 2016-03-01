@@ -46,6 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Containers\Set.cs" />
     <Compile Include="Exceptions\InvalidArgumentException.cs" />
     <Compile Include="Graphs\Interfaces\AbstractGraph.cs" />
     <Compile Include="Graphs\Interfaces\IDirectedGraph.cs" />
@@ -64,6 +65,10 @@
     <Compile Include="Matrices\Generics\MatrixContainer.cs" />
     <Compile Include="Queues\CircularBuffer.cs" />
     <Compile Include="Queues\Queue.cs" />
+    <Compile Include="Trees\AVLTree.cs" />
+    <Compile Include="Trees\BinaryNode.cs" />
+    <Compile Include="Trees\RedBlackTree.cs" />
+    <Compile Include="Trees\SplayTree.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Properties\" />
