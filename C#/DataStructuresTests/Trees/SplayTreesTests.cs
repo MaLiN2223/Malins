@@ -1,7 +1,5 @@
 ﻿namespace DataStructuresTests.Trees
-{
-    using System;
-    using System.Collections.Generic;
+{ 
     using DataStructures.Trees;
     using NUnit.Framework;
     using Assert = Microsoft.VisualStudio.TestTools.UnitTesting.Assert;

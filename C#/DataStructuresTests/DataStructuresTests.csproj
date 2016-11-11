@@ -68,8 +68,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Queues\CircularBufferTests.cs" />
     <Compile Include="Lists\CircularLinkedListTests.cs" />
-    <Compile Include="Trees\RedBlackTreeTests.cs" />
-    <Compile Include="Trees\AVLTests.cs" />
     <Compile Include="Trees\SplayTreesTests.cs" />
   </ItemGroup>
   <ItemGroup>
