@@ -4,27 +4,22 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{BE574E55-0492-4E4E-A14A-C184B119DCAD}</ProjectGuid>
+    <ProjectGuid>{7471E52C-DAE8-4780-8431-71ECE88F3B33}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>DataStructures</RootNamespace>
-    <AssemblyName>DataStructures</AssemblyName>
+    <RootNamespace>EnumerableStructures</RootNamespace>
+    <AssemblyName>EnumerableStructures</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
     <OutputPath>bin\Debug\</OutputPath>
-    <DefineConstants>DEBUG</DefineConstants>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <DocumentationFile>
-    </DocumentationFile>
-    <Prefer32Bit>false</Prefer32Bit>
-    <RunCodeAnalysis>false</RunCodeAnalysis>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -33,48 +28,20 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Numerics" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Containers\ArraysExtensions.cs" />
-    <Compile Include="Containers\Set.cs" />
-    <Compile Include="DataProvidingClass\BigPrecision.cs" />
-    <Compile Include="Graphs\Interfaces\AbstractGraph.cs" />
-    <Compile Include="Graphs\Interfaces\IDirectedGraph.cs" />
-    <Compile Include="Graphs\Interfaces\IGraph.cs" />
-    <Compile Include="Graphs\Interfaces\IVertex.cs" />
-    <Compile Include="Graphs\Interfaces\IWeightedGraph.cs" />
-    <Compile Include="Graphs\AdjencyListVertex.cs" />
-    <Compile Include="Graphs\SimplestListGraph.cs" />
     <Compile Include="IEnumerableExtensions.cs" />
-    <Compile Include="Lists\CircularLinkedList.cs" />
-    <Compile Include="Lists\ILinkedList.cs" />
-    <Compile Include="Lists\ILinkedListNode.cs" />
-    <Compile Include="Lists\DoubleLinkedListNode.cs" />
-    <Compile Include="Lists\Operators\Remover.cs" />
-    <Compile Include="Matrices\Generics\DoubleMatricesExtensions.cs" />
-    <Compile Include="Matrices\Generics\Factory.cs" />
-    <Compile Include="Matrices\Generics\Matrix.cs" />
-    <Compile Include="Matrices\Generics\MatrixContainer.cs" />
-    <Compile Include="Queues\CircularBuffer.cs" />
-    <Compile Include="Queues\Queue.cs" />
-    <Compile Include="Trees\BinaryNode.cs" />
-    <Compile Include="Trees\BinaryTree.cs" />
-    <Compile Include="Trees\RedBlackTree.cs" />
-    <Compile Include="Trees\SplayTree.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Properties\" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -3,8 +3,7 @@
 namespace DataStructures.Lists
 {
     using System.Collections;
-    using System.Runtime.Serialization;
-    using System.Security.Cryptography.X509Certificates;
+    using System.Runtime.Serialization; 
 
     public interface ILinkedList<T> : ICollection<T>, ICollection, IReadOnlyCollection<T>, ISerializable, IDeserializationCallback
     {
