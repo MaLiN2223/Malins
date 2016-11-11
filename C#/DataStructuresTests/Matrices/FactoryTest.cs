@@ -12,7 +12,7 @@ namespace DataStructuresTests.Matrices
         [TestMethod]
         public void Empty()
         {
-            Matrix<int> m1 = Factory.Empty<int>(30, 15);
+            Matrix<int> m1 = Factory<int>.Empty(30, 15);
             Assert.AreEqual(30, m1.RowCount);
             Assert.AreEqual(15, m1.ColumnCount);
             for (int i = 0; i < 30; ++i)
@@ -24,7 +24,7 @@ namespace DataStructuresTests.Matrices
             }
             try
             {
-                Matrix<int> m2 = Factory.Empty<int>(-1, 3);
+                Matrix<int> m2 = Factory<int>.Empty(-1, 3);
                 Assert.Fail();
             }
             catch (ArgumentException e)
@@ -36,7 +36,7 @@ namespace DataStructuresTests.Matrices
         [TestMethod]
         public void Filled()
         {
-            Matrix<int> m1 = Factory.Filled(30, 30, Matrix<int>.MultiplyNeutral);
+            Matrix<int> m1 = Factory<int>.Filled(30, 30, Matrix<int>.MultiplyNeutral);
             Assert.AreEqual(30, m1.RowCount);
             Assert.AreEqual(30, m1.ColumnCount);
             for (int i = 0; i < 30; ++i)
@@ -47,7 +47,7 @@ namespace DataStructuresTests.Matrices
                 }
             }
             int k = -3;
-            m1 = Factory.Filled(30, 30, k);
+            m1 = Factory<int>.Filled(30, 30, k);
             Assert.AreEqual(30, m1.RowCount);
             Assert.AreEqual(30, m1.ColumnCount);
             for (int i = 0; i < 30; ++i)
@@ -57,7 +57,7 @@ namespace DataStructuresTests.Matrices
                     Assert.AreEqual(k, m1[i, j]);
                 }
             }
-            Matrix<TestStruct> m2 = Factory.Filled(30, 30, new TestStruct(30));
+            Matrix<TestStruct> m2 = Factory<TestStruct>.Filled(30, 30, new TestStruct(30));
             var item = new TestStruct(30);
             Assert.AreEqual(30, m1.RowCount);
             Assert.AreEqual(30, m1.ColumnCount);
@@ -72,7 +72,7 @@ namespace DataStructuresTests.Matrices
         [TestMethod]
         public void Id()
         {
-            var m = Factory.Identity<int>(8, 9);
+            var m = Factory<int>.Identity(8, 9);
             Assert.AreEqual(8, m.RowCount);
             Assert.AreEqual(9, m.ColumnCount);
             for (int i = 0; i < 8; ++i)
@@ -82,7 +82,7 @@ namespace DataStructuresTests.Matrices
                     Assert.AreEqual(i == j ? 1 : 0, m[i, j]);
                 }
             }
-            var m2 = Factory.Identity<Complex>(8, 9);
+            var m2 = Factory<Complex>.Identity(8, 9);
             Assert.AreEqual(8, m.RowCount);
             Assert.AreEqual(9, m.ColumnCount);
             for (int i = 0; i < 8; ++i)
@@ -92,7 +92,7 @@ namespace DataStructuresTests.Matrices
                     Assert.AreEqual(i == j ? Complex.One : Complex.Zero, m2[i, j]);
                 }
             }
-            var m3 = Factory.Identity<double>(9, 9);
+            var m3 = Factory<double>.Identity(9, 9);
             Assert.AreEqual(9, m3.ColumnCount);
             Assert.AreEqual(9, m3.RowCount);
             for (int i = 0; i < 9; ++i)
@@ -107,12 +107,12 @@ namespace DataStructuresTests.Matrices
         [TestMethod]
         public void Copy()
         {
-            var m = Factory.Identity<int>(9, 10);
-            var m1 = Factory.Clone(m);
+            var m = Factory<Complex>.Identity(9, 10);
+            var m1 = Factory<Complex>.Clone(m);
             Assert.IsFalse(ReferenceEquals(m1, m));
             Assert.IsTrue(m == m1);
-            var m2 = Factory.Identity<Complex>(9, 10);
-            var m3 = Factory.Clone(m2);
+            var m2 = Factory<Complex>.Identity(9, 10);
+            var m3 = Factory<Complex>.Clone(m2);
             Assert.IsFalse(ReferenceEquals(m2, m3));
             Assert.IsTrue(m2 == m3);
         }

@@ -8,7 +8,7 @@
     /// <summary>
     /// Factory for creating arrays
     /// </summary>
-    public static class Factory
+    public static class Factory<T> where T : struct
     {
         /// <summary>
         /// Creates matrix by putting array into matrix.
@@ -17,7 +17,7 @@
         /// <typeparam name="T"></typeparam>
         /// <param name="data"></param>
         /// <returns></returns>
-        public static Matrix<T> Create<T>(T[,] data)
+        public static Matrix<T> Create(T[,] data)
         {
             if (data == null)
                 throw new ArgumentNullException();
@@ -30,7 +30,7 @@
         /// <typeparam name="T"></typeparam>
         /// <param name="matrix"></param>
         /// <returns></returns>
-        public static Matrix<T> Clone<T>(Matrix<T> matrix)
+        public static Matrix<T> Clone(Matrix<T> matrix)
         {
             if (typeof(T).IsClass) //is class
             {
@@ -60,7 +60,7 @@
         /// <param name="rows">Array row count</param>
         /// <param name="columns">Array column count</param>
         /// <returns></returns>
-        public static Matrix<T> Create<T>(int rows, int columns)
+        public static Matrix<T> Create(int rows, int columns)
         {
             GoodRange(rows, columns);
             return new Matrix<T>(new MatrixContainer<T>(rows, columns));
@@ -72,13 +72,13 @@
         /// <typeparam name="T"></typeparam>
         /// <param name="data"></param>
         /// <returns></returns>
-        public static Matrix<T> CreateCopy<T>(T[,] data) => Create((T[,])data.Clone());
+        public static Matrix<T> CreateCopy(T[,] data) => Create((T[,])data.Clone());
 
-        public static Matrix<T> Diagonal<T>(int rows, int columns, T data)
+        public static Matrix<T> Diagonal(int rows, int columns, T data)
         {
             GoodRange(rows, columns);
             int min = Math.Min(rows, columns);
-            var matrix = Create<T>(rows, columns);
+            var matrix = Create(rows, columns);
             for (int i = 0; i < rows; ++i)
             {
                 if (i <= min)
@@ -92,15 +92,15 @@
             return matrix;
         }
 
-        public static Matrix<T> Identity<T>(int rows, int columns)
+        public static Matrix<T> Identity(int rows, int columns)
         {
             GoodRange(rows, columns);
-            if (Matrix<T>.MultiplyNeutral == null)
+            if (Matrix<T>.MultiplyNeutral.Equals(default(T)))
                 throw new NotSupportedException();
             return Diagonal(rows, columns, Matrix<T>.MultiplyNeutral);
         }
 
-        public static Matrix<T> Filled<T>(int rows, int cols, T data)
+        public static Matrix<T> Filled(int rows, int cols, T data)
         {
             GoodRange(rows, cols);
             T[] arr = new T[rows * cols];
@@ -110,7 +110,7 @@
             return new Matrix<T>(container);
         }
 
-        public static Matrix<T> Empty<T>(int rows, int cols)
+        public static Matrix<T> Empty(int rows, int cols)
         {
             GoodRange(rows, cols);
             return new Matrix<T>(new MatrixContainer<T>(rows, cols));

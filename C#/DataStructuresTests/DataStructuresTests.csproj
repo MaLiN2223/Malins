@@ -57,6 +57,7 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="DataProvidingClass\BigPrecisionTests.cs" />
     <Compile Include="Graphs\AdjencyListVertexTest.cs" />
     <Compile Include="Graphs\SimplestListGraphTest.cs" />
     <Compile Include="Matrices\MatrixGenericTests.cs" />

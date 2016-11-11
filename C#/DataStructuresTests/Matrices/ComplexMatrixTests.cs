@@ -2,7 +2,7 @@
 {
     using System.Numerics;
     using Microsoft.VisualStudio.TestTools.UnitTesting;
-    using DataStructures.Matrices.Generics; 
+    using DataStructures.Matrices.Generics;
 
     [TestClass]
     public class ComplexMatrixTests
@@ -10,7 +10,7 @@
         [TestMethod]
         public void Init()
         {
-            Matrix<Complex> m = Factory.Empty<Complex>(5, 10);
+            Matrix<Complex> m = Factory<Complex>.Empty(5, 10);
             Assert.AreEqual(5, m.RowCount);
             Assert.AreEqual(10, m.ColumnCount);
             Assert.AreEqual(Matrix<Complex>.MultiplyNeutral, Complex.One);
@@ -22,7 +22,7 @@
                     Assert.AreEqual(default(Complex), m[i, j]);
                 }
             }
-            m = Factory.Identity<Complex>(5, 10);
+            m = Factory<Complex>.Identity(5, 10);
             Assert.AreEqual(5, m.RowCount);
             Assert.AreEqual(10, m.ColumnCount);
             Assert.AreEqual(Matrix<Complex>.MultiplyNeutral, Complex.One);

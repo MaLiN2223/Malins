@@ -11,7 +11,7 @@ namespace DataStructuresTests.Matrices
         [TestMethod]
         public void Create()
         {
-            Matrix<TestStruct> data = Factory.Empty<TestStruct>(10, 10);
+            Matrix<TestStruct> data = Factory<TestStruct>.Empty(10, 10);
             Assert.AreEqual(10, data.ColumnCount);
             Assert.AreEqual(10, data.RowCount);
             Assert.AreEqual(Matrix<TestStruct>.MultiplyNeutral, TestStruct.MultiplyNeutral);
@@ -23,7 +23,7 @@ namespace DataStructuresTests.Matrices
                     Assert.AreEqual(default(TestStruct), data[i, j]);
                 }
             }
-            data = Factory.Identity<TestStruct>(10, 10);
+            data = Factory<TestStruct>.Identity(10, 10);
             Assert.AreEqual(10, data.ColumnCount);
             Assert.AreEqual(10, data.RowCount);
             for (int i = 0; i < 10; ++i)

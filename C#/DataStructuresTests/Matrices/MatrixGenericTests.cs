@@ -6,7 +6,7 @@ namespace DataStructuresTests.Matrices
 {
     [TestClass]
     public class MatrixGenericDTests
-    { 
+    {
         public void AreEqual(double[,] data, Matrix<double> m)
         {
             int RowCount = data.GetLength(0);
@@ -23,7 +23,7 @@ namespace DataStructuresTests.Matrices
                 {1, -9.1, 2, 1},
                 {1, 3, 1, 9.001}
             };
-            Matrix<double> m = Factory.Create(data);
+            Matrix<double> m = Factory<double>.Create(data);
             Assert.AreEqual(2, m.RowCount);
             Assert.AreEqual(4, m.ColumnCount);
             AreEqual(data, m);
@@ -37,14 +37,14 @@ namespace DataStructuresTests.Matrices
                 {1, -9.1, 2, 1},
                 {1, -9.1, 2, 1},
             };
-            var matrix = Factory.Create(data);
+            var matrix = Factory<double>.Create(data);
             Assert.AreEqual(4, matrix.ColumnCount);
             Assert.AreEqual(3, matrix.RowCount);
             data = new double[,]
              {
                 {1, -9.1, 2, 1}
              };
-            matrix = Factory.Create(data);
+            matrix = Factory<double>.Create(data);
             Assert.AreEqual(4, matrix.ColumnCount);
             Assert.AreEqual(1, matrix.RowCount);
         }
@@ -54,8 +54,8 @@ namespace DataStructuresTests.Matrices
         {
             var data = new double[1, 1];
             var data2 = new double[3, 3];
-            var m = Factory.Create(data);
-            var m2 = Factory.Create(data2);
+            var m = Factory<double>.Create(data);
+            var m2 = Factory<double>.Create(data2);
             var k = m + m2;
         }
         [TestMethod]
@@ -78,8 +78,8 @@ namespace DataStructuresTests.Matrices
             for (int i = 0; i < RowCount; ++i)
                 for (int k = 0; k < ColumnCount; ++k)
                     data3[i, k] = data[i, k] + data2[i, k];
-            var m = Factory.Create(data);
-            var m2 = Factory.Create(data2);
+            var m = Factory<double>.Create(data);
+            var m2 = Factory< double>.Create(data2);
             var m3 = m2 + m;
 
             Assert.AreEqual(4, m.ColumnCount);
@@ -97,8 +97,8 @@ namespace DataStructuresTests.Matrices
         {
             var data = new double[1, 1];
             var data2 = new double[3, 3];
-            var m = Factory.Create(data);
-            var m2 = Factory.Create(data2);
+            var m = Factory<double>.Create(data);
+            var m2 = Factory<double>.Create(data2);
             var k = m - m2;
 
         }
@@ -122,8 +122,8 @@ namespace DataStructuresTests.Matrices
             for (int i = 0; i < RowCount; ++i)
                 for (int k = 0; k < ColumnCount; ++k)
                     data3[i, k] = data[i, k] - data2[i, k];
-            var m = Factory.Create(data);
-            var m2 = Factory.Create(data2);
+            var m = Factory<double>.Create(data);
+            var m2 = Factory<double>.Create(data2);
             var m3 = m - m2;
 
             Assert.AreEqual(4, m.ColumnCount);
@@ -141,8 +141,8 @@ namespace DataStructuresTests.Matrices
         {
             var data = new double[1, 1];
             var data2 = new double[3, 3];
-            var m = Factory.Create(data);
-            var m2 = Factory.Create(data2);
+            var m = Factory<double>.Create(data);
+            var m2 = Factory<double>.Create(data2);
             var k = m * m2;
         }
         [TestMethod]
@@ -164,8 +164,8 @@ namespace DataStructuresTests.Matrices
                 {70, 47, 35},
                 {76, 60, 29}
             };
-            var m = Factory.Create(data);
-            var m2 = Factory.Create(data2);
+            var m = Factory<double>.Create(data);
+            var m2 = Factory<double>.Create(data2);
             var m3 = m * m2;
             Assert.AreEqual(3, m3.ColumnCount);
             Assert.AreEqual(2, m3.RowCount);
@@ -179,7 +179,7 @@ namespace DataStructuresTests.Matrices
             {
                 {1, 3, 3}
             };
-            var m = Factory.Create(data);
+            var m = Factory<double>.Create(data);
             m.Determinant();
         }
         [TestMethod]
@@ -190,8 +190,8 @@ namespace DataStructuresTests.Matrices
                 {2, 3},
                 {-9, 2}
             };
-            var m = Factory.Create(data);
-           Assert.AreEqual(2 * 2 - (-9 * 3), m.Determinant());
+            var m = Factory<double>.Create(data);
+            Assert.AreEqual(2 * 2 - (-9 * 3), m.Determinant());
             var data2 = new double[4, 4]
             {
                 {1,2,3,4},
@@ -199,7 +199,7 @@ namespace DataStructuresTests.Matrices
                 {9,10,11,12},
                 {13,14,15,16}
             };
-            var m2 = Factory.Create(data2);
+            var m2 = Factory<double>.Create(data2);
             //Assert.AreEqual(0, m2.Determinant(), Math.Pow(10, -25));
             var data3 = new double[4, 4]
            {
@@ -208,7 +208,7 @@ namespace DataStructuresTests.Matrices
                 {-98,-7,1,4 },
                 {-7,0,7,7 }
            };
-            var m3 = Factory.Create(data3);
+            var m3 = Factory<double>.Create(data3);
             Assert.AreEqual(-624897, m3.Determinant());
             var data4 = new double[,]
             {
@@ -217,11 +217,11 @@ namespace DataStructuresTests.Matrices
                 {5, 5, 4, 2},
                 {-1, -2, 3.4, -1}
             };
-            var m4 = Factory.Create(data4);
+            var m4 = Factory<double>.Create(data4);
             Assert.AreEqual(-120, m4.Determinant());
         }
 
-        
+
         [TestMethod]
         public void Negation()
         {
@@ -232,7 +232,7 @@ namespace DataStructuresTests.Matrices
                 {0, 0, 4, -0.5},
                 {0, 0, 0, -3}
             };
-            var matrix = Factory.CreateCopy(data);
+            var matrix = Factory<double>.CreateCopy(data);
             matrix.Negate();
             var m2 = -matrix;
             for (int i = 0; i < 4; ++i)
@@ -265,6 +265,6 @@ namespace DataStructuresTests.Matrices
             //TODO: 
         }
 
-         
+
     }
 }

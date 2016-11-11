@@ -112,7 +112,7 @@
     #endregion
     [DebuggerDisplay("Matrix rows={RowCount}, columns={ColumnCount}, type = {typeof(T)}")]
     [Serializable]
-    public class Matrix<T>
+    public class Matrix<T> where T : struct
     {
         private readonly MatrixContainer<T> container;
         internal Matrix(int rows, int columns)
@@ -188,7 +188,7 @@
             for (var i = 0; i < first.RowCount; ++i)
                 for (var k = 0; k < first.ColumnCount; ++k)
                     array[i, k] = Sum(first[i, k], second[i, k]);
-            return Factory.Create(array);
+            return Factory<T>.Create(array);
         }
 
         public static Matrix<T> operator -(Matrix<T> first, Matrix<T> second)
@@ -201,7 +201,7 @@
             for (var i = 0; i < first.RowCount; ++i)
                 for (var k = 0; k < first.ColumnCount; ++k)
                     array[i, k] = Sub(first[i, k], second[i, k]);
-            return Factory.Create(array);
+            return Factory<T>.Create(array);
         }
 
         public static Matrix<T> operator *(Matrix<T> first, Matrix<T> second)
@@ -210,7 +210,7 @@
                 throw new NullReferenceException("Matrix must not be null");
             if (first.ColumnCount != second.RowCount)
                 throw new ArgumentException("Matrices must have good dimensions");
-            var mOut = Factory.Create<T>(first.RowCount, second.ColumnCount);
+            var mOut = Factory<T>.Create(first.RowCount, second.ColumnCount);
             for (var i = 0; i < mOut.RowCount; i++)
             {
                 for (var j = 0; j < mOut.ColumnCount; j++)

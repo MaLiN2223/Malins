@@ -2,8 +2,7 @@
 {
     using System;
     using System.Collections;
-    using System.Collections.Generic;
-    using Exceptions;
+    using System.Collections.Generic; 
     using Interfaces;
 
     /// <summary>
@@ -63,11 +62,11 @@
                 throw new NullReferenceException("Vertex must not be null");
             if (ReferenceEquals(other, this))
                 throw new ArgumentException("Cannot add himself");
-            if (other as AdjencyListVertex<T> == null)
-                throw new InvalidArgumentException("Wrong type");
+            if (!(other is AdjencyListVertex<T>))
+                throw new ArgumentException("Wrong type");
             if (this.vertices.Contains(other))
                 throw new ArgumentException("Vertices are already connected");
-            Connect((AdjencyListVertex<T>) other, this);
+            Connect((AdjencyListVertex<T>)other, this);
         }
 
         /// <summary>
